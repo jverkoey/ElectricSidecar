@@ -411,7 +411,11 @@ private final class AuthStorage: AuthStoring {
 
   func storeAuthentication(token: OAuthToken?, for key: String) async throws {
     let url = authTokenUrl(key: key)
-    try cacheCoordinator.encode(url: url, object: token)
+
+    if ProcessInfo.processInfo.environment["TESTING"] != "1" {
+      try cacheCoordinator.encode(url: url, object: token)
+    }
+
     await actor.storeAuthentication(token: token, for: key)
   }
 
@@ -419,6 +423,10 @@ private final class AuthStorage: AuthStoring {
     // Prioritize in-memory tokens.
     if let token = await actor.authentication(for: key) {
       return token
+    }
+
+    if ProcessInfo.processInfo.environment["TESTING"] == "1" {
+      return nil
     }
 
     let url = authTokenUrl(key: key)

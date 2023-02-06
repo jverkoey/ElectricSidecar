@@ -1,14 +1,26 @@
 import XCTest
+import SnapshotTesting
 
-final class EndToEndUITests: XCTestCase {
+final class AuthUIFlowTests: XCTestCase {
 
   override func setUpWithError() throws {
     continueAfterFailure = false
   }
 
-  func testLoginButtonEnablesOnceUsernameAndPasswordAreEntered() throws {
-    let app = XCUIApplication()
+  var app: XCUIApplication!
+  override func setUp() {
+    super.setUp()
+
+    isRecording = true
+
+    app = XCUIApplication()
+    app.launchEnvironment = ["TESTING": "1"]
     app.launch()
+  }
+
+  func testLoginButtonEnablesOnceUsernameAndPasswordAreEntered() throws {
+    let screenshot: UIImage = app.screenshot().image
+    assertSnapshot(matching: screenshot, as: .image)
 
     XCTAssertFalse(app.buttons["Log in"].isEnabled)
 

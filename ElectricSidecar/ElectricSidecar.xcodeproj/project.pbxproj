@@ -21,7 +21,7 @@
 		66108D7C296B572F00791A7A /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D78296B572F00791A7A /* AppGroup.swift */; };
 		66108D7E296B576000791A7A /* BatteryStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D7D296B576000791A7A /* BatteryStyleTests.swift */; };
 		66108D81296B577700791A7A /* UILaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D7F296B577700791A7A /* UILaunchTests.swift */; };
-		66108D82296B577700791A7A /* EndToEndUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D80296B577700791A7A /* EndToEndUITests.swift */; };
+		66108D82296B577700791A7A /* AuthUIFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D80296B577700791A7A /* AuthUIFlowTests.swift */; };
 		66108D87296B579800791A7A /* TitledTabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D86296B579800791A7A /* TitledTabViews.swift */; };
 		66108D95296B58A800791A7A /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 66108D94296B58A800791A7A /* PorscheConnect */; };
 		66108D99296B58AE00791A7A /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 66108D98296B58AE00791A7A /* PorscheConnect */; };
@@ -58,6 +58,8 @@
 		6651ED042986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED052986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED062986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
+		665ACAD12990D7070003F008 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D78296B572F00791A7A /* AppGroup.swift */; };
+		665ACAE32990E2C90003F008 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 665ACAE22990E2C90003F008 /* SnapshotTesting */; };
 		665C3F26298E0985002BAD30 /* WatchConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */; };
 		665C3F27298E0985002BAD30 /* WatchConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */; };
 		665C3F28298E09F9002BAD30 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB9582979119B00304EA5 /* Logging.swift */; };
@@ -258,7 +260,7 @@
 		66108D78296B572F00791A7A /* AppGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		66108D7D296B576000791A7A /* BatteryStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryStyleTests.swift; sourceTree = "<group>"; };
 		66108D7F296B577700791A7A /* UILaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILaunchTests.swift; sourceTree = "<group>"; };
-		66108D80296B577700791A7A /* EndToEndUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndToEndUITests.swift; sourceTree = "<group>"; };
+		66108D80296B577700791A7A /* AuthUIFlowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthUIFlowTests.swift; sourceTree = "<group>"; };
 		66108D86296B579800791A7A /* TitledTabViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitledTabViews.swift; sourceTree = "<group>"; };
 		66108D88296B57CB00791A7A /* VehicleChargeTimelineProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleChargeTimelineProvider.swift; sourceTree = "<group>"; };
 		66108D8E296B57F800791A7A /* PorscheConnect */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PorscheConnect; path = ../third_party/PorscheConnect; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665ACAE32990E2C90003F008 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +453,7 @@
 		66108D45296B569100791A7A /* WatchUITests */ = {
 			isa = PBXGroup;
 			children = (
-				66108D80296B577700791A7A /* EndToEndUITests.swift */,
+				66108D80296B577700791A7A /* AuthUIFlowTests.swift */,
 				66108D7F296B577700791A7A /* UILaunchTests.swift */,
 			);
 			path = WatchUITests;
@@ -774,6 +777,9 @@
 				66108D44296B569100791A7A /* PBXTargetDependency */,
 			);
 			name = WatchUITests;
+			packageProductDependencies = (
+				665ACAE22990E2C90003F008 /* SnapshotTesting */,
+			);
 			productName = "ElectricSidecar Watch AppUITests";
 			productReference = 66108D42296B569100791A7A /* WatchUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -913,6 +919,7 @@
 			mainGroup = 66108D19296B569000791A7A;
 			packageReferences = (
 				66108DB6296B590F00791A7A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				665ACAE12990E2C90003F008 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 66108D21296B569000791A7A /* Products */;
 			projectDirPath = "";
@@ -1044,6 +1051,7 @@
 				668B86D42986FA2600C60DE8 /* CodableCacheCoordinator.swift in Sources */,
 				668B86DD2986FA3000C60DE8 /* Vehicle+Doors.swift in Sources */,
 				668B86D32986FA2600C60DE8 /* ModelStore.swift in Sources */,
+				665ACAD12990D7070003F008 /* AppGroup.swift in Sources */,
 				668B86D72986FA2D00C60DE8 /* Emobility+Helpers.swift in Sources */,
 				668B86D92986FA2D00C60DE8 /* Vehicle+Helpers.swift in Sources */,
 				6651ED062986FB71001337A3 /* BatteryStyle.swift in Sources */,
@@ -1059,7 +1067,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66108D82296B577700791A7A /* EndToEndUITests.swift in Sources */,
+				66108D82296B577700791A7A /* AuthUIFlowTests.swift in Sources */,
 				66108D81296B577700791A7A /* UILaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1470,7 +1478,6 @@
 		66108D57296B569100791A7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1485,10 +1492,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "ElectricSidecar Watch App";
+				TEST_TARGET_NAME = Watch;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -1496,7 +1502,6 @@
 		66108D58296B569100791A7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1513,7 +1518,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "ElectricSidecar Watch App";
+				TEST_TARGET_NAME = Watch;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -1833,6 +1838,14 @@
 				kind = branch;
 			};
 		};
+		665ACAE12990E2C90003F008 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1861,6 +1874,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66108DB6296B590F00791A7A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
+		};
+		665ACAE22990E2C90003F008 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 665ACAE12990E2C90003F008 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		66743FDD298E2E15002A799F /* PorscheConnect */ = {
 			isa = XCSwiftPackageProductDependency;

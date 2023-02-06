@@ -50,6 +50,10 @@ private final class LoginModel: ObservableObject {
   }
 
   @objc func reachabilityDidChange() {
+    if ProcessInfo.processInfo.environment["TESTING"] == "1" {
+      // Don't try to handle any reachability while testing.
+      return
+    }
     Logging.watchConnectivity.info("Reachability state: \(WCSession.default.isReachable)")
 
     var isReachable = false

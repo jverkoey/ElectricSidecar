@@ -64,6 +64,17 @@
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "665ACAD52990D7E30003F008"
+               BuildableName = "WatchUITests2.xctest"
+               BlueprintName = "WatchUITests2"
+               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
