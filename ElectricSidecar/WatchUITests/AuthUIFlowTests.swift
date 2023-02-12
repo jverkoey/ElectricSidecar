@@ -31,4 +31,3 @@ final class AuthUIFlowTests: XCTestCase {
     XCTAssertTrue(app.buttons["Log in"].isEnabled)
   }
 }
-

@@ -1,5 +1,10 @@
 import SnapshotTesting
+import WatchKit
 import XCTest
+
+private func sanitizedDeviceName() -> String {
+  return WKInterfaceDevice.current().name.replacing(/Clone \d+ of\ /, with: "")
+}
 
 final class LoginViewUITests: XCTestCase {
 
@@ -8,7 +13,7 @@ final class LoginViewUITests: XCTestCase {
   override func setUpWithError() throws {
     continueAfterFailure = true
 
-    testEnvironment = ProcessInfo.processInfo.environment["TEST_ENVIRONMENT"] ?? "Undefined"
+    testEnvironment = sanitizedDeviceName()
     isRecording = ProcessInfo.processInfo.environment["IS_RECORDING"] == "true"
 
     app = XCUIApplication()

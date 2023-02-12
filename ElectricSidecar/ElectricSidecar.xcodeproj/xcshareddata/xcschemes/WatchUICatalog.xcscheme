@@ -56,11 +56,6 @@
             value = "$(IS_RECORDING)"
             isEnabled = "YES">
          </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "TEST_ENVIRONMENT"
-            value = "$(TEST_ENVIRONMENT)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
          <TestableReference
