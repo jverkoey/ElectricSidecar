@@ -1,84 +1,31 @@
 import SwiftUI
-import WatchConnectivity
 
 struct LoginView: View {
-  @ObservedObject fileprivate var model = LoginModel()
+  @State private var email: String
+  @State private var password: String
   let didLogin: (String, String) -> Void
 
   init(email: String, password: String, didLogin: @escaping (String, String) -> Void) {
+    self.email = email
+    self.password = password
     self.didLogin = didLogin
-
-    model.email = email
-    model.password = password
   }
 
   var body: some View {
     VStack {
-      TextField("Email", text: $model.email)
+      TextField("Email", text: $email)
         .textContentType(.emailAddress)
         .textInputAutocapitalization(.never)
         .multilineTextAlignment(.center)
-        .font(.body)
-      SecureField("Password", text: $model.password)
+      SecureField("Password", text: $password)
         .textContentType(.password)
         .multilineTextAlignment(.center)
       Button("Log in") {
-        didLogin(model.email, model.password)
+        didLogin(email, password)
       }
-      .disabled(model.email.isEmpty || model.password.isEmpty)
+      .disabled(email.isEmpty || password.isEmpty)
     }
     .padding()
-  }
-}
-
-private final class LoginModel: ObservableObject {
-  @Published var email: String = ""
-  @Published var password: String = ""
-  @Published var watchIsReachable: Bool = false
-
-  init() {
-    NotificationCenter.default.addObserver(
-      self, selector: #selector(Self.reachabilityDidChange),
-      name: .activationDidComplete, object: nil
-    )
-    NotificationCenter.default.addObserver(
-      self, selector: #selector(Self.reachabilityDidChange),
-      name: .reachabilityDidChange, object: nil
-    )
-
-    reachabilityDidChange()
-  }
-
-  @objc func reachabilityDidChange() {
-    if ProcessInfo.processInfo.environment["TESTING"] == "1" {
-      // Don't try to handle any reachability while testing.
-      return
-    }
-    Logging.watchConnectivity.info("Reachability state: \(WCSession.default.isReachable)")
-
-    var isReachable = false
-    if WCSession.default.activationState == .activated {
-      isReachable = WCSession.default.isReachable
-    }
-    watchIsReachable = isReachable
-
-    if isReachable {
-      Logging.watchConnectivity.info("Requesting auth credentials from the phone...")
-      WCSession.default.sendMessage(["request": "auth-credentials"]) { response in
-        DispatchQueue.main.async {
-          Logging.watchConnectivity.info("Received response \(response, privacy: .sensitive)")
-          if let email = response["email"] as? String,
-             let password = response["password"] as? String {
-            if !email.isEmpty {
-              self.email = email
-            }
-            if !password.isEmpty {
-              self.password = password
-            }
-          }
-        }
-      }
-    }
   }
 }
 

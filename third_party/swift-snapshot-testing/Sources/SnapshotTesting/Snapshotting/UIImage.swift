@@ -1,6 +1,9 @@
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
 import XCTest
+#if os(watchOS)
+import WatchKit
+#endif
 
 extension Diffing where Value == UIImage {
   /// A pixel-diffing strategy for UIImage's which requires a 100% match.
@@ -18,7 +21,11 @@ extension Diffing where Value == UIImage {
     if let scale = scale, scale != 0.0 {
       imageScale = scale
     } else {
+#if os(watchOS)
+      imageScale = WKInterfaceDevice.current().screenScale
+#else
       imageScale = UIScreen.main.scale
+#endif
     }
 
     return Diffing(
@@ -44,12 +51,16 @@ extension Diffing where Value == UIImage {
   
   /// Used when the image size has no width or no height to generated the default empty image
   private static func emptyImage() -> UIImage {
+#if os(watchOS)
+    return UIImage()
+#else
     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 80))
     label.backgroundColor = .red
     label.text = "Error: No image could be generated for this view as its size was zero. Please set an explicit size in the test."
     label.textAlignment = .center
     label.numberOfLines = 3
     return label.asImage()
+#endif
   }
 }
 
@@ -113,7 +124,10 @@ private func compare(_ old: UIImage, _ new: UIImage, precision: Float, perceptua
   if precision >= 1, perceptualPrecision >= 1 {
     return "Newly-taken snapshot does not match reference."
   }
-  if perceptualPrecision < 1, #available(iOS 11.0, tvOS 11.0, *) {
+#if os(watchOS)
+  return byteCompare(precision: precision, byteCount: byteCount, oldBytes: oldBytes, newerBytes: newerBytes)
+#else
+  if supportsCoreImage, perceptualPrecision < 1, #available(iOS 11.0, tvOS 11.0, *) {
     return perceptuallyCompare(
       CIImage(cgImage: oldCgImage),
       CIImage(cgImage: newCgImage),
@@ -121,17 +135,22 @@ private func compare(_ old: UIImage, _ new: UIImage, precision: Float, perceptua
       perceptualPrecision: perceptualPrecision
     )
   } else {
-    let byteCountThreshold = Int((1 - precision) * Float(byteCount))
-    var differentByteCount = 0
-    for offset in 0..<byteCount {
-      if oldBytes[offset] != newerBytes[offset] {
-        differentByteCount += 1
-      }
+    return byteCompare(precision: precision, byteCount: byteCount, oldBytes: oldBytes, newerBytes: newerBytes)
+  }
+#endif
+}
+
+private func byteCompare(precision: Float, byteCount: Int, oldBytes: [UInt8], newerBytes: [UInt8]) -> String? {
+  let byteCountThreshold = Int((1 - precision) * Float(byteCount))
+  var differentByteCount = 0
+  for offset in 0..<byteCount {
+    if oldBytes[offset] != newerBytes[offset] {
+      differentByteCount += 1
     }
-    if differentByteCount > byteCountThreshold {
-      let actualPrecision = 1 - Float(differentByteCount) / Float(byteCount)
-      return "Actual image precision \(actualPrecision) is less than required \(precision)"
-    }
+  }
+  if differentByteCount > byteCountThreshold {
+    let actualPrecision = 1 - Float(differentByteCount) / Float(byteCount)
+    return "Actual image precision \(actualPrecision) is less than required \(precision)"
   }
   return nil
 }

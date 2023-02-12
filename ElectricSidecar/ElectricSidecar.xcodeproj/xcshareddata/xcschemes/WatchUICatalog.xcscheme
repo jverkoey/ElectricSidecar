@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66108D25296B569000791A7A"
-               BuildableName = "Watch.app"
-               BlueprintName = "Watch"
+               BlueprintIdentifier = "665ACAF529976C110003F008"
+               BuildableName = "WatchUICatalog.app"
+               BlueprintName = "WatchUICatalog"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66108D1F296B569000791A7A"
-               BuildableName = "ElectricSidecarHost.app"
-               BlueprintName = "ElectricSidecarHost"
+               BlueprintIdentifier = "665ACAF029976C110003F008"
+               BuildableName = "WatchUICatalog.app"
+               BlueprintName = "WatchUICatalog"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,27 +40,37 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "665ACB1129976C120003F008"
+            BuildableName = "WatchUICatalogTests.xctest"
+            BlueprintName = "WatchUICatalogTests"
+            ReferencedContainer = "container:ElectricSidecar.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "IS_RECORDING"
+            value = "$(IS_RECORDING)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TEST_ENVIRONMENT"
+            value = "$(TEST_ENVIRONMENT)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66108D37296B569100791A7A"
-               BuildableName = "UnitTests.xctest"
-               BlueprintName = "UnitTests"
-               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66108D41296B569100791A7A"
-               BuildableName = "WatchUITests.xctest"
-               BlueprintName = "WatchUITests"
+               BlueprintIdentifier = "665ACB1129976C120003F008"
+               BuildableName = "WatchUICatalogTests.xctest"
+               BlueprintName = "WatchUICatalogTests"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -80,9 +90,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "66108D25296B569000791A7A"
-            BuildableName = "Watch.app"
-            BlueprintName = "Watch"
+            BlueprintIdentifier = "665ACAF529976C110003F008"
+            BuildableName = "WatchUICatalog.app"
+            BlueprintName = "WatchUICatalog"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -97,9 +107,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "66108D25296B569000791A7A"
-            BuildableName = "Watch.app"
-            BlueprintName = "Watch"
+            BlueprintIdentifier = "665ACAF529976C110003F008"
+            BuildableName = "WatchUICatalog.app"
+            BlueprintName = "WatchUICatalog"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

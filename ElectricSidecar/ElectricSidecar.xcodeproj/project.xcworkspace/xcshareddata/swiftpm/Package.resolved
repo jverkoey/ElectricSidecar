@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "swift-snapshot-testing",
-        "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing",
-        "state": {
-          "branch": null,
-          "revision": "cef5b3f6f11781dd4591bdd1dd0a3d22bd609334",
-          "version": "1.11.0"
-        }
-      },
-      {
         "package": "swiftui-cached-async-image",
         "repositoryURL": "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
         "state": {
