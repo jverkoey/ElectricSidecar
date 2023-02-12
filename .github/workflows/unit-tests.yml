@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run unit tests
-      run: xcodebuild test -scheme Watch -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=WatchOS Simulator,name=Apple Watch Series 8 (45mm),OS=9.1' | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild test -scheme UnitTests -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=WatchOS Simulator,name=Apple Watch Series 8 (45mm),OS=9.1' | xcpretty && exit ${PIPESTATUS[0]}
