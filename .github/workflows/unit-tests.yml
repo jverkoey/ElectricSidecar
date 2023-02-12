@@ -9,21 +9,15 @@ on:
       - main
 jobs:
   Watch:
-    strategy:
-      matrix:
-        version: [9.1, 9.0]
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
     - name: Run unit tests
-      run: xcodebuild test -scheme UnitTests -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=WatchOS Simulator,name=Apple Watch Series 8 (45mm),OS=${{ matrix.version }}' | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild test -scheme UnitTests -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=WatchOS Simulator,name=Apple Watch Series 8 (45mm),OS=9.1' | xcpretty && exit ${PIPESTATUS[0]}
 
   Phone:
-    strategy:
-      matrix:
-        destination: ['name="iPhone 14 Pro",OS="16.2"']
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
     - name: Run unit tests
-      run: xcodebuild test -scheme UnitTests -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=iOS Simulator,${{ matrix.destination }}' | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild test -scheme UnitTests -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' | xcpretty && exit ${PIPESTATUS[0]}
