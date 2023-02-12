@@ -1,0 +1,20 @@
+name: UI tests
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  Watch:
+    strategy:
+      matrix:
+        name: ['Apple Watch Series 8 (45mm)', 'Apple Watch Series 8 (41mm)', 'Apple Watch Series 4 (40mm)']
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run unit tests
+      run: xcodebuild test -scheme WatchUICatalog -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=WatchOS Simulator,name=${{ matrix.name }},OS=9.1' | xcpretty && exit ${PIPESTATUS[0]}
+
