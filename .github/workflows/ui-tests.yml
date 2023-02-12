@@ -11,7 +11,7 @@ jobs:
   Watch:
     strategy:
       matrix:
-        name: ['Apple Watch Series 8 (45mm)', 'Apple Watch Series 8 (41mm)', 'Apple Watch Series 5 (40mm)']
+        name: ["Apple Watch Series 8 (45mm)", "Apple Watch Series 8 (41mm)", "Apple Watch Series 5 (40mm)"]
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
