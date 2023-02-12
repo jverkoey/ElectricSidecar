@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "665ACAF029976C110003F008"
+               BlueprintIdentifier = "665ACAF529976C110003F008"
                BuildableName = "WatchUICatalog.app"
                BlueprintName = "WatchUICatalog"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
@@ -66,6 +66,17 @@
                BlueprintIdentifier = "665ACB1129976C120003F008"
                BuildableName = "WatchUICatalogTests.xctest"
                BlueprintName = "WatchUICatalogTests"
+               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "66108D41296B569100791A7A"
+               BuildableName = "WatchUITests.xctest"
+               BlueprintName = "WatchUITests"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </TestableReference>
