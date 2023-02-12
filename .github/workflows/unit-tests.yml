@@ -8,7 +8,7 @@ on:
     branches:
       - main
 jobs:
-  Run_workspace_Tests:
+  WatchUnitTests:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
