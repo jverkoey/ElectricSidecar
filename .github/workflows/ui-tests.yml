@@ -16,5 +16,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run unit tests
-      run: xcodebuild test -scheme WatchUICatalog -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=watchOS Simulator,name=${{ matrix.name }},OS=9.1' # | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild test -scheme WatchUICatalog -project ElectricSidecar/ElectricSidecar.xcodeproj -destination 'platform=watchOS Simulator,name=${{ matrix.name }},OS=9.1' -resultBundlePath TestResults | xcpretty && exit ${PIPESTATUS[0]}
+    - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+      if: success() || failure()
 
