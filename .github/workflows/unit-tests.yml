@@ -1,4 +1,4 @@
-name: Swift
+name: Unit tests
 
 on: 
   push:
@@ -8,7 +8,7 @@ on:
     branches:
       - main
 jobs:
-  WatchUnitTests:
+  Watch:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
