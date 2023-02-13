@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "299F174F-39DA-4F91-8462-AD455F113E0E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ElectricSidecar.xcodeproj",
+        "identifier" : "66108D37296B569100791A7A",
+        "name" : "UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ElectricSidecar.xcodeproj",
+        "identifier" : "665ACB1129976C120003F008",
+        "name" : "WatchUICatalogTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ElectricSidecar.xcodeproj",
+        "identifier" : "66108D41296B569100791A7A",
+        "name" : "WatchUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

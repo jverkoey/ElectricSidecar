@@ -24,15 +24,14 @@ struct ElectricSidecar: App {
       case .launching:
         ProgressView()
           .task {
-            if AUTH_MODEL.email.isEmpty || AUTH_MODEL.password.isEmpty {
+            guard let store = AUTH_MODEL.store else {
               authState = .loggedOut(error: nil)
-            } else {
-              let store = ModelStore(username: AUTH_MODEL.email, password: AUTH_MODEL.password)
-              Task {
-                try await store.load()
-              }
-              authState = .authenticated(store: store)
+              return
             }
+            Task {
+              try await store.load()
+            }
+            authState = .authenticated(store: store)
           }
       case .authenticated(let store):
         GarageView(store: store) { error in
