@@ -288,6 +288,7 @@
 		665ACB1229976C120003F008 /* WatchUICatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchUICatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		665ACB1629976C120003F008 /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		665ACB302998AAEC0003F008 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
+		665ACB312999DD190003F008 /* Presubmits.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Presubmits.xctestplan; sourceTree = "<group>"; };
 		665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityObserver.swift; sourceTree = "<group>"; };
 		665EDD59297289C40012CD3A /* RefreshStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatusView.swift; sourceTree = "<group>"; };
 		665EDD5B2972973F0012CD3A /* ElectricSidecarWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricSidecarWidgets.swift; sourceTree = "<group>"; };
@@ -411,6 +412,7 @@
 		66108D19296B569000791A7A = {
 			isa = PBXGroup;
 			children = (
+				665ACB312999DD190003F008 /* Presubmits.xctestplan */,
 				66108DA9296B58F700791A7A /* UI */,
 				668B86532986F2A700C60DE8 /* Phone */,
 				66108D2A296B569000791A7A /* Watch */,
