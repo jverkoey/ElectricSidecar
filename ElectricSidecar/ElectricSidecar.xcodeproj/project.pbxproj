@@ -412,7 +412,6 @@
 		66108D19296B569000791A7A = {
 			isa = PBXGroup;
 			children = (
-				665ACB312999DD190003F008 /* Presubmits.xctestplan */,
 				66108DA9296B58F700791A7A /* UI */,
 				668B86532986F2A700C60DE8 /* Phone */,
 				66108D2A296B569000791A7A /* Watch */,
@@ -678,6 +677,7 @@
 		668B86862986F38400C60DE8 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				665ACB312999DD190003F008 /* Presubmits.xctestplan */,
 				66108D3B296B569100791A7A /* UnitTests */,
 				665ACAFA29976C110003F008 /* WatchUICatalog */,
 				665ACB1529976C120003F008 /* WatchUICatalogTests */,
