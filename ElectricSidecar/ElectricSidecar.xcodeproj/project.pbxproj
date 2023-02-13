@@ -153,6 +153,7 @@
 		668EB95C29792E8100304EA5 /* VehiclePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95B29792E8100304EA5 /* VehiclePhotosView.swift */; };
 		668EB95F2979326E00304EA5 /* NavigationLinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95E2979326E00304EA5 /* NavigationLinkContentView.swift */; };
 		669BFB5F296C0942004621D9 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
+		66ACF7952999E58100651833 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DA3296B58EE00791A7A /* LoginView.swift */; };
 		66CA7DA1296FE95D00090ADD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CA7DA0296FE95D00090ADD /* Vehicle.swift */; };
 		66CA7DA2296FE95D00090ADD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CA7DA0296FE95D00090ADD /* Vehicle.swift */; };
 		66EB7706296C0AB1008BFC27 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
@@ -1263,6 +1264,7 @@
 				668B86592986F2A700C60DE8 /* LoginViewController.swift in Sources */,
 				66743FD5298E2DF2002A799F /* Vehicle+Doors.swift in Sources */,
 				66743FEA298E2F27002A799F /* VehicleStatusView.swift in Sources */,
+				66ACF7952999E58100651833 /* LoginView.swift in Sources */,
 				66743FD2298E2DF2002A799F /* Vehicle+Status.swift in Sources */,
 				668B86552986F2A700C60DE8 /* AppDelegate.swift in Sources */,
 				66743FF4298E2F9E002A799F /* RadialProgressView.swift in Sources */,

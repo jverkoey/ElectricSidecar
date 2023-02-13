@@ -48,6 +48,10 @@ struct LoginView_Previews: PreviewProvider {
     ContainerView()
       .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 5 (40mm)"))
       .previewDisplayName("Series 5 40mm")
+
+    ContainerView()
+      .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
+      .previewDisplayName("iPhone 14 Pro")
   }
 
   struct ContainerView : View {

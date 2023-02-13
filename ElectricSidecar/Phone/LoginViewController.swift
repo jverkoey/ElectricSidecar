@@ -44,7 +44,7 @@ final class LoginViewController: UIViewController {
 
     view.backgroundColor = .systemBackground
 
-    let loginView = LoginView(model: model, didLogin: { [weak self] in
+    let loginView = LoginView2(model: model, didLogin: { [weak self] in
       guard let self else {
         return
       }
@@ -116,7 +116,7 @@ struct LoginButtonStyle: ButtonStyle {
   }
 }
 
-struct LoginView: View {
+struct LoginView2: View {
   @ObservedObject fileprivate var model: ViewModel
   let didLogin: () -> Void
 
@@ -150,7 +150,7 @@ struct LoginView: View {
 
 // MARK: - Previews
 
-struct LoginView_Previews: PreviewProvider {
+struct LoginView2_Previews: PreviewProvider {
   static var previews: some View {
     ContainerView()
   }
@@ -160,7 +160,7 @@ struct LoginView_Previews: PreviewProvider {
     @State var password: String = ""
 
     var body: some View {
-      LoginView(model: ViewModel(email: "foo", password: "bar")) {
+      LoginView2(model: ViewModel(email: "foo", password: "bar")) {
         print("Did login")
       }
     }
