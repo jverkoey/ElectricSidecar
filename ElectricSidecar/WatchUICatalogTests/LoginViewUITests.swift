@@ -3,7 +3,9 @@ import WatchKit
 import XCTest
 
 private func sanitizedDeviceName() -> String {
-  return WKInterfaceDevice.current().name.replacing(/Clone \d+ of\ /, with: "")
+  return WKInterfaceDevice.current().name
+    .replacing(/Clone \d+ of\ /, with: "")
+    .trimmingCharacters(in: .whitespaces)
 }
 
 final class LoginViewUITests: XCTestCase {
@@ -52,7 +54,7 @@ final class LoginViewUITests: XCTestCase {
   }
 
   private func sanitizedSnapshot(_ image: UIImage) throws -> UIImage {
-    UIGraphicsBeginImageContext(image.size)
+    UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
     image.draw(at: CGPoint.zero)
     guard let context = UIGraphicsGetCurrentContext() else {
       throw FailedToGetCurrentGraphicsContext()
