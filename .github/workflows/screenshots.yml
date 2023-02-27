@@ -13,6 +13,7 @@ jobs:
       run: ./update_snapshots.sh
     - uses: jverkoey/xcresulttool@main
       with:
+        upload-bundles: never
         path: |
           TestResults/Apple Watch Series 8 (45mm).xcresult
 #          TestResults/Apple Watch Series 8 (41mm).xcresult
