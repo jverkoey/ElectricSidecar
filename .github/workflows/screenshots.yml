@@ -11,7 +11,10 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run screenshot tests
       run: ./update_snapshots.sh
-    - uses: actions/upload-artifact@v3
+    - uses: kishikawakatsumi/xcresulttool@v1
       with:
-        name: screenshots
-        path: screenshots/**/*.png
+        path: |
+          TestResults/Apple Watch Series 8 (45mm).xcresult
+          TestResults/Apple Watch Series 8 (41mm).xcresult
+          TestResults/Apple Watch Ultra (49mm).xcresult
+      if: success() || failure()
