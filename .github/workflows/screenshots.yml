@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run screenshot tests
       run: ./update_snapshots.sh
-    - uses: jverkoey/xcresulttool@main
+    - uses: jverkoey/xcresulttool@346c0fe4ea30add30b8eb3f9c6f999c2916d6cdb
       with:
         upload-bundles: never
         path: |
