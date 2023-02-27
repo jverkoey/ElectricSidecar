@@ -1,4 +1,3 @@
-import Accessibility
 import WatchKit
 import XCTest
 
