@@ -10,6 +10,12 @@ struct WatchUICatalog_Watch_AppApp: App {
                   password: ProcessInfo.processInfo.environment["password"] ?? "") { email, password in
           print("Did log in")
         }.accessibilityIdentifier("root-view")
+      case "error-view":
+        VehicleErrorView(
+          statusError: .constant(URLError(.badServerResponse)),
+          emobilityError: .constant(URLError(.badServerResponse)),
+          positionError: .constant(URLError(.badServerResponse))
+        ).accessibilityIdentifier("root-view")
       default:
         Text("Unknown test case")
       }

@@ -15,7 +15,7 @@ run_tests() {
   # Run the tests
   set -o pipefail && xcodebuild test \
     -project ElectricSidecar/ElectricSidecar.xcodeproj \
-    -scheme "WatchUICatalog" \
+    -scheme "Presubmits" \
     -destination "platform=WatchOS Simulator,id=$WATCH_UUID" \
     -resultBundlePath "TestResults/$WATCH_HARDWARE" \
     SNAPSHOT_PATH="$SCREENSHOTS_PATH" | xcpretty

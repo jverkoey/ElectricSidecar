@@ -13,7 +13,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Presubmits.xctestplan"
+            reference = "container:Screenshots.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
