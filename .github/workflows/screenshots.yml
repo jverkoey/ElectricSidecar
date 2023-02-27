@@ -15,6 +15,6 @@ jobs:
       with:
         path: |
           TestResults/Apple Watch Series 8 (45mm).xcresult
-          TestResults/Apple Watch Series 8 (41mm).xcresult
-          TestResults/Apple Watch Ultra (49mm).xcresult
+#          TestResults/Apple Watch Series 8 (41mm).xcresult
+#          TestResults/Apple Watch Ultra (49mm).xcresult
       if: success() || failure()

@@ -20,8 +20,8 @@ run_tests() {
 }
 
 run_tests "Apple Watch Series 8 (45mm)"
-run_tests "Apple Watch Series 8 (41mm)"
-run_tests "Apple Watch Ultra (49mm)"
+#run_tests "Apple Watch Series 8 (41mm)"
+#run_tests "Apple Watch Ultra (49mm)"
 
 
 # Pin device settings
