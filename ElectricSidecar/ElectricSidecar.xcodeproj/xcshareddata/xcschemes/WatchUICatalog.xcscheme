@@ -40,7 +40,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "NO">
+      shouldUseLaunchSchemeArgsEnv = "NO"
+      systemAttachmentLifetime = "keepAlways"
+      userAttachmentLifetime = "keepAlways">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -56,6 +58,11 @@
             value = "$(IS_RECORDING)"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SNAPSHOT_PATH"
+            value = "$(SNAPSHOT_PATH)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
          <TestableReference
@@ -65,16 +72,6 @@
                BlueprintIdentifier = "665ACB1129976C120003F008"
                BuildableName = "WatchUICatalogTests.xctest"
                BlueprintName = "WatchUICatalogTests"
-               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66108D41296B569100791A7A"
-               BuildableName = "WatchUITests.xctest"
-               BlueprintName = "WatchUITests"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </TestableReference>

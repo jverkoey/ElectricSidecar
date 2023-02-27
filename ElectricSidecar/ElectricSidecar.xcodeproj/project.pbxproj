@@ -63,7 +63,6 @@
 		665ACB0329976C120003F008 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 665ACB0229976C120003F008 /* Preview Assets.xcassets */; };
 		665ACB1729976C120003F008 /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665ACB1629976C120003F008 /* LoginViewUITests.swift */; };
 		665ACB2729976CB80003F008 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DA3296B58EE00791A7A /* LoginView.swift */; };
-		665ACB2F29976E9F0003F008 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 665ACB2E29976E9F0003F008 /* SnapshotTesting */; };
 		665C3F26298E0985002BAD30 /* WatchConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */; };
 		665C3F27298E0985002BAD30 /* WatchConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */; };
 		665C3F28298E09F9002BAD30 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB9582979119B00304EA5 /* Logging.swift */; };
@@ -242,6 +241,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		660A14DF29AC526D0075A600 /* update_snapshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = update_snapshots.sh; path = ../update_snapshots.sh; sourceTree = "<group>"; };
+		660A14E029AC5C4C0075A600 /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .github; path = ../.github; sourceTree = "<group>"; };
 		660E7608297E593A00EEF434 /* ChargeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeView.swift; sourceTree = "<group>"; };
 		66108D26296B569000791A7A /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66108D2B296B569000791A7A /* ElectricSidecarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricSidecarApp.swift; sourceTree = "<group>"; };
@@ -280,7 +281,6 @@
 		661C3F562972770800A4CC90 /* Vehicle+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+Position.swift"; sourceTree = "<group>"; };
 		66513E44298F58E90094581B /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		6651ED032986FB71001337A3 /* BatteryStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStyle.swift; sourceTree = "<group>"; };
-		665ACAE42990E5D40003F008 /* swift-snapshot-testing */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-snapshot-testing"; path = "../third_party/swift-snapshot-testing"; sourceTree = "<group>"; };
 		665ACAF629976C110003F008 /* WatchUICatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchUICatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		665ACAFB29976C110003F008 /* WatchUICatalogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchUICatalogApp.swift; sourceTree = "<group>"; };
 		665ACAFF29976C120003F008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -367,7 +367,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				665ACB2F29976E9F0003F008 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +422,8 @@
 				66108D8D296B57F800791A7A /* Packages */,
 				66108D21296B569000791A7A /* Products */,
 				668B86E52986FA4F00C60DE8 /* Frameworks */,
+				660A14DF29AC526D0075A600 /* update_snapshots.sh */,
+				660A14E029AC5C4C0075A600 /* .github */,
 			);
 			sourceTree = "<group>";
 		};
@@ -521,7 +522,6 @@
 			isa = PBXGroup;
 			children = (
 				66108D8E296B57F800791A7A /* PorscheConnect */,
-				665ACAE42990E5D40003F008 /* swift-snapshot-testing */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -883,12 +883,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				665ACB2D29976E990003F008 /* PBXTargetDependency */,
 				665ACB1429976C120003F008 /* PBXTargetDependency */,
 			);
 			name = WatchUICatalogTests;
 			packageProductDependencies = (
-				665ACB2E29976E9F0003F008 /* SnapshotTesting */,
 			);
 			productName = "WatchUICatalog Watch AppUITests";
 			productReference = 665ACB1229976C120003F008 /* WatchUICatalogTests.xctest */;
@@ -1334,10 +1332,6 @@
 			isa = PBXTargetDependency;
 			target = 665ACAF529976C110003F008 /* WatchUICatalog */;
 			targetProxy = 665ACB1329976C120003F008 /* PBXContainerItemProxy */;
-		};
-		665ACB2D29976E990003F008 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 665ACB2C29976E990003F008 /* SnapshotTesting */;
 		};
 		66743FDE298E2E15002A799F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2116,14 +2110,6 @@
 			productName = SnapshotTesting;
 		};
 		665ACAE72990E6180003F008 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SnapshotTesting;
-		};
-		665ACB2C29976E990003F008 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SnapshotTesting;
-		};
-		665ACB2E29976E9F0003F008 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SnapshotTesting;
 		};
