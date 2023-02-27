@@ -13,7 +13,12 @@ run_tests() {
   mkdir -p "$SCREENSHOTS_PATH"
 
   # Run the tests
-  set -o pipefail && xcodebuild test -project ElectricSidecar/ElectricSidecar.xcodeproj -scheme "WatchUICatalog" -destination "platform=WatchOS Simulator,id=$WATCH_UUID" -resultBundlePath "TestResults/$WATCH_HARDWARE"  SNAPSHOT_PATH="$SCREENSHOTS_PATH" | xcpretty
+  set -o pipefail && xcodebuild test \
+    -project ElectricSidecar/ElectricSidecar.xcodeproj \
+    -scheme "WatchUICatalog" \
+    -destination "platform=WatchOS Simulator,id=$WATCH_UUID" \
+    -resultBundlePath "TestResults/$WATCH_HARDWARE" \
+    SNAPSHOT_PATH="$SCREENSHOTS_PATH" | xcpretty
 
   xcrun simctl delete "$IPHONE_UUID"
   xcrun simctl delete "$WATCH_UUID"
