@@ -242,6 +242,7 @@
 
 /* Begin PBXFileReference section */
 		660A14DF29AC526D0075A600 /* update_snapshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = update_snapshots.sh; path = ../update_snapshots.sh; sourceTree = "<group>"; };
+		660A14E029AC5C4C0075A600 /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; name = .github; path = ../.github; sourceTree = "<group>"; };
 		660E7608297E593A00EEF434 /* ChargeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeView.swift; sourceTree = "<group>"; };
 		66108D26296B569000791A7A /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66108D2B296B569000791A7A /* ElectricSidecarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricSidecarApp.swift; sourceTree = "<group>"; };
@@ -422,6 +423,7 @@
 				66108D8D296B57F800791A7A /* Packages */,
 				66108D21296B569000791A7A /* Products */,
 				668B86E52986FA4F00C60DE8 /* Frameworks */,
+				660A14E029AC5C4C0075A600 /* .github */,
 			);
 			sourceTree = "<group>";
 		};

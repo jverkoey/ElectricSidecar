@@ -1,0 +1,17 @@
+name: Screenshots
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  All:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run screenshot tests
+      run: ./update_snapshots.sh
+    - uses: actions/upload-artifact@v3
+      with:
+        name: screenshots
+        path: screenshots
