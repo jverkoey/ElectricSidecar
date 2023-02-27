@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "299F174F-39DA-4F91-8462-AD455F113E0E",
+      "name" : "Screenshots",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "repeatInNewRunnerProcess" : true,
+    "testRepetitionMode" : "retryOnFailure",
+    "testTimeoutsEnabled" : true,
+    "uiTestingScreenshotsLifetime" : "keepAlways",
+    "userAttachmentLifetime" : "keepAlways"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ElectricSidecar.xcodeproj",
+        "identifier" : "665ACB1129976C120003F008",
+        "name" : "WatchUICatalogTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -57,7 +57,6 @@
 		6651ED042986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED052986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED062986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
-		665ACAE82990E6180003F008 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 665ACAE72990E6180003F008 /* SnapshotTesting */; };
 		665ACAFC29976C110003F008 /* WatchUICatalogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665ACAFB29976C110003F008 /* WatchUICatalogApp.swift */; };
 		665ACB0029976C120003F008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 665ACAFF29976C120003F008 /* Assets.xcassets */; };
 		665ACB0329976C120003F008 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 665ACB0229976C120003F008 /* Preview Assets.xcassets */; };
@@ -152,6 +151,8 @@
 		668EB95C29792E8100304EA5 /* VehiclePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95B29792E8100304EA5 /* VehiclePhotosView.swift */; };
 		668EB95F2979326E00304EA5 /* NavigationLinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95E2979326E00304EA5 /* NavigationLinkContentView.swift */; };
 		669BFB5F296C0942004621D9 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
+		66B8F49C29AC94FC00B17E6A /* VehicleErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8606297F925400C60DE8 /* VehicleErrorView.swift */; };
+		66B8F49E29AC952900B17E6A /* VehicleErrorViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B8F49D29AC952900B17E6A /* VehicleErrorViewUITests.swift */; };
 		66CA7DA1296FE95D00090ADD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CA7DA0296FE95D00090ADD /* Vehicle.swift */; };
 		66CA7DA2296FE95D00090ADD /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CA7DA0296FE95D00090ADD /* Vehicle.swift */; };
 		66EB7706296C0AB1008BFC27 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
@@ -288,7 +289,7 @@
 		665ACB1229976C120003F008 /* WatchUICatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchUICatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		665ACB1629976C120003F008 /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		665ACB302998AAEC0003F008 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
-		665ACB312999DD190003F008 /* Presubmits.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Presubmits.xctestplan; sourceTree = "<group>"; };
+		665ACB312999DD190003F008 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
 		665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityObserver.swift; sourceTree = "<group>"; };
 		665EDD59297289C40012CD3A /* RefreshStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatusView.swift; sourceTree = "<group>"; };
 		665EDD5B2972973F0012CD3A /* ElectricSidecarWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricSidecarWidgets.swift; sourceTree = "<group>"; };
@@ -319,6 +320,7 @@
 		668EB95B29792E8100304EA5 /* VehiclePhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclePhotosView.swift; sourceTree = "<group>"; };
 		668EB95E2979326E00304EA5 /* NavigationLinkContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkContentView.swift; sourceTree = "<group>"; };
 		669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Emobility+Helpers.swift"; sourceTree = "<group>"; };
+		66B8F49D29AC952900B17E6A /* VehicleErrorViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleErrorViewUITests.swift; sourceTree = "<group>"; };
 		66CA7DA0296FE95D00090ADD /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		66EB5E68298E23FA00223241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -344,7 +346,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				665ACAE82990E6180003F008 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,7 +412,7 @@
 		66108D19296B569000791A7A = {
 			isa = PBXGroup;
 			children = (
-				665ACB312999DD190003F008 /* Presubmits.xctestplan */,
+				665ACB312999DD190003F008 /* Screenshots.xctestplan */,
 				66108DA9296B58F700791A7A /* UI */,
 				668B86532986F2A700C60DE8 /* Phone */,
 				66108D2A296B569000791A7A /* Watch */,
@@ -605,6 +606,7 @@
 			children = (
 				665ACB302998AAEC0003F008 /* __Snapshots__ */,
 				665ACB1629976C120003F008 /* LoginViewUITests.swift */,
+				66B8F49D29AC952900B17E6A /* VehicleErrorViewUITests.swift */,
 			);
 			path = WatchUICatalogTests;
 			sourceTree = "<group>";
@@ -823,12 +825,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				665ACAE62990E6150003F008 /* PBXTargetDependency */,
 				66108D44296B569100791A7A /* PBXTargetDependency */,
 			);
 			name = WatchUITests;
 			packageProductDependencies = (
-				665ACAE72990E6180003F008 /* SnapshotTesting */,
 			);
 			productName = "ElectricSidecar Watch AppUITests";
 			productReference = 66108D42296B569100791A7A /* WatchUITests.xctest */;
@@ -1204,6 +1204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				665ACB2729976CB80003F008 /* LoginView.swift in Sources */,
+				66B8F49C29AC94FC00B17E6A /* VehicleErrorView.swift in Sources */,
 				665ACAFC29976C110003F008 /* WatchUICatalogApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1212,6 +1213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B8F49E29AC952900B17E6A /* VehicleErrorViewUITests.swift in Sources */,
 				665ACB1729976C120003F008 /* LoginViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1323,10 +1325,6 @@
 		66108DBA296B591900791A7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 66108DB9296B591900791A7A /* CachedAsyncImage */;
-		};
-		665ACAE62990E6150003F008 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 665ACAE52990E6150003F008 /* SnapshotTesting */;
 		};
 		665ACB1429976C120003F008 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2104,14 +2102,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66108DB6296B590F00791A7A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
-		};
-		665ACAE52990E6150003F008 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SnapshotTesting;
-		};
-		665ACAE72990E6180003F008 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SnapshotTesting;
 		};
 		66743FDD298E2E15002A799F /* PorscheConnect */ = {
 			isa = XCSwiftPackageProductDependency;
