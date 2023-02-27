@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run screenshot tests
       run: ./update_snapshots.sh
-    - uses: kishikawakatsumi/xcresulttool@v1
+    - uses: jverkoey/xcresulttool@main
       with:
         path: |
           TestResults/Apple Watch Series 8 (45mm).xcresult

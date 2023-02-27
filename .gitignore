@@ -1,5 +1,6 @@
 # Project-specific
-screenshots/  # Auto-generated as part of testing
+screenshots/
+TestResults/
 
 # Xcode
 #
