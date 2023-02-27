@@ -66,6 +66,7 @@ final class LoginViewUITests: XCTestCase {
     let fileName = fileUrl.deletingPathExtension().lastPathComponent
 
     let snapshotDirectoryUrl = snapshotDirectory.map { URL(fileURLWithPath: $0, isDirectory: true) }!
+      .appendingPathComponent(fileName)
 
     let sanitizedTestName = sanitizePathComponent(testName).replacing(/^test/, with: "")
     let identifier: String

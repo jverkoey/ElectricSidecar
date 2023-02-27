@@ -411,7 +411,6 @@
 		66108D19296B569000791A7A = {
 			isa = PBXGroup;
 			children = (
-				660A14DF29AC526D0075A600 /* update_snapshots.sh */,
 				665ACB312999DD190003F008 /* Presubmits.xctestplan */,
 				66108DA9296B58F700791A7A /* UI */,
 				668B86532986F2A700C60DE8 /* Phone */,
@@ -423,6 +422,7 @@
 				66108D8D296B57F800791A7A /* Packages */,
 				66108D21296B569000791A7A /* Products */,
 				668B86E52986FA4F00C60DE8 /* Frameworks */,
+				660A14DF29AC526D0075A600 /* update_snapshots.sh */,
 				660A14E029AC5C4C0075A600 /* .github */,
 			);
 			sourceTree = "<group>";
