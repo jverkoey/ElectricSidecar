@@ -1,4 +1,3 @@
-import SnapshotTesting
 import WatchKit
 import XCTest
 
@@ -11,12 +10,18 @@ private func sanitizedDeviceName() -> String {
 final class LoginViewUITests: XCTestCase {
 
   var testEnvironment: String = "Undefined"
+  var snapshotDirectory: String!
   var app: XCUIApplication!
   override func setUpWithError() throws {
     continueAfterFailure = true
 
     testEnvironment = sanitizedDeviceName()
-    isRecording = ProcessInfo.processInfo.environment["IS_RECORDING"] == "true"
+    snapshotDirectory = ProcessInfo.processInfo.environment["SNAPSHOT_PATH"] ?? ""
+    if snapshotDirectory.isEmpty {
+      snapshotDirectory = ProcessInfo.processInfo.environment["TMPDIR"]
+    }
+
+    assert(snapshotDirectory != nil)
 
     app = XCUIApplication()
   }
@@ -34,8 +39,7 @@ final class LoginViewUITests: XCTestCase {
 
     let rootView = app.otherElements.containing(.any, identifier: "root-view").firstMatch
     XCTAssertTrue(rootView.exists)
-    try assertSnapshot(matching: sanitizedSnapshot(rootView.screenshot().image), as: .image,
-                       testName: "\(#function)_\(testEnvironment)")
+    try writeSnapshot(sanitizedSnapshot(rootView.screenshot().image))
   }
 
   func testLoginViewWithEmailAndPassword() throws {
@@ -49,8 +53,48 @@ final class LoginViewUITests: XCTestCase {
 
     let rootView = app.otherElements.containing(.any, identifier: "root-view").firstMatch
     XCTAssertTrue(rootView.exists)
-    try assertSnapshot(matching: sanitizedSnapshot(rootView.screenshot().image), as: .image,
-                       testName: "\(#function)_\(testEnvironment)")
+    try writeSnapshot(sanitizedSnapshot(rootView.screenshot().image))
+  }
+
+  private func writeSnapshot(
+    _ image: UIImage,
+    named name: String? = nil,
+    file: StaticString = #file,
+    testName: String = #function
+  ) throws {
+    let fileUrl = URL(fileURLWithPath: "\(file)", isDirectory: false)
+    let fileName = fileUrl.deletingPathExtension().lastPathComponent
+
+    let snapshotDirectoryUrl = snapshotDirectory.map { URL(fileURLWithPath: $0, isDirectory: true) }!
+
+    let sanitizedTestName = sanitizePathComponent(testName).replacing(/^test/, with: "")
+    let identifier: String
+    if let name {
+      identifier = "\(sanitizedTestName).\(sanitizePathComponent(name))"
+    } else {
+      identifier = sanitizedTestName
+    }
+
+    let snapshotFileUrl = snapshotDirectoryUrl
+      .appendingPathComponent(identifier)
+      .appendingPathExtension("png")
+    let fileManager = FileManager.default
+    try fileManager.createDirectory(at: snapshotDirectoryUrl, withIntermediateDirectories: true)
+
+    try image.pngData()!.write(to: snapshotFileUrl)
+
+    if ProcessInfo.processInfo.environment.keys.contains("__XCODE_BUILT_PRODUCTS_DIR_PATHS") {
+      XCTContext.runActivity(named: "Attached Recorded Snapshot") { activity in
+        let attachment = XCTAttachment(contentsOfFile: snapshotFileUrl)
+        activity.add(attachment)
+      }
+    }
+  }
+
+  private func sanitizePathComponent(_ string: String) -> String {
+    return string
+      .replacingOccurrences(of: "\\W+", with: "-", options: .regularExpression)
+      .replacingOccurrences(of: "^-|-$", with: "", options: .regularExpression)
   }
 
   private func sanitizedSnapshot(_ image: UIImage) throws -> UIImage {

@@ -1,3 +1,5 @@
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
 run_tests() {
   WATCH_HARDWARE="$1"
   echo "Running tests on $WATCH_HARDWARE..."
@@ -7,8 +9,11 @@ run_tests() {
   WATCH_UUID=$(xcrun simctl create "$WATCH_HARDWARE" "$WATCH_HARDWARE" "watchOS9.1")
   PAIRED_DEVICE=$(xcrun simctl pair "$IPHONE_UUID" "$WATCH_UUID")
 
+  SCREENSHOTS_PATH="$SCRIPTPATH/screenshots/$WATCH_HARDWARE/"
+  mkdir -p "$SCREENSHOTS_PATH"
+
   # Run the tests
-  set -o pipefail && xcodebuild test -project ElectricSidecar/ElectricSidecar.xcodeproj -scheme "WatchUICatalog" -destination "platform=WatchOS Simulator,id=$WATCH_UUID" TEST_ENVIRONMENT="$WATCH_HARDWARE" IS_RECORDING="true" | xcpretty
+  set -o pipefail && xcodebuild test -project ElectricSidecar/ElectricSidecar.xcodeproj -scheme "WatchUICatalog" -destination "platform=WatchOS Simulator,id=$WATCH_UUID" SNAPSHOT_PATH="$SCREENSHOTS_PATH" | xcpretty
 
   xcrun simctl delete "$IPHONE_UUID"
   xcrun simctl delete "$WATCH_UUID"
