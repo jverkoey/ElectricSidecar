@@ -7,7 +7,7 @@ struct VehicleChargeWidget: Widget {
       kind: "ESComplications.VehicleCharge",
       provider: VehicleChargeTimelineProvider()
     ) { entry in
-      WidgetView(entry: entry)
+      VehicleChargeWidgetView(entry: entry)
     }
     .configurationDisplayName("Charge")
     .description("Show the remaining charge on your vehicle")
@@ -26,7 +26,7 @@ struct VehicleChargeWidget: Widget {
   }
 }
 
-private struct WidgetView : View {
+struct VehicleChargeWidgetView : View {
   @Environment(\.widgetFamily) var family
   @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
@@ -123,12 +123,11 @@ private struct WidgetView : View {
 
 struct VehicleChargeWidget_Previews: PreviewProvider {
   static var previews: some View {
-    WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+    VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
       date: Date(),
       chargeRemaining: 100,
       isCharging: true
     ))
-    .previewDevice("Apple Watch Series 8 (45mm)")
     .previewContext(WidgetPreviewContext(family: .accessoryCircular))
   }
 }
