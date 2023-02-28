@@ -60,7 +60,7 @@ struct WatchUICatalog_Watch_AppApp: App {
     switch deviceSize {
     case CGSize(width: 205, height: 251):
       return CGSize(width: 50, height: 50)
-    case CGSize(width: 192, height: 242):
+    case CGSize(width: 198, height: 242):
       return CGSize(width: 50, height: 50)
     case CGSize(width: 176, height: 215):
       return CGSize(width: 44.5, height: 44.5)
