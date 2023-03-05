@@ -77,7 +77,8 @@ struct VehicleView: View {
                   isCharging: emobility?.isCharging,
                   allowsAnimation: true
                 )
-                .frame(width: 54, height: 54)
+                .frame(width: circularComplicationSize().width,
+                       height: circularComplicationSize().height)
                 .padding(.top, 8)
               }
               Spacer()

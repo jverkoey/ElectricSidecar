@@ -41,10 +41,12 @@ struct ChargeView: View {
           Image(isCharging == true ? "taycan.charge" : "taycan")
             .font(.system(size: iconFontSize))
             .padding(.top, iconOffset)
+            .unredacted()
           Text(batteryLevelFormatted)
             .fontDesign(.rounded)
             .font(.system(size: labelFontSize))
             .padding(.top, iconPadding)
+            .unredacted()
         }
       } else {
         RadialProgressView(
@@ -57,6 +59,7 @@ struct ChargeView: View {
           .foregroundColor(.gray)
           .font(.system(size: iconFontSize))
           .padding(.top, -5)
+          .unredacted()
       }
     }
   }

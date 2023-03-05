@@ -132,6 +132,13 @@ struct VehicleChargeWidgetUITestView: View {
       HStack {
         VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
+          chargeRemaining: 0,
+          isCharging: false
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
           chargeRemaining: 12,
           isCharging: false
         ))
@@ -155,6 +162,14 @@ struct VehicleChargeWidgetUITestView: View {
         VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 84,
+          isCharging: true
+        ))
+        .frame(width: circularComplicationSize().width,
+               height: circularComplicationSize().height)
+
+        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 100,
           isCharging: true
         ))
         .frame(width: circularComplicationSize().width,
