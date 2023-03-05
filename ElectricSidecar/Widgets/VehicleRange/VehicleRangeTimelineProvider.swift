@@ -4,6 +4,7 @@ import WidgetKit
 
 private final class Storage {
   var lastKnownCharge: Double?
+  var lastKnownChargingState: Bool?
   var lastKnownRangeRemaining: Double?
 }
 
@@ -11,6 +12,7 @@ struct VehicleRangeTimelineEntry: TimelineEntry {
   let date: Date
   let chargeRemaining: Double?
   let rangeRemaining: Double?
+  let isCharging: Bool?
 }
 
 struct VehicleRangeTimelineProvider: TimelineProvider {
@@ -22,7 +24,8 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
     Entry(
       date: Date(),
       chargeRemaining: storage.lastKnownCharge ?? 80,
-      rangeRemaining: storage.lastKnownRangeRemaining ?? 100
+      rangeRemaining: storage.lastKnownRangeRemaining ?? 100,
+      isCharging: storage.lastKnownChargingState
     )
   }
 
@@ -31,10 +34,16 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
       completion(Entry(
         date: Date(),
         chargeRemaining: storage.lastKnownCharge ?? 80,
-        rangeRemaining: storage.lastKnownRangeRemaining ?? 100
+        rangeRemaining: storage.lastKnownRangeRemaining ?? 100,
+        isCharging: storage.lastKnownChargingState
       ))
     } else {
-      completion(Entry(date: Date(), chargeRemaining: 80, rangeRemaining: 100))
+      completion(Entry(
+        date: Date(),
+        chargeRemaining: 80,
+        rangeRemaining: 100,
+        isCharging: storage.lastKnownChargingState
+      ))
     }
   }
 
@@ -43,7 +52,8 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
       completion(Timeline(entries: [Entry(
         date: Date(),
         chargeRemaining: storage.lastKnownCharge,
-        rangeRemaining: storage.lastKnownRangeRemaining
+        rangeRemaining: storage.lastKnownRangeRemaining,
+        isCharging: storage.lastKnownChargingState
       )], policy: .after(.now.addingTimeInterval(60 * 30))))
       return
     }
@@ -58,6 +68,7 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
         let status = try await store.status(for: firstVehicle.vin)
 
         storage.lastKnownCharge = emobility.batteryChargeStatus.stateOfChargeInPercentage
+        storage.lastKnownChargingState = emobility.isCharging
 
         if let distance = status.remainingRanges.electricalRange.distance {
           let sourceUnit: UnitLength
@@ -82,7 +93,8 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
       let timeline = Timeline(entries: [Entry(
         date: Date(),
         chargeRemaining: storage.lastKnownCharge,
-        rangeRemaining: storage.lastKnownRangeRemaining
+        rangeRemaining: storage.lastKnownRangeRemaining,
+        isCharging: storage.lastKnownChargingState
       )], policy: .after(.now.addingTimeInterval(60 * 30)))
       completion(timeline)
     }

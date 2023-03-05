@@ -42,6 +42,18 @@ final class WidgetUITests: XCTestCase {
     try writeSnapshot(sanitizedSnapshot(rootView.screenshot().image))
   }
 
+  func testVehicleRange() throws {
+    app.launchEnvironment = [
+      "TESTING": "1",
+      "test-case": "vehicle-range-widget"
+    ]
+    app.launch()
+
+    let rootView = app.otherElements.containing(.any, identifier: "root-view").firstMatch
+    XCTAssertTrue(rootView.exists)
+    try writeSnapshot(sanitizedSnapshot(rootView.screenshot().image))
+  }
+
   private func writeSnapshot(
     _ image: UIImage,
     named name: String? = nil,

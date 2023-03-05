@@ -7,15 +7,15 @@ struct VehicleChargeWidget: Widget {
       kind: "ESComplications.VehicleCharge",
       provider: VehicleChargeTimelineProvider()
     ) { entry in
-      VehicleChargeWidgetView(entry: entry)
+      WidgetView(entry: entry)
     }
     .configurationDisplayName("Charge")
     .description("Show the remaining charge on your vehicle")
 #if os(watchOS)
     .supportedFamilies([
       .accessoryCircular,
+      .accessoryInline,
       .accessoryCorner,
-      .accessoryInline
     ])
 #else
     .supportedFamilies([
@@ -26,7 +26,7 @@ struct VehicleChargeWidget: Widget {
   }
 }
 
-struct VehicleChargeWidgetView : View {
+private struct WidgetView : View {
   @Environment(\.widgetFamily) var family
   @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
@@ -36,77 +36,62 @@ struct VehicleChargeWidgetView : View {
 
     switch family {
     case .accessoryCircular:
-#if os(watchOS)
       ChargeView(
         batteryLevel: entry.chargeRemaining,
-        isCharging: entry.isCharging == true,
-        lineWidth: 5
+        isCharging: entry.isCharging == true
       )
-      .padding(2.5)
-#else
-      ChargeView(
-        batteryLevel: entry.chargeRemaining,
-        isCharging: entry.isCharging == true,
-        iconOffset: 2,
-        iconFontSize: 26,
-        labelFontSize: 14,
-        lineWidth: 5
-      )
-      .padding(2.5)
-#endif
-    case .accessoryCorner:
-      if let chargeRemaining = entry.chargeRemaining {
-        HStack(spacing: 0) {
-          Image(entry.isCharging == true ? "taycan.charge" : "taycan")
-#if os(watchOS)
-            .font(.system(size: WKInterfaceDevice.current().screenBounds.width < 195 ? 23 : 26))
-#else
-            .font(.system(size: 26))
-#endif
-            .fontWeight(.regular)
-        }
-        .widgetLabel {
-          Gauge(value: chargeRemaining, in: 0...100.0) {
-            Text("")
-          } currentValueLabel: {
-            Text("")
-          } minimumValueLabel: {
-            Text("")
-          } maximumValueLabel: {
-            Text(chargeRemaining < 100 ? Self.formatted(chargeRemaining: chargeRemaining) : "100")
-              .foregroundColor(batteryColor)
-          }
-          .tint(batteryColor)
-#if os(watchOS)
-          .gaugeStyle(LinearGaugeStyle(tint: Gradient(colors: [.red, .orange, .yellow, .green])))
-#endif
-        }
-      } else {
-        HStack(spacing: 0) {
-          Image(entry.isCharging == true ? "taycan.charge" : "taycan")
-#if os(watchOS)
-            .font(.system(size: WKInterfaceDevice.current().screenBounds.width < 195 ? 23 : 26))
-#endif
-            .fontWeight(.regular)
-        }
-      }
+
     case .accessoryInline:
       // Note: inline accessories only support one Text and/or Image element. Any additional
       // elements will be ignored.
       HStack {
         if widgetRenderingMode == .fullColor {
+          // taycan.charge is too wide, so we have to use a system car image instead.
           Image(systemName: "bolt.car")
             .symbolRenderingMode(.palette)
             .foregroundStyle(entry.isCharging == true ? .white : .clear, .white)
+            .unredacted()
         } else {
           // Non-full-color rendering modes don't support palette rendering, so we need to use
           // an alternate glyph instead.
           Image(systemName: entry.isCharging == true ? "bolt.car" : "car")
+            .unredacted()
         }
         if let chargeRemaining = entry.chargeRemaining {
-          Text(Self.formatted(chargeRemaining: chargeRemaining))
+          Text(String(format: "%.0f%%", chargeRemaining))
+            .unredacted()
         }
       }
+
+#if os(watchOS)
+    case .accessoryCorner:
+      Image(entry.isCharging == true ? "taycan.charge" : "taycan")
+        .font(.system(size: cornerFontSize))
+        .fontWeight(.regular)
+        .unredacted()
+        .widgetLabel {
+          if let chargeRemaining = entry.chargeRemaining {
+            Gauge(value: chargeRemaining, in: 0...100.0) {
+              Text("")
+            } currentValueLabel: {
+              Text("")
+            } minimumValueLabel: {
+              Text("")
+            } maximumValueLabel: {
+              Text(chargeRemaining < 100 ? String(format: "%.0f%%", chargeRemaining) : "100")
+                .foregroundColor(batteryColor)
+            }
+            .tint(batteryColor)
+            .gaugeStyle(LinearGaugeStyle(tint: Gradient(colors: [.red, .orange, .yellow, .green])))
+            .unredacted()
+          } else {
+            // Gauge doesn't can't represent an unknown value, so use a ProgressView instead.
+            ProgressView(value: 1)
+              .tint(.gray)
+          }
+        }
+#endif
+
     default:
       Text("Unsupported")
     }
@@ -116,18 +101,94 @@ struct VehicleChargeWidgetView : View {
     return BatteryStyle.batteryColor(for: entry.chargeRemaining)
   }
 
-  static func formatted(chargeRemaining: Double) -> String {
-    return String(format: "%.0f%%", chargeRemaining)
+  var cornerFontSize: Double {
+    switch formFactor() {
+    case .phone:
+      return 26
+    case .watch45mm, .ultra49mm:
+      return 26
+    case .watch41mm:
+      return 23
+    }
   }
 }
 
 struct VehicleChargeWidget_Previews: PreviewProvider {
   static var previews: some View {
-    VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+    WidgetView(entry: VehicleChargeTimelineProvider.Entry(
       date: Date(),
-      chargeRemaining: 100,
+      chargeRemaining: 60,
       isCharging: true
     ))
     .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+    .previewDisplayName("Valid")
+
+    WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+      date: Date(),
+      chargeRemaining: nil,
+      isCharging: nil
+    ))
+    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+    .previewDisplayName("Nil")
+  }
+}
+
+struct VehicleChargeWidgetUITestView: View {
+  var body: some View {
+
+    VStack {
+      HStack {
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 0,
+          isCharging: false
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 12,
+          isCharging: false
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 35,
+          isCharging: true
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+      }
+      HStack {
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 50,
+          isCharging: false
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 84,
+          isCharging: true
+        ))
+        .frame(width: circularComplicationSize().width,
+               height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 100,
+          isCharging: true
+        ))
+        .frame(width: circularComplicationSize().width,
+               height: circularComplicationSize().height)
+      }
+    }
+  }
+}
+
+struct VehicleChargeWidget_UITest_Previews: PreviewProvider {
+  static var previews: some View {
+    VehicleChargeWidgetUITestView()
   }
 }
