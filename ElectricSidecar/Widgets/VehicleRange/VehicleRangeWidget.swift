@@ -54,6 +54,7 @@ private struct WidgetView : View {
               Text(String(format: "%.0f", rangeRemaining))
             } maximumValueLabel: {
               Text(chargeRemaining < 100 ? String(format: "%.0f%%", chargeRemaining) : "100")
+                .foregroundColor(batteryColor)
             }
             .tint(batteryColor)
             .gaugeStyle(LinearGaugeStyle(tint: Gradient(colors: [.red, .orange, .yellow, .green])))
