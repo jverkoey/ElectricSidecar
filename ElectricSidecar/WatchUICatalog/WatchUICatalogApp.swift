@@ -18,6 +18,8 @@ struct WatchUICatalog_Watch_AppApp: App {
         ).accessibilityIdentifier("root-view")
       case "vehicle-charge-widget":
         VehicleChargeWidgetUITestView().accessibilityIdentifier("root-view")
+      case "vehicle-range-widget":
+        VehicleRangeWidgetUITestView().accessibilityIdentifier("root-view")
       default:
         Text("Unknown test case")
       }

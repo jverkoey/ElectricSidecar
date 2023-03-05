@@ -160,6 +160,8 @@
 		669902D529B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
 		669902D629B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
 		669902D729B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
+		669902D829B46151001004AC /* VehicleRangeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8614298659D400C60DE8 /* VehicleRangeWidget.swift */; };
+		669902D929B4615B001004AC /* VehicleRangeTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8613298659D400C60DE8 /* VehicleRangeTimelineProvider.swift */; };
 		669BFB5F296C0942004621D9 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
 		66B8F49C29AC94FC00B17E6A /* VehicleErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8606297F925400C60DE8 /* VehicleErrorView.swift */; };
 		66B8F49E29AC952900B17E6A /* VehicleErrorViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B8F49D29AC952900B17E6A /* VehicleErrorViewUITests.swift */; };
@@ -1260,6 +1262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669902D929B4615B001004AC /* VehicleRangeTimelineProvider.swift in Sources */,
 				66B8F4B129AD97C800B17E6A /* RadialProgressView.swift in Sources */,
 				66B8F4A729AD979C00B17E6A /* Vehicle.swift in Sources */,
 				66B8F4AA29AD979C00B17E6A /* Vehicle+Doors.swift in Sources */,
@@ -1278,6 +1281,7 @@
 				669902D729B45D1B001004AC /* RangeView.swift in Sources */,
 				665ACAFC29976C110003F008 /* WatchUICatalogApp.swift in Sources */,
 				66B8F4A029AD975500B17E6A /* VehicleChargeTimelineProvider.swift in Sources */,
+				669902D829B46151001004AC /* VehicleRangeWidget.swift in Sources */,
 				66B8F4A429AD979C00B17E6A /* Refreshable.swift in Sources */,
 				661D5B4629B3B23500E2F222 /* ComplicationDimensions.swift in Sources */,
 				66B8F4A529AD979C00B17E6A /* Vehicle+Emobility.swift in Sources */,

@@ -54,3 +54,62 @@ struct VehicleRangeWidget_Previews: PreviewProvider {
     .previewDisplayName("Nil")
   }
 }
+
+struct VehicleRangeWidgetUITestView: View {
+  var body: some View {
+    VStack {
+      HStack {
+        WidgetView(entry: VehicleRangeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 0,
+          rangeRemaining: 0
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleRangeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 12,
+          rangeRemaining: 20
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleRangeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 35,
+          rangeRemaining: 50
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+      }
+      HStack {
+        WidgetView(entry: VehicleRangeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 50,
+          rangeRemaining: 100
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleRangeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 84,
+          rangeRemaining: 180
+        ))
+        .frame(width: circularComplicationSize().width,
+               height: circularComplicationSize().height)
+
+        WidgetView(entry: VehicleRangeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 100,
+          rangeRemaining: 250
+        ))
+        .frame(width: circularComplicationSize().width,
+               height: circularComplicationSize().height)
+      }
+    }
+  }
+}
+
+struct VehicleRangeWidget_UITest_Previews: PreviewProvider {
+  static var previews: some View {
+    VehicleRangeWidgetUITestView()
+  }
+}

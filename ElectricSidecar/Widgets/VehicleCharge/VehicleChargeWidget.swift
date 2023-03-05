@@ -7,7 +7,7 @@ struct VehicleChargeWidget: Widget {
       kind: "ESComplications.VehicleCharge",
       provider: VehicleChargeTimelineProvider()
     ) { entry in
-      VehicleChargeWidgetView(entry: entry)
+      WidgetView(entry: entry)
     }
     .configurationDisplayName("Charge")
     .description("Show the remaining charge on your vehicle")
@@ -26,7 +26,7 @@ struct VehicleChargeWidget: Widget {
   }
 }
 
-struct VehicleChargeWidgetView : View {
+private struct WidgetView : View {
   @Environment(\.widgetFamily) var family
   @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
@@ -108,7 +108,7 @@ struct VehicleChargeWidgetView : View {
 
 struct VehicleChargeWidget_Previews: PreviewProvider {
   static var previews: some View {
-    VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+    WidgetView(entry: VehicleChargeTimelineProvider.Entry(
       date: Date(),
       chargeRemaining: 60,
       isCharging: true
@@ -116,7 +116,7 @@ struct VehicleChargeWidget_Previews: PreviewProvider {
     .previewContext(WidgetPreviewContext(family: .accessoryCircular))
     .previewDisplayName("Valid")
 
-    VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+    WidgetView(entry: VehicleChargeTimelineProvider.Entry(
       date: Date(),
       chargeRemaining: nil,
       isCharging: nil
@@ -131,21 +131,21 @@ struct VehicleChargeWidgetUITestView: View {
 
     VStack {
       HStack {
-        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 0,
           isCharging: false
         ))
         .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
 
-        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 12,
           isCharging: false
         ))
         .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
 
-        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 35,
           isCharging: true
@@ -153,14 +153,14 @@ struct VehicleChargeWidgetUITestView: View {
         .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
       }
       HStack {
-        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 50,
           isCharging: false
         ))
         .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
 
-        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 84,
           isCharging: true
@@ -168,7 +168,7 @@ struct VehicleChargeWidgetUITestView: View {
         .frame(width: circularComplicationSize().width,
                height: circularComplicationSize().height)
 
-        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+        WidgetView(entry: VehicleChargeTimelineProvider.Entry(
           date: Date(),
           chargeRemaining: 100,
           isCharging: true
