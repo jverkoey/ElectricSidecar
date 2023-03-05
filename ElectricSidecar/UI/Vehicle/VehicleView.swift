@@ -75,9 +75,6 @@ struct VehicleView: View {
                 ChargeView(
                   batteryLevel: status?.batteryLevel,
                   isCharging: emobility?.isCharging,
-                  iconOffset: 2,
-                  iconFontSize: 26,
-                  labelFontSize: 14,
                   allowsAnimation: true
                 )
                 .frame(width: 54, height: 54)

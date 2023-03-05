@@ -7,32 +7,26 @@ struct ChargeView: View {
   var batteryLevel: Double?
   var isCharging: Bool?
 
-  var iconOffset: Double = 0
-  var iconFontSize: Double = 22
-  var labelFontSize: Double = 12
-
   var allowsAnimation = false
   @State var pulseIsOn = true
-
-  var lineWidth: Double = 6
-  private let orientation: Angle = .degrees(135)
-  private let fillRatio: Double = 0.75
 
   var body: some View {
     ZStack {
       if let batteryLevel, let batteryLevelFormatted, let isCharging, let chargeColor = BatteryStyle.batteryColor(for: batteryLevel) {
         // Gutter
         RadialProgressView(
-          scale: 1,
+          fillPercent: 1,
           color: chargeColor.opacity(0.2),
-          lineWidth: lineWidth
+          lineWidth: lineWidth,
+          fillRatio: fillRatio
         )
 
         // Fill
         RadialProgressView(
-          scale: batteryLevel * 0.01,
+          fillPercent: batteryLevel * 0.01,
           color: pulseIsOn ? chargeColor : chargeColor.opacity(0.5),
-          lineWidth: lineWidth
+          lineWidth: lineWidth,
+          fillRatio: fillRatio
         )
         .animation(.easeInOut(duration: 1.25).repeatForever(autoreverses: true), value: pulseIsOn)
         .onAppear {
@@ -43,24 +37,97 @@ struct ChargeView: View {
         }
         .widgetAccentable(true)
 
-        VStack {
+        VStack(spacing: 0) {
           Image(isCharging == true ? "taycan.charge" : "taycan")
             .font(.system(size: iconFontSize))
-            .padding(.top, 10 + iconOffset)
+            .padding(.top, iconOffset)
           Text(batteryLevelFormatted)
+            .fontDesign(.rounded)
             .font(.system(size: labelFontSize))
+            .padding(.top, iconPadding)
         }
       } else {
         RadialProgressView(
-          scale: 1,
+          fillPercent: 1,
           color: .gray,
-          lineWidth: lineWidth
+          lineWidth: lineWidth,
+          fillRatio: fillRatio
         )
         Image("taycan")
           .foregroundColor(.gray)
           .font(.system(size: iconFontSize))
-          .padding(.top, -4)
+          .padding(.top, -5)
       }
+    }
+  }
+
+  var iconFontSize: Double {
+    switch formFactor() {
+    case .phone:
+      return 26
+    case .watch45mm, .ultra49mm:
+      return 24
+    case .watch41mm:
+      return 20
+    }
+  }
+
+  var iconOffset: Double {
+    switch formFactor() {
+    case .phone:
+      return 12
+    case .watch45mm, .ultra49mm:
+      return 9
+    case .watch41mm:
+      return 9
+    }
+  }
+
+  var iconPadding: Double {
+    switch formFactor() {
+    case .phone:
+      return 0
+    case .watch45mm, .ultra49mm:
+      return -2
+    case .watch41mm:
+      return -2
+    }
+  }
+
+  var labelFontSize: Double {
+    switch formFactor() {
+    case .phone:
+      return 14
+    case .watch45mm, .ultra49mm:
+      return 13
+    case .watch41mm:
+      return 12
+    }
+  }
+
+  var lineWidth: Double {
+    switch formFactor() {
+    case .phone:
+      return 6
+    case .watch45mm, .ultra49mm:
+      return 5
+    case .watch41mm:
+      return 5
+    }
+  }
+
+  var fillRatio: Double {
+    switch formFactor() {
+    case .phone:
+      if batteryLevel == 100 {
+        // Give a bit of breathing room around the text
+        return 0.67
+      }
+      return 0.7
+    case .watch45mm, .ultra49mm:
+      return 0.7
+    case .watch41mm:
+      return 0.65
     }
   }
 
@@ -73,34 +140,32 @@ struct ChargeView: View {
 }
 
 struct ChargeView_Previews: PreviewProvider {
-  static let status = UIModel.Vehicle.Status(
-    batteryLevel: 70,
-    electricalRange: "100 miles",
-    mileage: "100 miles",
-    doors: UIModel.Vehicle.Doors(
-      frontLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
-      frontRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
-      backLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
-      backRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true),
-      frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true),
-      backTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
-      overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true)
-    )
-  )
-  static let emobility = UIModel.Vehicle.Emobility(
-    isCharging: true
-  )
   static var previews: some View {
-    HStack {
-      Spacer()
-        .frame(maxWidth: .infinity)
-      ChargeView(
-        batteryLevel: 20,
-        isCharging: true
-      )
-      Spacer()
-        .frame(maxWidth: .infinity)
+    ZStack {
+      Color.red  // For debugging layout.
+      HStack {
+        ChargeView(
+          batteryLevel: 100,
+          isCharging: true
+        )
+      }
     }
-    .previewDevice("Apple Watch Series 8 (45mm)")
+    .frame(width: circularComplicationSize().width,
+           height: circularComplicationSize().height)
+    .cornerRadius(circularComplicationSize().width / 2)
+    .previewDisplayName("Valid")
+
+    ZStack {
+      HStack {
+        ChargeView(
+          batteryLevel: nil,
+          isCharging: nil
+        )
+      }
+    }
+    .frame(width: circularComplicationSize().width,
+           height: circularComplicationSize().height)
+    .cornerRadius(circularComplicationSize().width / 2)
+    .previewDisplayName("Nil state")
   }
 }

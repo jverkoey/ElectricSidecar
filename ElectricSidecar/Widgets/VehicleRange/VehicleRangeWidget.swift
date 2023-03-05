@@ -27,9 +27,9 @@ private struct WidgetView : View {
 
   var body: some View {
     ZStack {
-      RadialProgressView(scale: 1, color: batteryColor.opacity(0.2), lineWidth: 5)
+      RadialProgressView(fillPercent: 1, color: batteryColor.opacity(0.2), lineWidth: 5, fillRatio: 0.7)
       if let chargeRemaining = entry.chargeRemaining {
-        RadialProgressView(scale: chargeRemaining * 0.01, color: batteryColor, lineWidth: 5)
+        RadialProgressView(fillPercent: chargeRemaining * 0.01, color: batteryColor, lineWidth: 5, fillRatio: 0.7)
           .widgetAccentable(true)
       }
       if let rangeRemaining = entry.rangeRemaining {

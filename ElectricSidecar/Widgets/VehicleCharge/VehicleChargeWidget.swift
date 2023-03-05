@@ -39,20 +39,13 @@ struct VehicleChargeWidgetView : View {
 #if os(watchOS)
       ChargeView(
         batteryLevel: entry.chargeRemaining,
-        isCharging: entry.isCharging == true,
-        lineWidth: 5
+        isCharging: entry.isCharging == true
       )
-      .padding(2.5)
 #else
       ChargeView(
         batteryLevel: entry.chargeRemaining,
-        isCharging: entry.isCharging == true,
-        iconOffset: 2,
-        iconFontSize: 26,
-        labelFontSize: 14,
-        lineWidth: 5
+        isCharging: entry.isCharging == true
       )
-      .padding(2.5)
 #endif
     case .accessoryCorner:
       if let chargeRemaining = entry.chargeRemaining {
@@ -129,5 +122,50 @@ struct VehicleChargeWidget_Previews: PreviewProvider {
       isCharging: true
     ))
     .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+  }
+}
+
+struct VehicleChargeWidgetUITestView: View {
+  var body: some View {
+
+    VStack {
+      HStack {
+        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 12,
+          isCharging: false
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 35,
+          isCharging: true
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+      }
+      HStack {
+        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 50,
+          isCharging: false
+        ))
+        .frame(width: circularComplicationSize().width, height: circularComplicationSize().height)
+
+        VehicleChargeWidgetView(entry: VehicleChargeTimelineProvider.Entry(
+          date: Date(),
+          chargeRemaining: 84,
+          isCharging: true
+        ))
+        .frame(width: circularComplicationSize().width,
+               height: circularComplicationSize().height)
+      }
+    }
+  }
+}
+
+struct VehicleChargeWidget_UITest_Previews: PreviewProvider {
+  static var previews: some View {
+    VehicleChargeWidgetUITestView()
   }
 }
