@@ -58,7 +58,7 @@ private struct WidgetView : View {
             .unredacted()
         }
         if let chargeRemaining = entry.chargeRemaining {
-          Text(Self.formatted(chargeRemaining: chargeRemaining))
+          Text(String(format: "%.0f%%", chargeRemaining))
             .unredacted()
         }
       }
@@ -66,7 +66,7 @@ private struct WidgetView : View {
 #if os(watchOS)
     case .accessoryCorner:
       Image(entry.isCharging == true ? "taycan.charge" : "taycan")
-        .font(.system(size: WKInterfaceDevice.current().screenBounds.width < 195 ? 23 : 26))
+        .font(.system(size: cornerFontSize))
         .fontWeight(.regular)
         .unredacted()
         .widgetLabel {
@@ -78,7 +78,7 @@ private struct WidgetView : View {
             } minimumValueLabel: {
               Text("")
             } maximumValueLabel: {
-              Text(chargeRemaining < 100 ? Self.formatted(chargeRemaining: chargeRemaining) : "100")
+              Text(chargeRemaining < 100 ? String(format: "%.0f%%", chargeRemaining) : "100")
                 .foregroundColor(batteryColor)
             }
             .tint(batteryColor)
@@ -101,8 +101,15 @@ private struct WidgetView : View {
     return BatteryStyle.batteryColor(for: entry.chargeRemaining)
   }
 
-  static func formatted(chargeRemaining: Double) -> String {
-    return String(format: "%.0f%%", chargeRemaining)
+  var cornerFontSize: Double {
+    switch formFactor() {
+    case .phone:
+      return 26
+    case .watch45mm, .ultra49mm:
+      return 26
+    case .watch41mm:
+      return 23
+    }
   }
 }
 
