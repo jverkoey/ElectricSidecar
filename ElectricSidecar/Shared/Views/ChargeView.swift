@@ -2,8 +2,6 @@ import Foundation
 import SwiftUI
 
 struct ChargeView: View {
-  @Environment(\.widgetRenderingMode) var renderingMode
-
   var batteryLevel: Double?
   var isCharging: Bool?
 
@@ -109,14 +107,7 @@ struct ChargeView: View {
   }
 
   var lineWidth: Double {
-    switch formFactor() {
-    case .phone:
-      return 6
-    case .watch45mm, .ultra49mm:
-      return 5
-    case .watch41mm:
-      return 5
-    }
+    return circularComplicationLineWidth()
   }
 
   var fillRatio: Double {

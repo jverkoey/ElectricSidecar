@@ -40,3 +40,14 @@ public func circularComplicationSize() -> CGSize {
     return CGSize(width: 58.5, height: 58.5)
   }
 }
+
+public func circularComplicationLineWidth() -> Double {
+  switch formFactor() {
+  case .phone:
+    return 6
+  case .watch45mm, .ultra49mm:
+    return 5
+  case .watch41mm:
+    return 5
+  }
+}

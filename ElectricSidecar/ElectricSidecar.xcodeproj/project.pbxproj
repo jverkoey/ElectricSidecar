@@ -155,6 +155,11 @@
 		668EB95A2979119B00304EA5 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB9582979119B00304EA5 /* Logging.swift */; };
 		668EB95C29792E8100304EA5 /* VehiclePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95B29792E8100304EA5 /* VehiclePhotosView.swift */; };
 		668EB95F2979326E00304EA5 /* NavigationLinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95E2979326E00304EA5 /* NavigationLinkContentView.swift */; };
+		669902D329B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
+		669902D429B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
+		669902D529B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
+		669902D629B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
+		669902D729B45D1B001004AC /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669902D229B45D1B001004AC /* RangeView.swift */; };
 		669BFB5F296C0942004621D9 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
 		66B8F49C29AC94FC00B17E6A /* VehicleErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8606297F925400C60DE8 /* VehicleErrorView.swift */; };
 		66B8F49E29AC952900B17E6A /* VehicleErrorViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B8F49D29AC952900B17E6A /* VehicleErrorViewUITests.swift */; };
@@ -348,6 +353,7 @@
 		668EB9582979119B00304EA5 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		668EB95B29792E8100304EA5 /* VehiclePhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclePhotosView.swift; sourceTree = "<group>"; };
 		668EB95E2979326E00304EA5 /* NavigationLinkContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkContentView.swift; sourceTree = "<group>"; };
+		669902D229B45D1B001004AC /* RangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeView.swift; sourceTree = "<group>"; };
 		669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Emobility+Helpers.swift"; sourceTree = "<group>"; };
 		66B8F49D29AC952900B17E6A /* VehicleErrorViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleErrorViewUITests.swift; sourceTree = "<group>"; };
 		66B8F4B829ADA0CE00B17E6A /* WidgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUITests.swift; sourceTree = "<group>"; };
@@ -436,6 +442,7 @@
 			children = (
 				660E7608297E593A00EEF434 /* ChargeView.swift */,
 				668B861729865BE900C60DE8 /* RadialProgressView.swift */,
+				669902D229B45D1B001004AC /* RangeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1182,6 +1189,7 @@
 				665EDD5A297289C40012CD3A /* RefreshStatusView.swift in Sources */,
 				668B8609297F951C00C60DE8 /* Vehicle+Doors.swift in Sources */,
 				661C3F5129726E9100A4CC90 /* Refreshable.swift in Sources */,
+				669902D529B45D1B001004AC /* RangeView.swift in Sources */,
 				66108D79296B572F00791A7A /* ModelStore.swift in Sources */,
 				66108DB5296B58F700791A7A /* VehicleStatusView.swift in Sources */,
 				661C3F572972770800A4CC90 /* Vehicle+Position.swift in Sources */,
@@ -1225,6 +1233,7 @@
 				661C3F5229726E9100A4CC90 /* Refreshable.swift in Sources */,
 				661C3F4F2972641500A4CC90 /* UIModel.swift in Sources */,
 				66513E48298F58E90094581B /* AuthModel.swift in Sources */,
+				669902D629B45D1B001004AC /* RangeView.swift in Sources */,
 				668B8615298659D400C60DE8 /* VehicleRangeTimelineProvider.swift in Sources */,
 				668B860A297F96D800C60DE8 /* Vehicle+Doors.swift in Sources */,
 				661D5B4529B3B23500E2F222 /* ComplicationDimensions.swift in Sources */,
@@ -1266,6 +1275,7 @@
 				66B8F4AB29AD97A500B17E6A /* AppGroup.swift in Sources */,
 				66B8F4B229AD97CD00B17E6A /* Vehicle+Helpers.swift in Sources */,
 				66B8F4AE29AD97B900B17E6A /* ChargeView.swift in Sources */,
+				669902D729B45D1B001004AC /* RangeView.swift in Sources */,
 				665ACAFC29976C110003F008 /* WatchUICatalogApp.swift in Sources */,
 				66B8F4A029AD975500B17E6A /* VehicleChargeTimelineProvider.swift in Sources */,
 				66B8F4A429AD979C00B17E6A /* Refreshable.swift in Sources */,
@@ -1302,6 +1312,7 @@
 				6674401C298E33A1002A799F /* Emobility+Helpers.swift in Sources */,
 				66744012298E3360002A799F /* VehicleChargeTimelineProvider.swift in Sources */,
 				66744026298E33A9002A799F /* WatchConnectivityObserver.swift in Sources */,
+				669902D429B45D1B001004AC /* RangeView.swift in Sources */,
 				6674401F298E33A5002A799F /* Vehicle.swift in Sources */,
 				66744017298E3371002A799F /* AppGroup.swift in Sources */,
 				66744024298E33A7002A799F /* ChargeView.swift in Sources */,
@@ -1348,6 +1359,7 @@
 				66743FE9298E2F27002A799F /* VehicleClosedStatusView.swift in Sources */,
 				66743FD7298E2DF2002A799F /* Vehicle+Position.swift in Sources */,
 				66743FEF298E2F4B002A799F /* LogsView.swift in Sources */,
+				669902D329B45D1B001004AC /* RangeView.swift in Sources */,
 				665C3F2D298E0D73002BAD30 /* AppGroup.swift in Sources */,
 				66743FE6298E2F27002A799F /* VehicleLocationView.swift in Sources */,
 				66743FDC298E2E07002A799F /* Vehicle+Helpers.swift in Sources */,

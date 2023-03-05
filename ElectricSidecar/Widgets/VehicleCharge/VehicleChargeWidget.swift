@@ -14,8 +14,8 @@ struct VehicleChargeWidget: Widget {
 #if os(watchOS)
     .supportedFamilies([
       .accessoryCircular,
+      .accessoryInline,
       .accessoryCorner,
-      .accessoryInline
     ])
 #else
     .supportedFamilies([
