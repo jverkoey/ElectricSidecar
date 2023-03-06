@@ -55,12 +55,25 @@ struct GarageView: View {
               print("Unlock the car...")
             }
             .navigationTitle(vehicle.licensePlate ?? "\(vehicle.modelDescription) (\(vehicle.modelYear))")
+#if !os(watchOS)
+            .tabItem {
+              Label(vehicle.licensePlate ?? vehicle.modelDescription, image: "taycan")
+            }
+#endif
           }
           if isLogReadingEnabled {
             LogsView()
+#if os(watchOS)
+              .tabItem {
+                Label("Debug logs", systemImage: "magnifyingglass")
+              }
+#else
+              .tabItem {
+                Label("Debug logs", systemImage: "rectangle.and.text.magnifyingglass")
+              }
+#endif
           }
         }
-        .tabViewStyle(.page)
       } else {
         ProgressView()
       }

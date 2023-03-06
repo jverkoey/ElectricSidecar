@@ -13,15 +13,17 @@ final class AuthModel: AuthModeling {
   var email: String = ""
   @AppStorage("password", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
   var password: String = ""
+  @AppStorage("simulatedGarage", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  var simulatedGarage: String = ""
 
   var store: ModelStore? {
-    if email.isEmpty || password.isEmpty {
+    if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {
       return nil
     }
     if let store = _store {
       return store
     }
-    _store = ModelStore(username: email, password: password)
+    _store = ModelStore(username: email, password: password, simulatedGarage: simulatedGarage)
     return _store
   }
   private var _store: ModelStore?
@@ -74,23 +76,32 @@ final class AuthModel: AuthModeling {
 final class FakeAuthModel: AuthModeling {
   var email: String = ""
   var password: String = ""
+  @AppStorage("simulatedGarage", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  var simulatedGarage: String = ""
 
   var store: ModelStore? {
-    if email.isEmpty || password.isEmpty {
+    if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {
       return nil
     }
     if let store = _store {
       return store
     }
-    _store = ModelStore(username: email, password: password)
+    _store = ModelStore(username: email, password: password, simulatedGarage: simulatedGarage)
     return _store
   }
   private var _store: ModelStore?
 }
 
 let AUTH_MODEL: AuthModeling = {
-  if ProcessInfo.processInfo.environment["TESTING"] == "1" {
-    return FakeAuthModel()
+  if ProcessInfo.processInfo.environment["TESTING"] == "1"
+      || ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] != nil {
+    let model = FakeAuthModel()
+    if let simulatedGarage = ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] {
+      model.email = "test@test.com"
+      model.password = "test"
+      model.simulatedGarage = simulatedGarage
+    }
+    return model
   }
   return AuthModel()
 }()

@@ -71,6 +71,13 @@
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SIMULATED_GARAGE"
+            value = "MultiCar"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

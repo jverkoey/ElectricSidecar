@@ -63,6 +63,10 @@
 		66513E48298F58E90094581B /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66513E44298F58E90094581B /* AuthModel.swift */; };
 		6651490C29B579F8003D0401 /* VehicleClosedStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B860B297F9A3A00C60DE8 /* VehicleClosedStatusView.swift */; };
 		6651490D29B579FA003D0401 /* VehicleClosedStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B860B297F9A3A00C60DE8 /* VehicleClosedStatusView.swift */; };
+		6651491229B58654003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
+		6651491329B58654003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
+		6651491429B58FB1003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
+		6651491529B58FB1003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
 		6651ED042986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED052986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED062986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
@@ -369,6 +373,7 @@
 		661DF6D629B56FA900F2C9A3 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = PhoneUITests/Base.lproj; sourceTree = SOURCE_ROOT; };
 		661DF6D829B5704100F2C9A3 /* UITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
 		66513E44298F58E90094581B /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		6651491129B58654003D0401 /* MockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockData; sourceTree = "<group>"; };
 		6651ED032986FB71001337A3 /* BatteryStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStyle.swift; sourceTree = "<group>"; };
 		665ACAF629976C110003F008 /* WatchUICatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchUICatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		665ACAFB29976C110003F008 /* UICatalogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICatalogApp.swift; sourceTree = "<group>"; };
@@ -518,6 +523,7 @@
 		66108D19296B569000791A7A = {
 			isa = PBXGroup;
 			children = (
+				6651491129B58654003D0401 /* MockData */,
 				66108DA9296B58F700791A7A /* UI */,
 				668B86532986F2A700C60DE8 /* Phone */,
 				66108D2A296B569000791A7A /* Watch */,
@@ -1219,6 +1225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6651491329B58654003D0401 /* MockData in Resources */,
 				66108D33296B569100791A7A /* Preview Assets.xcassets in Resources */,
 				66108D30296B569100791A7A /* Assets.xcassets in Resources */,
 				661197A029750EE800D92637 /* Shared.xcassets in Resources */,
@@ -1244,6 +1251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				661197A129750EE800D92637 /* Shared.xcassets in Resources */,
+				6651491529B58FB1003D0401 /* MockData in Resources */,
 				66108D67296B56B000791A7A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1270,6 +1278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66744036298E3EE9002A799F /* Assets.xcassets in Resources */,
+				6651491429B58FB1003D0401 /* MockData in Resources */,
 				6674402C298E357F002A799F /* Shared.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1296,6 +1305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6651491229B58654003D0401 /* MockData in Resources */,
 				668B86612986F2A800C60DE8 /* LaunchScreen.storyboard in Resources */,
 				668B865E2986F2A800C60DE8 /* Assets.xcassets in Resources */,
 				66743FF5298E3019002A799F /* Shared.xcassets in Resources */,
@@ -1828,6 +1838,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Watch/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZGWD8QJUPK;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = MockData;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Watch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectricSidecar;
@@ -1978,6 +1989,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZGWD8QJUPK;
+				EXCLUDED_SOURCE_FILE_NAMES = MockData;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ESComplications;
@@ -2141,6 +2153,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZGWD8QJUPK;
+				EXCLUDED_SOURCE_FILE_NAMES = MockData;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PhoneWidgets;
@@ -2321,6 +2334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZGWD8QJUPK;
+				EXCLUDED_SOURCE_FILE_NAMES = MockData;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Phone/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectricSidecar;
