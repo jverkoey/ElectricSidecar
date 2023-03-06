@@ -113,11 +113,11 @@ struct ChargeView: View {
     case .percentInCenter:
       switch formFactor() {
       case .phone:
-        return is100Percent ? 22 : 28
+        return 22
       case .ultra49mm, .watch45mm:
-        return is100Percent ? 20 : 24
+        return 20
       case .watch44mm, .watch41mm, .watch40mm:
-        return is100Percent ? 18 : 22
+        return 18
       }
     }
   }
@@ -148,22 +148,7 @@ struct ChargeView: View {
   }
 
   var primaryOffset: CGSize {
-    switch layout {
-    case .chargeStateInCenter:
-      switch formFactor() {
-      case .watch44mm:
-        return CGSize(width: 0, height: -3)
-      default:
-        return CGSize(width: 0, height: -2)
-      }
-    case .percentInCenter:
-      switch formFactor() {
-      case .phone:
-        return CGSize(width: 0, height: -1)
-      default:
-        return CGSize(width: 0, height: is100Percent ? -1 : -2)
-      }
-    }
+    return CGSize(width: 0, height: -2)
   }
 
   var secondaryOffset: CGSize {
