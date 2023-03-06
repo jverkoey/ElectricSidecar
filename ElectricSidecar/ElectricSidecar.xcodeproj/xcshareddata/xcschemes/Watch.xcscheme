@@ -93,7 +93,7 @@
          <EnvironmentVariable
             key = "SIMULATED_GARAGE"
             value = "MultiCar"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
