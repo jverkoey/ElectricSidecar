@@ -11,7 +11,11 @@ protocol AuthModeling: AnyObject {
 
   var preferences: Preferences { get set }
 
+#if DEBUG
   var simulatedGarage: String { get set }
+#else
+  var simulatedGarage: String { get }
+#endif
 }
 
 struct Preferences: Codable, RawRepresentable {
