@@ -54,9 +54,9 @@ run_phone_tests() {
 
   xcrun simctl delete "$IPHONE_UUID"
 }
-#
-#run_watch_tests "Apple Watch Series 8 (45mm)"
-#run_watch_tests "Apple Watch Series 8 (41mm)"
-#run_watch_tests "Apple Watch Ultra (49mm)"
+
+run_watch_tests "Apple Watch Series 8 (45mm)"
+run_watch_tests "Apple Watch Series 8 (41mm)"
+run_watch_tests "Apple Watch Ultra (49mm)"
 
 run_phone_tests "iPhone 14 Pro"
