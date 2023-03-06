@@ -33,7 +33,6 @@
 		66108DB1296B58F700791A7A /* GarageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DAB296B58F700791A7A /* GarageView.swift */; };
 		66108DB3296B58F700791A7A /* VehicleLocationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DAD296B58F700791A7A /* VehicleLocationPage.swift */; };
 		66108DB4296B58F700791A7A /* VehicleDetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DAE296B58F700791A7A /* VehicleDetailsPage.swift */; };
-		66108DB5296B58F700791A7A /* VehicleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DAF296B58F700791A7A /* VehicleStatusView.swift */; };
 		66108DB8296B590F00791A7A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 66108DB7296B590F00791A7A /* CachedAsyncImage */; };
 		661197A029750EE800D92637 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6611979F29750EE800D92637 /* Shared.xcassets */; };
 		661197A129750EE800D92637 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6611979F29750EE800D92637 /* Shared.xcassets */; };
@@ -97,7 +96,6 @@
 		66743FE7298E2F27002A799F /* VehiclePhotosPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB95B29792E8100304EA5 /* VehiclePhotosPage.swift */; };
 		66743FE8298E2F27002A799F /* VehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DAA296B58F700791A7A /* VehicleView.swift */; };
 		66743FE9298E2F27002A799F /* VehicleClosedStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B860B297F9A3A00C60DE8 /* VehicleClosedStatusView.swift */; };
-		66743FEA298E2F27002A799F /* VehicleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DAF296B58F700791A7A /* VehicleStatusView.swift */; };
 		66743FEE298E2F3C002A799F /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 66743FED298E2F3C002A799F /* CachedAsyncImage */; };
 		66743FEF298E2F4B002A799F /* LogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB956297910E200304EA5 /* LogsView.swift */; };
 		66743FF0298E2F7F002A799F /* RefreshStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665EDD59297289C40012CD3A /* RefreshStatusView.swift */; };
@@ -360,7 +358,6 @@
 		66108DAB296B58F700791A7A /* GarageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageView.swift; sourceTree = "<group>"; };
 		66108DAD296B58F700791A7A /* VehicleLocationPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationPage.swift; sourceTree = "<group>"; };
 		66108DAE296B58F700791A7A /* VehicleDetailsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailsPage.swift; sourceTree = "<group>"; };
-		66108DAF296B58F700791A7A /* VehicleStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleStatusView.swift; sourceTree = "<group>"; };
 		6611979F29750EE800D92637 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		6618E351296FDE5900F370BB /* CodableCacheCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCacheCoordinator.swift; sourceTree = "<group>"; };
 		661C3F4929725D0900A4CC90 /* Vehicle+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+Status.swift"; sourceTree = "<group>"; };
@@ -705,6 +702,14 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		6651490E29B57CBD003D0401 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				668B860B297F9A3A00C60DE8 /* VehicleClosedStatusView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		6651ED0729870863001337A3 /* Theming */ = {
 			isa = PBXGroup;
 			children = (
@@ -850,8 +855,7 @@
 			isa = PBXGroup;
 			children = (
 				66108DAA296B58F700791A7A /* VehicleView.swift */,
-				66108DAF296B58F700791A7A /* VehicleStatusView.swift */,
-				668B860B297F9A3A00C60DE8 /* VehicleClosedStatusView.swift */,
+				6651490E29B57CBD003D0401 /* Components */,
 				6651490B29B57916003D0401 /* Pages */,
 			);
 			path = Vehicle;
@@ -1336,7 +1340,6 @@
 				661C3F5129726E9100A4CC90 /* Refreshable.swift in Sources */,
 				669902D529B45D1B001004AC /* RangeView.swift in Sources */,
 				66108D79296B572F00791A7A /* ModelStore.swift in Sources */,
-				66108DB5296B58F700791A7A /* VehicleStatusView.swift in Sources */,
 				661C3F572972770800A4CC90 /* Vehicle+Position.swift in Sources */,
 				668EB9592979119B00304EA5 /* Logging.swift in Sources */,
 				668B861829865BE900C60DE8 /* RadialProgressView.swift in Sources */,
@@ -1540,7 +1543,6 @@
 				66743FDB298E2E07002A799F /* Emobility+Helpers.swift in Sources */,
 				668B86592986F2A700C60DE8 /* LoginViewController.swift in Sources */,
 				66743FD5298E2DF2002A799F /* Vehicle+Doors.swift in Sources */,
-				66743FEA298E2F27002A799F /* VehicleStatusView.swift in Sources */,
 				66743FD2298E2DF2002A799F /* Vehicle+Status.swift in Sources */,
 				668B86552986F2A700C60DE8 /* AppDelegate.swift in Sources */,
 				66743FF4298E2F9E002A799F /* RadialProgressView.swift in Sources */,
