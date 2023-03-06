@@ -26,13 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "NO">
+      shouldUseLaunchSchemeArgsEnv = "NO"
+      systemAttachmentLifetime = "keepAlways"
+      userAttachmentLifetime = "keepAlways">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "665ACB1129976C120003F008"
-            BuildableName = "WatchUICatalogTests.xctest"
-            BlueprintName = "WatchUICatalogTests"
+            BlueprintIdentifier = "66108D25296B569000791A7A"
+            BuildableName = "Watch.app"
+            BlueprintName = "Watch"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

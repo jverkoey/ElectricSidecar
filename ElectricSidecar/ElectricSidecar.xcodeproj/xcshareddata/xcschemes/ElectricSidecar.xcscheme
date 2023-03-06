@@ -27,13 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "NO"
+      systemAttachmentLifetime = "keepAlways"
+      userAttachmentLifetime = "keepAlways"
       codeCoverageEnabled = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "668976FB29B56E46008580C6"
-            BuildableName = "PhoneUICatalogTests.xctest"
-            BlueprintName = "PhoneUICatalogTests"
+            BlueprintIdentifier = "668B86512986F2A600C60DE8"
+            BuildableName = "ElectricSidecar.app"
+            BlueprintName = "ElectricSidecar"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
