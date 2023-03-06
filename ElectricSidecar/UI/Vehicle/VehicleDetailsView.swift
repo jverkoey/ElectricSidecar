@@ -32,6 +32,9 @@ struct VehicleDetailsView: View {
       ValueCell(label: "Model", value: "\(modelDescription) (\(modelYear))")
       Section("VIN") {
         Text(vin)
+#if !os(watchOS)
+          .textSelection(.enabled)
+#endif
       }
     }
   }
