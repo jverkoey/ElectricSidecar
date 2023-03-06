@@ -113,7 +113,7 @@ struct VehicleView: View {
       
       Section {
         NavigationLink {
-          VehicleLocationView(
+          VehicleLocationPage(
             vehicleName: vehicle.licensePlate ?? vehicle.modelDescription,
             position: $position
           )
@@ -122,7 +122,7 @@ struct VehicleView: View {
           NavigationLinkContentView(imageSystemName: "location", title: "Location")
         }
         NavigationLink {
-          VehicleDetailsView(
+          VehicleDetailsPage(
             status: $status,
             modelDescription: vehicle.modelDescription,
             modelYear: vehicle.modelYear,
@@ -133,7 +133,7 @@ struct VehicleView: View {
           NavigationLinkContentView(imageSystemName: "info.circle", title: "More details")
         }
         NavigationLink {
-          VehiclePhotosView(vehicle: vehicle)
+          VehiclePhotosPage(vehicle: vehicle)
             .navigationTitle("Photos")
         } label: {
           NavigationLinkContentView(imageSystemName: "photo.on.rectangle.angled", title: "Photos")
@@ -141,7 +141,7 @@ struct VehicleView: View {
         
         if statusError != nil || emobilityError != nil || positionError != nil {
           NavigationLink {
-            VehicleErrorView(statusError: $statusError, emobilityError: $emobilityError, positionError: $positionError)
+            VehicleErrorPage(statusError: $statusError, emobilityError: $emobilityError, positionError: $positionError)
           } label: {
             NavigationLinkContentView(imageSystemName: "exclamationmark.triangle", title: "Errors")
           }

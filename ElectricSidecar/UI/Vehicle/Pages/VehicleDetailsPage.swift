@@ -17,7 +17,7 @@ struct ValueCell: View {
   }
 }
 
-struct VehicleDetailsView: View {
+struct VehicleDetailsPage: View {
   @Binding var status: UIModel.Vehicle.Status?
   var modelDescription: String
   var modelYear: String
@@ -56,7 +56,7 @@ struct VehicleDetailsView_Previews: PreviewProvider {
     )
   )
   static var previews: some View {
-    VehicleDetailsView(
+    VehicleDetailsPage(
       status: .constant(status),
       modelDescription: "Taycan",
       modelYear: "2022",

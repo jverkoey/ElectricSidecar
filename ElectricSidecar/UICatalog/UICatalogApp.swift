@@ -11,7 +11,7 @@ struct UICatalogApp: App {
           print("Did log in")
         }.accessibilityIdentifier("root-view")
       case "error-view":
-        VehicleErrorView(
+        VehicleErrorPage(
           statusError: .constant(URLError(.badServerResponse)),
           emobilityError: .constant(URLError(.badServerResponse)),
           positionError: .constant(URLError(.badServerResponse))
@@ -21,7 +21,7 @@ struct UICatalogApp: App {
       case "vehicle-range-widget":
         VehicleRangeWidgetUITestView().accessibilityIdentifier("root-view")
       case "vehicle-details-view":
-        VehicleDetailsView(status: .constant(UIModel.Vehicle.Status(
+        VehicleDetailsPage(status: .constant(UIModel.Vehicle.Status(
           batteryLevel: 100,
           electricalRange: "100 miles",
           mileage: "100 miles",
@@ -36,6 +36,8 @@ struct UICatalogApp: App {
           )
         )), modelDescription: "Taycan", modelYear: "2022", vin: "WP0AB1C23DEF45678")
         .accessibilityIdentifier("root-view")
+      case "vehicle-closed-status":
+        VehicleClosedStatusUITestView().accessibilityIdentifier("root-view")
       default:
         Text("Unknown test case")
       }

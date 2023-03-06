@@ -8,7 +8,7 @@ private struct VehicleLocation: Identifiable {
   var coordinate: CLLocationCoordinate2D
 }
 
-struct VehicleLocationView: View {
+struct VehicleLocationPage: View {
   var vehicleName: String
   @Binding var position: UIModel.Vehicle.Position?
   var body: some View {
@@ -39,7 +39,7 @@ struct VehicleLocationView: View {
 // is intentionally just checking the nil state.
 struct VehicleLocationView_Previews: PreviewProvider {
   static var previews: some View {
-    VehicleLocationView(vehicleName: "Taycan", position: .constant(nil))
+    VehicleLocationPage(vehicleName: "Taycan", position: .constant(nil))
     .previewDevice("Apple Watch Series 8 (45mm)")
     .previewDisplayName("Series 8 45mm")
   }

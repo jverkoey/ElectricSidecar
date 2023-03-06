@@ -3,7 +3,7 @@ import Foundation
 import PorscheConnect
 import SwiftUI
 
-struct VehiclePhotosView: View {
+struct VehiclePhotosPage: View {
   let vehicle: UIModel.Vehicle
 
   var body: some View {

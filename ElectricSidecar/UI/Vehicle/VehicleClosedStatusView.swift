@@ -1,10 +1,10 @@
 import Foundation
 import SwiftUI
 
-struct VehicleClosedStatusView: View {
+public struct VehicleClosedStatusView: View {
   var doors: UIModel.Vehicle.Doors?
 
-  var body: some View {
+  public var body: some View {
     HStack {
       if let doors {
         Image(systemName: doors.overallLockStatus.isLocked == true ? "lock.fill" : "lock.open.fill")
@@ -54,15 +54,87 @@ struct VehicleClosedStatusView: View {
 struct VehicleClosedStatusView_Previews: PreviewProvider {
   static var previews: some View {
     VehicleClosedStatusView(doors: UIModel.Vehicle.Doors(
+      frontLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+      frontRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+      backLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+      backRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+      frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+      backTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+      overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true)
+    ))
+    .previewDisplayName("Everything open")
+
+    VehicleClosedStatusView(doors: UIModel.Vehicle.Doors(
       frontLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
       frontRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
       backLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
-      backRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true),
-      frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true),
+      backRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+      frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
       backTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
-      overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true)
+      overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false)
     ))
-    .previewDevice("Apple Watch Series 8 (45mm)")
-    .previewDisplayName("Loading / No license")
+    .previewDisplayName("Everything closed")
+  }
+}
+
+struct VehicleClosedStatusUITestView: View {
+  var body: some View {
+
+    List {
+      Section("All open") {
+        VehicleClosedStatusView(doors: UIModel.Vehicle.Doors(
+          frontLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          frontRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          backLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          backRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          backTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true)
+        ))
+      }
+
+      Section("Just doors open") {
+        VehicleClosedStatusView(doors: UIModel.Vehicle.Doors(
+          frontLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          frontRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          backLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          backRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: false),
+          backTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: false),
+          overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true)
+        ))
+      }
+
+      Section("Just trunks") {
+        VehicleClosedStatusView(doors: UIModel.Vehicle.Doors(
+          frontLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: false),
+          frontRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: false),
+          backLeft: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: false),
+          backRight: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: false),
+          frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          backTrunk: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true),
+          overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: false, isOpen: true)
+        ))
+      }
+
+      Section("All closed") {
+        VehicleClosedStatusView(doors: UIModel.Vehicle.Doors(
+          frontLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+          frontRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+          backLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+          backRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+          frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+          backTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+          overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false)
+        ))
+      }
+    }
+  }
+}
+
+struct VehicleClosedStatusView_UITest_Previews: PreviewProvider {
+  static var previews: some View {
+    VehicleClosedStatusUITestView()
+      .previewDisplayName("UITests")
   }
 }

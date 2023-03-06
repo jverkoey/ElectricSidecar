@@ -51,4 +51,16 @@ final class AppUITests: UITestCase {
     XCTAssertTrue(rootView.exists)
     try writeSnapshot(rootView.screenshot().image)
   }
+
+  func testVehicleClosedStatusView() throws {
+    app.launchEnvironment = [
+      "TESTING": "1",
+      "test-case": "vehicle-closed-status"
+    ]
+    app.launch()
+
+    let rootView = app.otherElements.containing(.any, identifier: "root-view").firstMatch
+    XCTAssertTrue(rootView.exists)
+    try writeSnapshot(rootView.screenshot().image)
+  }
 }

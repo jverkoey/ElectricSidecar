@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct VehicleErrorView: View {
+struct VehicleErrorPage: View {
   @Binding var statusError: Error?
   @Binding var emobilityError: Error?
   @Binding var positionError: Error?
@@ -27,23 +27,23 @@ struct VehicleErrorView: View {
   }
 }
 
-struct VehicleErrorView_Previews: PreviewProvider {
+struct VehicleErrorPage_Previews: PreviewProvider {
   static var previews: some View {
-    VehicleErrorView(
+    VehicleErrorPage(
       statusError: .constant(URLError(.badServerResponse)),
       emobilityError: .constant(URLError(.badServerResponse)),
       positionError: .constant(URLError(.badServerResponse))
     )
     .previewDisplayName("All errors")
 
-    VehicleErrorView(
+    VehicleErrorPage(
       statusError: .constant(nil),
       emobilityError: .constant(nil),
       positionError: .constant(nil)
     )
     .previewDisplayName("No errors")
 
-    VehicleErrorView(
+    VehicleErrorPage(
       statusError: .constant(URLError(.badServerResponse)),
       emobilityError: .constant(nil),
       positionError: .constant(nil)
