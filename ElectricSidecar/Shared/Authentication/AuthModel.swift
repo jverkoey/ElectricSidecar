@@ -8,6 +8,7 @@ protocol AuthModeling: AnyObject {
   var email: String { get set }
   var password: String { get set }
   var store: ModelStore? { get }
+  func authenticationFailed()
 
   var preferences: Preferences { get set }
 
@@ -84,6 +85,9 @@ final class AuthModel: AuthModeling {
     return _store
   }
   private var _store: ModelStore?
+  func authenticationFailed() {
+    _store = nil
+  }
 
   init() {
     NotificationCenter.default.addObserver(
@@ -153,6 +157,10 @@ final class FakeAuthModel: AuthModeling {
     return _store
   }
   private var _store: ModelStore?
+
+  func authenticationFailed() {
+    _store = nil
+  }
 }
 
 let AUTH_MODEL: AuthModeling = {
@@ -169,6 +177,8 @@ let AUTH_MODEL: AuthModeling = {
     model.email = "test@test.com"
     model.password = "test"
     model.simulatedGarage = simulatedGarage
+  } else if Bundle.main.bundleURL.pathExtension != "appex" {
+    model.simulatedGarage = ""
   }
 #endif
   return model

@@ -29,14 +29,19 @@ struct ElectricSidecar: App {
               return
             }
             Task {
-              try await store.load()
+              do {
+                try await store.load()
+              } catch {
+                DispatchQueue.main.async {
+                  AUTH_MODEL.authenticationFailed()
+                  authState = .loggedOut(error: error)
+                }
+              }
             }
             authState = .authenticated(store: store)
           }
       case .authenticated(let store):
-        GarageView(store: store) { error in
-          authState = .loggedOut(error: error)
-        }
+        GarageView(store: store)
       case .loggedOut(let error):
         ScrollView {
           VStack {

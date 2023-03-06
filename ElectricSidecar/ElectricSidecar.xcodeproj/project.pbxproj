@@ -2515,7 +2515,7 @@
 				DEVELOPMENT_TEAM = ZGWD8QJUPK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Phone/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ElectricSidecar;
+				INFOPLIST_KEY_CFBundleDisplayName = Sidecar;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2548,7 +2548,7 @@
 				EXCLUDED_SOURCE_FILE_NAMES = MockData;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Phone/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ElectricSidecar;
+				INFOPLIST_KEY_CFBundleDisplayName = Sidecar;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
