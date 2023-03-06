@@ -30,14 +30,25 @@ extension SceneDelegate: LoginViewControllerDelegate {
     guard let store = AUTH_MODEL.store else {
       return
     }
-    Task {
-      try await store.load()
-    }
-    let garageView = GarageView(store: store) { error in
-      print("Logged out due to error: \(error)")
-    }
+    let garageView = GarageView(store: store)
     let hostingController = UIHostingController(rootView: garageView)
-    window?.rootViewController = hostingController
+    self.window?.rootViewController = hostingController
+
+    Task {
+      do {
+        try await store.load()
+      } catch {
+        DispatchQueue.main.async {
+          AUTH_MODEL.authenticationFailed()
+
+          let loginViewController = LoginViewController(email: AUTH_MODEL.email, password: AUTH_MODEL.password)
+          loginViewController.error = error
+          loginViewController.delegate = self
+          let navigation = UINavigationController(rootViewController: loginViewController)
+          self.window?.rootViewController = navigation
+        }
+      }
+    }
   }
 
   func loginViewController(_ loginViewController: LoginViewController, didLoginWithEmail email: String, password: String) {

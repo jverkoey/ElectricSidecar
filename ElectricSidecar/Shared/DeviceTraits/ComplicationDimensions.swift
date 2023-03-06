@@ -55,11 +55,7 @@ public func circularComplicationLineWidth() -> Double {
   switch formFactor() {
   case .phone:
     return 6
-  case .watch45mm, .ultra49mm:
-    return 5
-  case .watch44mm:
-    return 5
-  case .watch41mm:
+  case .watch45mm, .ultra49mm, .watch44mm, .watch41mm:
     return 5
   case .watch40mm:
     return 4

@@ -29,19 +29,21 @@ struct RangeView: View {
       if let rangeRemaining {
         VStack(spacing: 0) {
           Text(String(format: "%.0f", rangeRemaining))
-            .font(.system(size: rangeFontSize))
+            .font(.system(size: primaryFontSize))
             .fontDesign(.rounded)
             .bold()
             .unredacted()
           Text(Locale.current.measurementSystem == .metric ? "km" : "mi")
-            .font(.system(size: labelFontSize))
+            .font(.system(size: secondaryFontSize))
+            .fontWeight(.medium)
             .padding(.top, labelTopPadding)
             .padding(.bottom, labelBottomPadding)
             .unredacted()
         }
       } else {
         Text(Locale.current.measurementSystem == .metric ? "km" : "mi")
-          .font(.system(size: labelFontSize))
+          .font(.system(size: secondaryFontSize))
+          .fontWeight(.medium)
           .padding(.top, labelTopPadding + 20)
           .padding(.bottom, labelBottomPadding)
           .foregroundColor(.gray)
@@ -50,31 +52,27 @@ struct RangeView: View {
     }
   }
 
-  var rangeFontSize: Double {
+  var primaryFontSize: Double {
     switch formFactor() {
     case .phone:
       return 22
-    case .watch45mm, .ultra49mm:
+    case .watch45mm, .ultra49mm, .watch44mm:
       return 20
-    case .watch44mm:
-      return 20
-    case .watch41mm:
-      return 18
-    case .watch40mm:
+    case .watch41mm, .watch40mm:
       return 18
     }
   }
 
-  var labelFontSize: Double {
+  var secondaryFontSize: Double {
     switch formFactor() {
     case .phone:
       return 16
     case .watch45mm, .ultra49mm:
-      return 14
+      return 14.5
     case .watch44mm:
-      return 14
+      return 13
     case .watch41mm:
-      return 12
+      return 12.5
     case .watch40mm:
       return 12
     }

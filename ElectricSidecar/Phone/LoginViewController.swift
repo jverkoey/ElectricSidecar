@@ -1,3 +1,4 @@
+import PorscheConnect
 import UIKit
 import SwiftUI
 import WatchConnectivity
@@ -19,6 +20,7 @@ protocol LoginViewControllerDelegate: AnyObject {
 
 final class LoginViewController: UIViewController {
   weak var delegate: LoginViewControllerDelegate?
+  var error: Error?
 
   init(email: String, password: String) {
     self.model = ViewModel(email: email, password: password)
@@ -44,7 +46,7 @@ final class LoginViewController: UIViewController {
 
     view.backgroundColor = .systemBackground
 
-    let loginView = LoginView(model: model, didLogin: { [weak self] in
+    let loginView = LoginView(model: model, error: error, didLogin: { [weak self] in
       guard let self else {
         return
       }
@@ -106,7 +108,7 @@ struct LoginTextFieldStyle: TextFieldStyle {
 }
 
 struct LoginButtonStyle: ButtonStyle {
-  @Environment(\.isEnabled) private var isEnabled
+  @SwiftUI.Environment(\.isEnabled) private var isEnabled
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
       .padding()
@@ -118,6 +120,7 @@ struct LoginButtonStyle: ButtonStyle {
 
 struct LoginView: View {
   @ObservedObject fileprivate var model: ViewModel
+  var error: Error?
   let didLogin: () -> Void
 
   var body: some View {
@@ -135,6 +138,18 @@ struct LoginView: View {
         .frame(maxWidth: .infinity)
         .buttonStyle(LoginButtonStyle())
       Spacer(minLength: 32)
+
+      if let error {
+        switch error {
+        case PorscheConnectError.AuthFailure:
+          Text("Authentication failure. Check your credentials and try again.")
+            .foregroundColor(.red)
+        default:
+          Text(error.localizedDescription)
+        }
+        Spacer(minLength: 32)
+      }
+
       Text("If you already logged in on your watch, open the ElectricSidecar app on your watch to use your existing login credentials.")
 
       if model.watchIsReachable {

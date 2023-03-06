@@ -8,22 +8,14 @@ extension URLCache {
 
 struct GarageView: View {
   @StateObject var store: ModelStore
-  let authFailure: (Error) -> Void
-
-  enum LoadState {
-    case error(error: Error)
-    case loadingVehicles
-    case loaded
-  }
 
   @State var isLogReadingEnabled: Bool = false
 
-  @State var loadState: LoadState = .loadingVehicles
   var body: some View {
-    NavigationStack {
-      if let vehicles = store.vehicles {
-        TabView {
-          ForEach(vehicles) { vehicle in
+    if let vehicles = store.vehicles {
+      TabView {
+        ForEach(vehicles) { vehicle in
+          NavigationStack {
             VehicleView(
               vehicle: vehicle,
               hasManyVehicles: vehicles.count > 1,
@@ -56,35 +48,41 @@ struct GarageView: View {
               print("Unlock the car...")
             }
             .navigationTitle(vehicle.licensePlate ?? "\(vehicle.modelDescription) (\(vehicle.modelYear))")
+          }
 #if !os(watchOS)
+          .tabItem {
+            Label(vehicle.licensePlate ?? vehicle.modelDescription, image: "taycan")
+          }
+#endif
+        }
+        if isLogReadingEnabled {
+          LogsView()
+#if os(watchOS)
             .tabItem {
-              Label(vehicle.licensePlate ?? vehicle.modelDescription, image: "taycan")
+              Label("Debug logs", systemImage: "magnifyingglass")
+            }
+#else
+            .tabItem {
+              Label("Debug logs", systemImage: "rectangle.and.text.magnifyingglass")
             }
 #endif
-          }
-          if isLogReadingEnabled {
-            LogsView()
-#if os(watchOS)
-              .tabItem {
-                Label("Debug logs", systemImage: "magnifyingglass")
-              }
-#else
-              .tabItem {
-                Label("Debug logs", systemImage: "rectangle.and.text.magnifyingglass")
-              }
-#endif
-          }
         }
-      } else {
-        ProgressView()
+        NavigationStack {
+          SettingsPage()
+        }
+        .tabItem {
+          Label("Settings", systemImage: "gear")
+        }
       }
-    }
-    .task(priority: .background) {
-      do {
-        isLogReadingEnabled = try checkIfLogReadingIsEnabled()
-      } catch {
-        isLogReadingEnabled = false
+      .task(priority: .background) {
+        do {
+          isLogReadingEnabled = try checkIfLogReadingIsEnabled()
+        } catch {
+          isLogReadingEnabled = false
+        }
       }
+    } else {
+      ProgressView()
     }
   }
 

@@ -8,6 +8,7 @@ protocol AuthModeling: AnyObject {
   var email: String { get set }
   var password: String { get set }
   var store: ModelStore? { get }
+  func authenticationFailed()
 
   var preferences: Preferences { get set }
 
@@ -18,21 +19,35 @@ protocol AuthModeling: AnyObject {
 #endif
 }
 
+struct ChargeWidgetPreferences: Codable {
+  enum CircularLayout: Codable, CaseIterable {
+    case chargeStateInCenter
+    case percentInCenter
+  }
+  var circularLayout: CircularLayout
+}
+
 struct Preferences: Codable, RawRepresentable {
   var primaryVIN: String = ""
+  var chargeWidget: ChargeWidgetPreferences = ChargeWidgetPreferences(
+    circularLayout: .chargeStateInCenter
+  )
 
   enum CodingKeys: String, CodingKey {
     case primaryVIN
+    case chargeWidget
   }
 
   init(from decoder: Decoder) throws {
     let group = try decoder.container(keyedBy: CodingKeys.self)
     primaryVIN = try group.decode(String.self, forKey: .primaryVIN)
+    chargeWidget = try group.decode(ChargeWidgetPreferences.self, forKey: .chargeWidget)
   }
 
   func encode(to encoder: Encoder) throws {
     var group = encoder.container(keyedBy: CodingKeys.self)
     try group.encode(primaryVIN, forKey: .primaryVIN)
+    try group.encode(chargeWidget, forKey: .chargeWidget)
   }
 
   init() {
@@ -84,6 +99,9 @@ final class AuthModel: AuthModeling {
     return _store
   }
   private var _store: ModelStore?
+  func authenticationFailed() {
+    _store = nil
+  }
 
   init() {
     NotificationCenter.default.addObserver(
@@ -153,6 +171,10 @@ final class FakeAuthModel: AuthModeling {
     return _store
   }
   private var _store: ModelStore?
+
+  func authenticationFailed() {
+    _store = nil
+  }
 }
 
 let AUTH_MODEL: AuthModeling = {
@@ -169,6 +191,8 @@ let AUTH_MODEL: AuthModeling = {
     model.email = "test@test.com"
     model.password = "test"
     model.simulatedGarage = simulatedGarage
+  } else if Bundle.main.bundleURL.pathExtension != "appex" {
+    model.simulatedGarage = ""
   }
 #endif
   return model
