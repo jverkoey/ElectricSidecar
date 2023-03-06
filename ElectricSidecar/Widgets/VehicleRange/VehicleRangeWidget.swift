@@ -68,7 +68,7 @@ private struct WidgetView : View {
 #endif
 
     default:
-      Text("Unsupported")
+      Text("\(family.debugDescription)")
     }
   }
 

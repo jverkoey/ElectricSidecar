@@ -20,27 +20,31 @@
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66108D1F296B569000791A7A"
-               BuildableName = "ElectricSidecarHost.app"
-               BlueprintName = "ElectricSidecarHost"
-               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO"
+      systemAttachmentLifetime = "keepAlways"
+      userAttachmentLifetime = "keepAlways">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "66108D25296B569000791A7A"
+            BuildableName = "Watch.app"
+            BlueprintName = "Watch"
+            ReferencedContainer = "container:ElectricSidecar.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SNAPSHOT_PATH"
+            value = "$(SNAPSHOT_PATH)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -50,6 +54,16 @@
                BlueprintIdentifier = "66108D37296B569100791A7A"
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
+               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "665ACB1129976C120003F008"
+               BuildableName = "WatchUICatalogTests.xctest"
+               BlueprintName = "WatchUICatalogTests"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -75,6 +89,13 @@
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SIMULATED_GARAGE"
+            value = "MultiCar"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

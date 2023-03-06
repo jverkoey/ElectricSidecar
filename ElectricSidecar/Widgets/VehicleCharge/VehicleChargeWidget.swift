@@ -2,14 +2,16 @@ import WidgetKit
 import SwiftUI
 
 struct VehicleChargeWidget: Widget {
+  static let configurationDisplayName = "Charge"
   var body: some WidgetConfiguration {
-    StaticConfiguration(
+    IntentConfiguration(
       kind: "ESComplications.VehicleCharge",
+      intent: SelectVehicleIntent.self,
       provider: VehicleChargeTimelineProvider()
     ) { entry in
       WidgetView(entry: entry)
     }
-    .configurationDisplayName("Charge")
+    .configurationDisplayName(Self.configurationDisplayName)
     .description("Show the remaining charge on your vehicle")
 #if os(watchOS)
     .supportedFamilies([
@@ -93,7 +95,7 @@ private struct WidgetView : View {
 #endif
 
     default:
-      Text("Unsupported")
+      Text("\(family.debugDescription)")
     }
   }
 

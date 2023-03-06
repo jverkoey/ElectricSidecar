@@ -2,26 +2,85 @@ import Foundation
 import SwiftUI
 import WatchConnectivity
 
+private let userDefaults = UserDefaults(suiteName: APP_GROUP_IDENTIFIER)
+
 protocol AuthModeling: AnyObject {
   var email: String { get set }
   var password: String { get set }
   var store: ModelStore? { get }
+
+  var preferences: Preferences { get set }
+
+#if DEBUG
+  var simulatedGarage: String { get set }
+#else
+  var simulatedGarage: String { get }
+#endif
+}
+
+struct Preferences: Codable, RawRepresentable {
+  var primaryVIN: String = ""
+
+  enum CodingKeys: String, CodingKey {
+    case primaryVIN
+  }
+
+  init(from decoder: Decoder) throws {
+    let group = try decoder.container(keyedBy: CodingKeys.self)
+    primaryVIN = try group.decode(String.self, forKey: .primaryVIN)
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var group = encoder.container(keyedBy: CodingKeys.self)
+    try group.encode(primaryVIN, forKey: .primaryVIN)
+  }
+
+  init() {
+  }
+
+  init?(rawValue: String) {
+    guard let data = rawValue.data(using: .utf8),
+          let result = try? JSONDecoder().decode(Self.self, from: data)
+    else {
+      return nil
+    }
+    self = result
+  }
+
+  var rawValue: String {
+    guard let data = try? JSONEncoder().encode(self),
+          let result = String(data: data, encoding: .utf8)
+    else {
+      return "[]"
+    }
+    return result
+  }
 }
 
 final class AuthModel: AuthModeling {
-  @AppStorage("email", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  @AppStorage("email", store: userDefaults)
   var email: String = ""
-  @AppStorage("password", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  @AppStorage("password", store: userDefaults)
   var password: String = ""
+  @AppStorage("preferences", store: userDefaults)
+  var preferences = Preferences()
+
+#if DEBUG
+  @AppStorage("simulatedGarage", store: userDefaults)
+  var simulatedGarage: String = ""
+#else
+  let simulatedGarage = ""
+#endif
 
   var store: ModelStore? {
-    if email.isEmpty || password.isEmpty {
+    Logging.intents.info("Simulated garage: \(self.simulatedGarage)")
+    if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {
       return nil
     }
     if let store = _store {
       return store
     }
-    _store = ModelStore(username: email, password: password)
+    _store = ModelStore(username: email, password: password, simulatedGarage: simulatedGarage)
     return _store
   }
   private var _store: ModelStore?
@@ -74,23 +133,43 @@ final class AuthModel: AuthModeling {
 final class FakeAuthModel: AuthModeling {
   var email: String = ""
   var password: String = ""
+  @AppStorage("preferences", store: userDefaults)
+  var preferences = Preferences()
+#if DEBUG
+  @AppStorage("simulatedGarage", store: userDefaults)
+  var simulatedGarage: String = ""
+#else
+  let simulatedGarage = ""
+#endif
 
   var store: ModelStore? {
-    if email.isEmpty || password.isEmpty {
+    if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {
       return nil
     }
     if let store = _store {
       return store
     }
-    _store = ModelStore(username: email, password: password)
+    _store = ModelStore(username: email, password: password, simulatedGarage: simulatedGarage)
     return _store
   }
   private var _store: ModelStore?
 }
 
 let AUTH_MODEL: AuthModeling = {
-  if ProcessInfo.processInfo.environment["TESTING"] == "1" {
-    return FakeAuthModel()
+  let model: AuthModeling
+  if ProcessInfo.processInfo.environment["TESTING"] == "1"
+      || ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] != nil {
+    model = FakeAuthModel()
+  } else {
+    model = AuthModel()
   }
-  return AuthModel()
+
+#if DEBUG
+  if let simulatedGarage = ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] {
+    model.email = "test@test.com"
+    model.password = "test"
+    model.simulatedGarage = simulatedGarage
+  }
+#endif
+  return model
 }()

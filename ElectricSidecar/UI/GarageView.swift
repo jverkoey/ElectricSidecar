@@ -26,6 +26,7 @@ struct GarageView: View {
           ForEach(vehicles) { vehicle in
             VehicleView(
               vehicle: vehicle,
+              hasManyVehicles: vehicles.count > 1,
               statusPublisher: store.statusPublisher(for: vehicle.vin),
               emobilityPublisher: store.emobilityPublisher(for: vehicle.vin),
               positionPublisher: store.positionPublisher(for: vehicle.vin)
@@ -55,12 +56,25 @@ struct GarageView: View {
               print("Unlock the car...")
             }
             .navigationTitle(vehicle.licensePlate ?? "\(vehicle.modelDescription) (\(vehicle.modelYear))")
+#if !os(watchOS)
+            .tabItem {
+              Label(vehicle.licensePlate ?? vehicle.modelDescription, image: "taycan")
+            }
+#endif
           }
           if isLogReadingEnabled {
             LogsView()
+#if os(watchOS)
+              .tabItem {
+                Label("Debug logs", systemImage: "magnifyingglass")
+              }
+#else
+              .tabItem {
+                Label("Debug logs", systemImage: "rectangle.and.text.magnifyingglass")
+              }
+#endif
           }
         }
-        .tabViewStyle(.page)
       } else {
         ProgressView()
       }

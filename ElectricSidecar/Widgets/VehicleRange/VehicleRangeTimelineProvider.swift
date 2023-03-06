@@ -47,6 +47,15 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
     }
   }
 
+  func vin(store: ModelStore) async throws -> String {
+    guard !AUTH_MODEL.preferences.primaryVIN.isEmpty else {
+      // Use the first vehicle as a default.
+      let vehicleList = try await store.vehicleList()
+      return vehicleList[0].vin
+    }
+    return AUTH_MODEL.preferences.primaryVIN
+  }
+
   func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
     guard let store = AUTH_MODEL.store else {
       completion(Timeline(entries: [Entry(
@@ -59,13 +68,10 @@ struct VehicleRangeTimelineProvider: TimelineProvider {
     }
     Task {
       do {
-        let vehicleList = try await store.vehicleList()
+        let vin = try await vin(store: store)
 
-        // TODO: Let the user pick this somehow?
-        let firstVehicle = vehicleList[0]
-
-        let emobility = try await store.emobility(for: firstVehicle.vin)
-        let status = try await store.status(for: firstVehicle.vin)
+        let emobility = try await store.emobility(for: vin)
+        let status = try await store.status(for: vin)
 
         storage.lastKnownCharge = emobility.batteryChargeStatus.stateOfChargeInPercentage
         storage.lastKnownChargingState = emobility.isCharging

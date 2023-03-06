@@ -13,7 +13,8 @@ struct VehicleChargeTimelineEntry: TimelineEntry {
   let isCharging: Bool?
 }
 
-struct VehicleChargeTimelineProvider: TimelineProvider {
+struct VehicleChargeTimelineProvider: IntentTimelineProvider {
+  typealias Intent = SelectVehicleIntent
   typealias Entry = VehicleChargeTimelineEntry
 
   private let storage = Storage()
@@ -26,7 +27,7 @@ struct VehicleChargeTimelineProvider: TimelineProvider {
     )
   }
 
-  func getSnapshot(in context: Context, completion: @escaping (Entry) -> ()) {
+  func getSnapshot(for configuration: SelectVehicleIntent, in context: Context, completion: @escaping (Entry) -> ()) {
     if context.isPreview {
       completion(Entry(
         date: Date(),
@@ -38,7 +39,7 @@ struct VehicleChargeTimelineProvider: TimelineProvider {
     }
   }
 
-  func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+  func getTimeline(for configuration: SelectVehicleIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
     guard let store = AUTH_MODEL.store else {
       completion(Timeline(entries: [Entry(
         date: Date(),
@@ -49,12 +50,8 @@ struct VehicleChargeTimelineProvider: TimelineProvider {
     }
     Task {
       do {
-        let vehicleList = try await store.vehicleList()
-
-        // TODO: Let the user pick this somehow?
-        let firstVehicle = vehicleList[0]
-
-        let emobility = try await store.emobility(for: firstVehicle.vin)
+        let vin = try await vin(for: configuration, store: store)
+        let emobility = try await store.emobility(for: vin)
 
         storage.lastKnownCharge = emobility.batteryChargeStatus.stateOfChargeInPercentage
         storage.lastKnownChargingState = emobility.isCharging
@@ -70,5 +67,25 @@ struct VehicleChargeTimelineProvider: TimelineProvider {
       )], policy: .after(.now.addingTimeInterval(60 * 30)))
       completion(timeline)
     }
+  }
+
+  func recommendations() -> [IntentRecommendation<SelectVehicleIntent>] {
+    let intent = SelectVehicleIntent()
+    intent.vehicle = IntentVehicle(identifier: "", display: "")
+    return [
+      IntentRecommendation(intent: intent, description: VehicleChargeWidget.configurationDisplayName)
+    ]
+  }
+
+  private func vin(for configuration: SelectVehicleIntent, store: ModelStore) async throws -> String {
+    if let vin = configuration.vehicle?.identifier {
+      return vin
+    }
+    guard !AUTH_MODEL.preferences.primaryVIN.isEmpty else {
+      // Use the first vehicle as a default.
+      let vehicleList = try await store.vehicleList()
+      return vehicleList[0].vin
+    }
+    return AUTH_MODEL.preferences.primaryVIN
   }
 }

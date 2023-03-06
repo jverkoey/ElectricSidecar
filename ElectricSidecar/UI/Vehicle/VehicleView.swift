@@ -14,6 +14,7 @@ struct VehicleView: View {
   @SwiftUI.Environment(\.scenePhase) var scenePhase
 
   let vehicle: UIModel.Vehicle
+  let hasManyVehicles: Bool
 
   let statusPublisher: AnyPublisher<UIModel.Refreshable<UIModel.Vehicle.Status>, Never>
   let emobilityPublisher: AnyPublisher<UIModel.Refreshable<UIModel.Vehicle.Emobility>, Never>
@@ -110,10 +111,30 @@ struct VehicleView: View {
         // Reset the section header styling that causes header text to be uppercased
         .textCase(.none)
       }
-      
+
+      if hasManyVehicles {
+        Section {
+          Toggle("Primary", isOn: Binding<Bool>(
+            get: {
+              return AUTH_MODEL.preferences.primaryVIN == vehicle.vin
+            },
+            set: {
+              if $0 {
+                AUTH_MODEL.preferences.primaryVIN = vehicle.vin
+                UserDefaults(suiteName: APP_GROUP_IDENTIFIER)!.synchronize()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                  WidgetCenter.shared.reloadAllTimelines()
+                }
+              }
+            }
+          ))
+        }
+      }
+
       Section {
         NavigationLink {
-          VehicleLocationView(
+          VehicleLocationPage(
             vehicleName: vehicle.licensePlate ?? vehicle.modelDescription,
             position: $position
           )
@@ -122,7 +143,7 @@ struct VehicleView: View {
           NavigationLinkContentView(imageSystemName: "location", title: "Location")
         }
         NavigationLink {
-          VehicleDetailsView(
+          VehicleDetailsPage(
             status: $status,
             modelDescription: vehicle.modelDescription,
             modelYear: vehicle.modelYear,
@@ -133,7 +154,7 @@ struct VehicleView: View {
           NavigationLinkContentView(imageSystemName: "info.circle", title: "More details")
         }
         NavigationLink {
-          VehiclePhotosView(vehicle: vehicle)
+          VehiclePhotosPage(vehicle: vehicle)
             .navigationTitle("Photos")
         } label: {
           NavigationLinkContentView(imageSystemName: "photo.on.rectangle.angled", title: "Photos")
@@ -141,7 +162,7 @@ struct VehicleView: View {
         
         if statusError != nil || emobilityError != nil || positionError != nil {
           NavigationLink {
-            VehicleErrorView(statusError: $statusError, emobilityError: $emobilityError, positionError: $positionError)
+            VehicleErrorPage(statusError: $statusError, emobilityError: $emobilityError, positionError: $positionError)
           } label: {
             NavigationLinkContentView(imageSystemName: "exclamationmark.triangle", title: "Errors")
           }

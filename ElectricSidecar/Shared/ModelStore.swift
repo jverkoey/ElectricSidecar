@@ -19,6 +19,7 @@ final class ModelStore: ObservableObject {
   private let authStorage: AuthStorage
   private let cacheCoordinator = CodableCacheCoordinator()
 
+  private let simulating: Bool
   private let cacheURL: URL
   private let vehiclesURL: URL
   private let vehicleCacheTimeout: TimeInterval = 60 * 60 * 24
@@ -27,20 +28,28 @@ final class ModelStore: ObservableObject {
 
   @Published var vehicles: [UIModel.Vehicle]?
 
-  init(username: String, password: String) {
+  init(username: String, password: String, simulatedGarage: String? = nil) {
     let baseURL = FileManager.sharedContainerURL
     let hashed = SHA256.hash(data: username.data(using: .utf8)!)
     let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
 
     // Root cache directory
-    self.cacheURL = baseURL.appendingPathComponent(".cache").appendingPathComponent(hashString)
-    if !fm.fileExists(atPath: cacheURL.path) {
-      try! fm.createDirectory(at: cacheURL, withIntermediateDirectories: true)
+    if let simulatedGarage,
+       !simulatedGarage.isEmpty,
+       let mockDataUrl = Bundle.main.url(forResource: "MockData", withExtension: nil) {
+      self.cacheURL = mockDataUrl.appendingPathComponent(simulatedGarage)
+      simulating = true
+    } else {
+      self.cacheURL = baseURL.appendingPathComponent(".cache").appendingPathComponent(hashString)
+      if !fm.fileExists(atPath: cacheURL.path) {
+        try! fm.createDirectory(at: cacheURL, withIntermediateDirectories: true)
+      }
+      simulating = false
     }
 
     // Auth tokens
     let authTokensURL = self.cacheURL.appendingPathComponent("auth_tokens")
-    if !fm.fileExists(atPath: authTokensURL.path) {
+    if !simulating && !fm.fileExists(atPath: authTokensURL.path) {
       try! fm.createDirectory(at: authTokensURL, withIntermediateDirectories: true)
     }
     self.authStorage = AuthStorage(authTokensURL: authTokensURL, fileCoordinator: cacheCoordinator)
@@ -63,6 +72,11 @@ final class ModelStore: ObservableObject {
     let vehicles: [Vehicle]
     do {
       vehicles = try await vehicleList()
+
+      // Verify that the preferred VIN exists, or default to the first one
+      if vehicles.first(where: { $0.vin == AUTH_MODEL.preferences.primaryVIN }) == nil {
+        AUTH_MODEL.preferences.primaryVIN = vehicles.first?.vin ?? ""
+      }
     } catch {
       Logging.network.error("Failed initial load with error: \(error, privacy: .public)")
       throw error
@@ -90,7 +104,13 @@ final class ModelStore: ObservableObject {
   func refreshStatus(for vin: String, ignoreCache: Bool = false) async {
     do {
       Logging.network.info("Refreshing status for \(vin, privacy: .private(mask: .hash))")
-      let status = try await self.status(for: vin, ignoreCache: ignoreCache)
+      let status: Stored
+
+#if DEBUG
+      status = try await self.status(for: vin, ignoreCache: ignoreCache)
+#else
+      status = try await self.status(for: vin, ignoreCache: ignoreCache)
+#endif
       let distanceFormatter = DistanceFormatter()
       let electricalRange: String?
       if let distance = status.remainingRanges.electricalRange.distance {
@@ -222,6 +242,8 @@ final class ModelStore: ObservableObject {
       return result
     }
 
+    assert(!simulating)
+
     // Fetch data if we don't have it.
     let response = try await porscheConnect.vehicles()
     guard response.response.statusCode < 300,
@@ -334,6 +356,7 @@ final class ModelStore: ObservableObject {
   // MARK: - Actions
 
   func lock(vin: String) async throws -> RemoteCommandAccepted? {
+    assert(!simulating)
     let response = try await porscheConnect.lock(vin: vin)
     guard response.response.statusCode < 300 else {
       Logging.network.error("Failed to lock the car: \(response.response)")
@@ -363,13 +386,15 @@ final class ModelStore: ObservableObject {
     // Try disk cache first.
     let vehicleURL = vehiclesURL.appendingPathComponent(vin)
     let url = vehicleURL.appendingPathComponent(cacheKey)
-    if !fm.fileExists(atPath: vehicleURL.path) {
+    if !simulating && !fm.fileExists(atPath: vehicleURL.path) {
       try fm.createDirectory(at: vehicleURL, withIntermediateDirectories: true)
     }
-    if !ignoreCache,
-       let result: T = try cacheCoordinator.decode(url: url, timeout: timeout) {
+    if (simulating || !ignoreCache),
+       let result: T = try cacheCoordinator.decode(url: url, timeout: simulating ? nil : timeout) {
       return result
     }
+
+    assert(!simulating, "Shouldn't be simulating when loading \(url)")
 
     // Fetch data if we don't have it.
     let result = try await api()
@@ -380,6 +405,7 @@ final class ModelStore: ObservableObject {
   }
 
   func flash(vin: String) async throws {
+    assert(!simulating)
     let response = try await porscheConnect.flash(vin: vin)
     guard response.response.statusCode == 200 else {
       fatalError()
