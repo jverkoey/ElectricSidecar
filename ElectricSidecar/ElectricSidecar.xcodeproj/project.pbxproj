@@ -67,6 +67,32 @@
 		6651491329B58654003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
 		6651491429B58FB1003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
 		6651491529B58FB1003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
+		6651491729B59E4C003D0401 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6651491629B59E4C003D0401 /* Intents.intentdefinition */; };
+		6651492129B59ED6003D0401 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6651492029B59ED6003D0401 /* Intents.framework */; };
+		6651492429B59ED6003D0401 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651492329B59ED6003D0401 /* IntentHandler.swift */; };
+		6651493929B59ED6003D0401 /* ElectricSidecarIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6651491F29B59ED6003D0401 /* ElectricSidecarIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6651494129B59F65003D0401 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6651491629B59E4C003D0401 /* Intents.intentdefinition */; };
+		6651494329B59F75003D0401 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6651491629B59E4C003D0401 /* Intents.intentdefinition */; };
+		6651494429B5A176003D0401 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6651491629B59E4C003D0401 /* Intents.intentdefinition */; };
+		6651498329B5A6AA003D0401 /* ModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D77296B572F00791A7A /* ModelStore.swift */; };
+		6651498429B5A6B6003D0401 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D78296B572F00791A7A /* AppGroup.swift */; };
+		6651498529B5A6B6003D0401 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66513E44298F58E90094581B /* AuthModel.swift */; };
+		6651498629B5A6BC003D0401 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB9582979119B00304EA5 /* Logging.swift */; };
+		6651498729B5A6C4003D0401 /* WatchConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */; };
+		6651498829B5A6CD003D0401 /* Vehicle+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F4929725D0900A4CC90 /* Vehicle+Status.swift */; };
+		6651498929B5A6CD003D0401 /* Vehicle+Emobility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F53297270FC00A4CC90 /* Vehicle+Emobility.swift */; };
+		6651498A29B5A6CD003D0401 /* Vehicle+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F562972770800A4CC90 /* Vehicle+Position.swift */; };
+		6651498B29B5A6CD003D0401 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F5029726E9100A4CC90 /* Refreshable.swift */; };
+		6651498C29B5A6CD003D0401 /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F4D2972641500A4CC90 /* UIModel.swift */; };
+		6651498D29B5A6CD003D0401 /* Vehicle+Doors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8608297F951C00C60DE8 /* Vehicle+Doors.swift */; };
+		6651498E29B5A6CD003D0401 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CA7DA0296FE95D00090ADD /* Vehicle.swift */; };
+		6651498F29B5A6D7003D0401 /* Vehicle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108DA1296B58EE00791A7A /* Vehicle+Helpers.swift */; };
+		6651499029B5A6D7003D0401 /* Emobility+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BFB5E296C0942004621D9 /* Emobility+Helpers.swift */; };
+		6651499129B5A6D7003D0401 /* Status+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D9F296B58EE00791A7A /* Status+Helpers.swift */; };
+		6651499229B5A6DE003D0401 /* CodableCacheCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6618E351296FDE5900F370BB /* CodableCacheCoordinator.swift */; };
+		6651499629B5A6EF003D0401 /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 6651499529B5A6EF003D0401 /* PorscheConnect */; };
+		6651499829B5AB01003D0401 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = 6651491129B58654003D0401 /* MockData */; };
+		6651499929B5ABF8003D0401 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6651491629B59E4C003D0401 /* Intents.intentdefinition */; };
 		6651ED042986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED052986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
 		6651ED062986FB71001337A3 /* BatteryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651ED032986FB71001337A3 /* BatteryStyle.swift */; };
@@ -251,6 +277,13 @@
 			remoteGlobalIDString = 66108D5C296B56AF00791A7A;
 			remoteInfo = ESComplicationsExtension;
 		};
+		6651493729B59ED6003D0401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66108D1A296B569000791A7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6651491E29B59ED6003D0401;
+			remoteInfo = ElectricSidecarIntents;
+		};
 		665ACB1329976C120003F008 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66108D1A296B569000791A7A /* Project object */;
@@ -313,6 +346,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				6651493929B59ED6003D0401 /* ElectricSidecarIntents.appex in Embed Foundation Extensions */,
 				6674400C298E32CE002A799F /* PhoneWidgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -374,6 +408,13 @@
 		661DF6D829B5704100F2C9A3 /* UITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
 		66513E44298F58E90094581B /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		6651491129B58654003D0401 /* MockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockData; sourceTree = "<group>"; };
+		6651491629B59E4C003D0401 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		6651491F29B59ED6003D0401 /* ElectricSidecarIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ElectricSidecarIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6651492029B59ED6003D0401 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		6651492329B59ED6003D0401 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		6651492529B59ED6003D0401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6651492B29B59ED6003D0401 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		6651499729B5AA74003D0401 /* ElectricSidecarIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ElectricSidecarIntents.entitlements; path = ElectricSidecarIntents/ElectricSidecarIntents.entitlements; sourceTree = "<group>"; };
 		6651ED032986FB71001337A3 /* BatteryStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryStyle.swift; sourceTree = "<group>"; };
 		665ACAF629976C110003F008 /* WatchUICatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchUICatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		665ACAFB29976C110003F008 /* UICatalogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICatalogApp.swift; sourceTree = "<group>"; };
@@ -451,6 +492,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6651491C29B59ED6003D0401 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6651499629B5A6EF003D0401 /* PorscheConnect in Frameworks */,
+				6651492129B59ED6003D0401 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		665ACAF329976C110003F008 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -523,11 +573,13 @@
 		66108D19296B569000791A7A = {
 			isa = PBXGroup;
 			children = (
+				6651499729B5AA74003D0401 /* ElectricSidecarIntents.entitlements */,
 				6651491129B58654003D0401 /* MockData */,
 				66108DA9296B58F700791A7A /* UI */,
 				668B86532986F2A700C60DE8 /* Phone */,
 				66108D2A296B569000791A7A /* Watch */,
 				66108D63296B56AF00791A7A /* Widgets */,
+				6651494029B59EE9003D0401 /* Intents */,
 				66108D76296B570C00791A7A /* Shared */,
 				668B86862986F38400C60DE8 /* Tests */,
 				66108D85296B579800791A7A /* Playgrounds */,
@@ -553,6 +605,7 @@
 				665ACB1229976C120003F008 /* WatchUICatalogTests.xctest */,
 				668976FA29B56E24008580C6 /* PhoneUICatalog.app */,
 				6689770629B56E46008580C6 /* PhoneUICatalogTests.xctest */,
+				6651491F29B59ED6003D0401 /* ElectricSidecarIntents.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -716,6 +769,24 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		6651492229B59ED6003D0401 /* ElectricSidecarIntents */ = {
+			isa = PBXGroup;
+			children = (
+				6651492329B59ED6003D0401 /* IntentHandler.swift */,
+				6651492529B59ED6003D0401 /* Info.plist */,
+			);
+			path = ElectricSidecarIntents;
+			sourceTree = "<group>";
+		};
+		6651494029B59EE9003D0401 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				6651491629B59E4C003D0401 /* Intents.intentdefinition */,
+				6651492229B59ED6003D0401 /* ElectricSidecarIntents */,
+			);
+			name = Intents;
+			sourceTree = "<group>";
+		};
 		6651ED0729870863001337A3 /* Theming */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,6 +907,8 @@
 			children = (
 				66743FFB298E32CD002A799F /* WidgetKit.framework */,
 				66743FFD298E32CD002A799F /* SwiftUI.framework */,
+				6651492029B59ED6003D0401 /* Intents.framework */,
+				6651492B29B59ED6003D0401 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -993,6 +1066,27 @@
 			productReference = 66108D5D296B56AF00791A7A /* WatchWidgets.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		6651491E29B59ED6003D0401 /* ElectricSidecarIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6651493D29B59ED6003D0401 /* Build configuration list for PBXNativeTarget "ElectricSidecarIntents" */;
+			buildPhases = (
+				6651491B29B59ED6003D0401 /* Sources */,
+				6651491C29B59ED6003D0401 /* Frameworks */,
+				6651491D29B59ED6003D0401 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6651499429B5A6EC003D0401 /* PBXTargetDependency */,
+			);
+			name = ElectricSidecarIntents;
+			packageProductDependencies = (
+				6651499529B5A6EF003D0401 /* PorscheConnect */,
+			);
+			productName = ElectricSidecarIntents;
+			productReference = 6651491F29B59ED6003D0401 /* ElectricSidecarIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		665ACAF529976C110003F008 /* WatchUICatalog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 665ACB1A29976C120003F008 /* Build configuration list for PBXNativeTarget "WatchUICatalog" */;
@@ -1114,6 +1208,7 @@
 				66743FDE298E2E15002A799F /* PBXTargetDependency */,
 				668B86832986F32200C60DE8 /* PBXTargetDependency */,
 				6674400A298E32CE002A799F /* PBXTargetDependency */,
+				6651493829B59ED6003D0401 /* PBXTargetDependency */,
 			);
 			name = ElectricSidecar;
 			packageProductDependencies = (
@@ -1167,6 +1262,9 @@
 					66108D5C296B56AF00791A7A = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					6651491E29B59ED6003D0401 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					665ACAF529976C110003F008 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -1206,6 +1304,7 @@
 			projectRoot = "";
 			targets = (
 				668B86512986F2A600C60DE8 /* ElectricSidecar */,
+				6651491E29B59ED6003D0401 /* ElectricSidecarIntents */,
 				66743FF9298E32CD002A799F /* PhoneWidgets */,
 				66108D25296B569000791A7A /* Watch */,
 				66108D5C296B56AF00791A7A /* WatchWidgets */,
@@ -1253,6 +1352,14 @@
 				661197A129750EE800D92637 /* Shared.xcassets in Resources */,
 				6651491529B58FB1003D0401 /* MockData in Resources */,
 				66108D67296B56B000791A7A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6651491D29B59ED6003D0401 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6651499829B5AB01003D0401 /* MockData in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,6 +1463,7 @@
 				6651ED042986FB71001337A3 /* BatteryStyle.swift in Sources */,
 				66513E47298F58E90094581B /* AuthModel.swift in Sources */,
 				66108DA8296B58EE00791A7A /* LoginView.swift in Sources */,
+				6651499929B5ABF8003D0401 /* Intents.intentdefinition in Sources */,
 				66108DB4296B58F700791A7A /* VehicleDetailsPage.swift in Sources */,
 				668EB95F2979326E00304EA5 /* NavigationLinkContentView.swift in Sources */,
 				66CA7DA1296FE95D00090ADD /* Vehicle.swift in Sources */,
@@ -1388,6 +1496,7 @@
 				66EB7707296C0AB1008BFC27 /* Status+Helpers.swift in Sources */,
 				6651ED052986FB71001337A3 /* BatteryStyle.swift in Sources */,
 				66108D65296B56AF00791A7A /* VehicleChargeWidget.swift in Sources */,
+				6651494429B5A176003D0401 /* Intents.intentdefinition in Sources */,
 				661C3F5229726E9100A4CC90 /* Refreshable.swift in Sources */,
 				661C3F4F2972641500A4CC90 /* UIModel.swift in Sources */,
 				66513E48298F58E90094581B /* AuthModel.swift in Sources */,
@@ -1411,6 +1520,31 @@
 				66EB7708296C0AB1008BFC27 /* Vehicle+Helpers.swift in Sources */,
 				668B8616298659D400C60DE8 /* VehicleRangeWidget.swift in Sources */,
 				66108D7A296B572F00791A7A /* ModelStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6651491B29B59ED6003D0401 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6651494129B59F65003D0401 /* Intents.intentdefinition in Sources */,
+				6651498629B5A6BC003D0401 /* Logging.swift in Sources */,
+				6651498729B5A6C4003D0401 /* WatchConnectivityObserver.swift in Sources */,
+				6651498C29B5A6CD003D0401 /* UIModel.swift in Sources */,
+				6651498E29B5A6CD003D0401 /* Vehicle.swift in Sources */,
+				6651498329B5A6AA003D0401 /* ModelStore.swift in Sources */,
+				6651492429B59ED6003D0401 /* IntentHandler.swift in Sources */,
+				6651498429B5A6B6003D0401 /* AppGroup.swift in Sources */,
+				6651498829B5A6CD003D0401 /* Vehicle+Status.swift in Sources */,
+				6651498A29B5A6CD003D0401 /* Vehicle+Position.swift in Sources */,
+				6651498B29B5A6CD003D0401 /* Refreshable.swift in Sources */,
+				6651498929B5A6CD003D0401 /* Vehicle+Emobility.swift in Sources */,
+				6651498529B5A6B6003D0401 /* AuthModel.swift in Sources */,
+				6651498F29B5A6D7003D0401 /* Vehicle+Helpers.swift in Sources */,
+				6651499029B5A6D7003D0401 /* Emobility+Helpers.swift in Sources */,
+				6651498D29B5A6CD003D0401 /* Vehicle+Doors.swift in Sources */,
+				6651499229B5A6DE003D0401 /* CodableCacheCoordinator.swift in Sources */,
+				6651499129B5A6D7003D0401 /* Status+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1475,6 +1609,7 @@
 				66744012298E3360002A799F /* VehicleChargeTimelineProvider.swift in Sources */,
 				66744026298E33A9002A799F /* WatchConnectivityObserver.swift in Sources */,
 				669902D429B45D1B001004AC /* RangeView.swift in Sources */,
+				6651494329B59F75003D0401 /* Intents.intentdefinition in Sources */,
 				6674401F298E33A5002A799F /* Vehicle.swift in Sources */,
 				66744017298E3371002A799F /* AppGroup.swift in Sources */,
 				66744024298E33A7002A799F /* ChargeView.swift in Sources */,
@@ -1575,6 +1710,7 @@
 				66743FF3298E2F96002A799F /* BatteryStyle.swift in Sources */,
 				66513E45298F58E90094581B /* AuthModel.swift in Sources */,
 				66743FD6298E2DF2002A799F /* UIModel.swift in Sources */,
+				6651491729B59E4C003D0401 /* Intents.intentdefinition in Sources */,
 				66743FD3298E2DF2002A799F /* Vehicle.swift in Sources */,
 				66743FE4298E2F27002A799F /* GarageView.swift in Sources */,
 				66743FE5298E2F27002A799F /* VehicleErrorPage.swift in Sources */,
@@ -1616,6 +1752,15 @@
 		66108DBA296B591900791A7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 66108DB9296B591900791A7A /* CachedAsyncImage */;
+		};
+		6651493829B59ED6003D0401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6651491E29B59ED6003D0401 /* ElectricSidecarIntents */;
+			targetProxy = 6651493729B59ED6003D0401 /* PBXContainerItemProxy */;
+		};
+		6651499429B5A6EC003D0401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 6651499329B5A6EC003D0401 /* PorscheConnect */;
 		};
 		665ACB1429976C120003F008 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2008,6 +2153,64 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6651493E29B59ED6003D0401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ElectricSidecarIntents/ElectricSidecarIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGWD8QJUPK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ElectricSidecarIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ElectricSidecarIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.featherless.apps.electricsidecar.ElectricSidecarIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6651493F29B59ED6003D0401 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ElectricSidecarIntents/ElectricSidecarIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGWD8QJUPK;
+				EXCLUDED_SOURCE_FILE_NAMES = MockData;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ElectricSidecarIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ElectricSidecarIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.featherless.apps.electricsidecar.ElectricSidecarIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2447,6 +2650,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		6651493D29B59ED6003D0401 /* Build configuration list for PBXNativeTarget "ElectricSidecarIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6651493E29B59ED6003D0401 /* Debug */,
+				6651493F29B59ED6003D0401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		665ACB1A29976C120003F008 /* Build configuration list for PBXNativeTarget "WatchUICatalog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2549,6 +2761,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66108DB6296B590F00791A7A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
+		};
+		6651499329B5A6EC003D0401 /* PorscheConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PorscheConnect;
+		};
+		6651499529B5A6EF003D0401 /* PorscheConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PorscheConnect;
 		};
 		66743FDD298E2E15002A799F /* PorscheConnect */ = {
 			isa = XCSwiftPackageProductDependency;

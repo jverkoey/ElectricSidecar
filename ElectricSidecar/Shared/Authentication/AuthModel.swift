@@ -8,6 +8,8 @@ protocol AuthModeling: AnyObject {
   var store: ModelStore? { get }
 
   var preferences: Preferences { get set }
+
+  var simulatedGarage: String { get set }
 }
 
 struct Preferences: Codable, RawRepresentable {
@@ -62,6 +64,7 @@ final class AuthModel: AuthModeling {
   var simulatedGarage: String = ""
 
   var store: ModelStore? {
+    Logging.intents.info("Simulated garage: \(self.simulatedGarage)")
     if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {
       return nil
     }
@@ -140,15 +143,20 @@ final class FakeAuthModel: AuthModeling {
 }
 
 let AUTH_MODEL: AuthModeling = {
+  let model: AuthModeling
   if ProcessInfo.processInfo.environment["TESTING"] == "1"
       || ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] != nil {
-    let model = FakeAuthModel()
-    if let simulatedGarage = ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] {
-      model.email = "test@test.com"
-      model.password = "test"
-      model.simulatedGarage = simulatedGarage
-    }
-    return model
+    model = FakeAuthModel()
+  } else {
+    model = AuthModel()
   }
-  return AuthModel()
+
+  if let simulatedGarage = ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] {
+    model.email = "test@test.com"
+    model.password = "test"
+    model.simulatedGarage = simulatedGarage
+  } else {
+    model.simulatedGarage = ""
+  }
+  return model
 }()
