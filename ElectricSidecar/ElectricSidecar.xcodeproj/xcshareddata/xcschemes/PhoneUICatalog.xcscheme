@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "665ACAF529976C110003F008"
-               BuildableName = "WatchUICatalog.app"
-               BlueprintName = "WatchUICatalog"
-               ReferencedContainer = "container:ElectricSidecar.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "665ACAF529976C110003F008"
-               BuildableName = "WatchUICatalog.app"
-               BlueprintName = "WatchUICatalog"
+               BlueprintIdentifier = "668976D129B56E23008580C6"
+               BuildableName = "PhoneUICatalog.app"
+               BlueprintName = "PhoneUICatalog"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "665ACB1129976C120003F008"
-            BuildableName = "WatchUICatalogTests.xctest"
-            BlueprintName = "WatchUICatalogTests"
+            BlueprintIdentifier = "668976FB29B56E46008580C6"
+            BuildableName = "PhoneUICatalogTests.xctest"
+            BlueprintName = "PhoneUICatalogTests"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +50,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "665ACB1129976C120003F008"
-               BuildableName = "WatchUICatalogTests.xctest"
-               BlueprintName = "WatchUICatalogTests"
+               BlueprintIdentifier = "668976FB29B56E46008580C6"
+               BuildableName = "PhoneUICatalogTests.xctest"
+               BlueprintName = "PhoneUICatalogTests"
                ReferencedContainer = "container:ElectricSidecar.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -86,9 +72,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "665ACAF529976C110003F008"
-            BuildableName = "WatchUICatalog.app"
-            BlueprintName = "WatchUICatalog"
+            BlueprintIdentifier = "668976D129B56E23008580C6"
+            BuildableName = "PhoneUICatalog.app"
+            BlueprintName = "PhoneUICatalog"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -103,9 +89,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "665ACAF529976C110003F008"
-            BuildableName = "WatchUICatalog.app"
-            BlueprintName = "WatchUICatalog"
+            BlueprintIdentifier = "668976D129B56E23008580C6"
+            BuildableName = "PhoneUICatalog.app"
+            BlueprintName = "PhoneUICatalog"
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

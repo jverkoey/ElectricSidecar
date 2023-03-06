@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct WatchUICatalog_Watch_AppApp: App {
+struct UICatalogApp: App {
   var body: some Scene {
     WindowGroup {
       switch ProcessInfo.processInfo.environment["test-case"] {
