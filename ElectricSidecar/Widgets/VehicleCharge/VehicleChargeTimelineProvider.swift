@@ -28,43 +28,25 @@ struct VehicleChargeTimelineProvider: IntentTimelineProvider {
   }
 
   func getSnapshot(for configuration: SelectVehicleIntent, in context: Context, completion: @escaping (Entry) -> ()) {
-    if context.isPreview {
+    guard !context.isPreview else {
       completion(Entry(
         date: Date(),
         chargeRemaining: storage.lastKnownCharge ?? 100,
         isCharging: storage.lastKnownChargingState
       ))
-    } else {
-      completion(Entry(date: Date(), chargeRemaining: 100, isCharging: false))
+      return
+    }
+
+    Task {
+      let entry = await latestEntry(for: configuration)
+      completion(entry)
     }
   }
 
   func getTimeline(for configuration: SelectVehicleIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-    guard let store = AUTH_MODEL.store else {
-      completion(Timeline(entries: [Entry(
-        date: Date(),
-        chargeRemaining: storage.lastKnownCharge,
-        isCharging: storage.lastKnownChargingState
-      )], policy: .after(.now.addingTimeInterval(60 * 30))))
-      return
-    }
     Task {
-      do {
-        let vin = try await vin(for: configuration, store: store)
-        let emobility = try await store.emobility(for: vin)
-
-        storage.lastKnownCharge = emobility.batteryChargeStatus.stateOfChargeInPercentage
-        storage.lastKnownChargingState = emobility.isCharging
-      } catch {
-        Logging.network.error("Failed to update complication with error: \(error.localizedDescription)")
-      }
-
-      // Always provide a timeline, even if the update request failed.
-      let timeline = Timeline(entries: [Entry(
-        date: Date(),
-        chargeRemaining: storage.lastKnownCharge,
-        isCharging: storage.lastKnownChargingState
-      )], policy: .after(.now.addingTimeInterval(60 * 30)))
+      let entry = await latestEntry(for: configuration)
+      let timeline = Timeline(entries: [entry], policy: .after(.now.addingTimeInterval(60 * 30)))
       completion(timeline)
     }
   }
@@ -75,6 +57,30 @@ struct VehicleChargeTimelineProvider: IntentTimelineProvider {
     return [
       IntentRecommendation(intent: intent, description: VehicleChargeWidget.configurationDisplayName)
     ]
+  }
+
+  private func latestEntry(for configuration: SelectVehicleIntent) async -> Entry {
+    guard let store = AUTH_MODEL.store else {
+      return Entry(
+        date: Date(),
+        chargeRemaining: storage.lastKnownCharge,
+        isCharging: storage.lastKnownChargingState
+      )
+    }
+    do {
+      let vin = try await vin(for: configuration, store: store)
+      let emobility = try await store.emobility(for: vin)
+
+      storage.lastKnownCharge = emobility.batteryChargeStatus.stateOfChargeInPercentage
+      storage.lastKnownChargingState = emobility.isCharging
+    } catch {
+      Logging.network.error("Failed to update complication with error: \(error.localizedDescription)")
+    }
+    return Entry(
+      date: Date(),
+      chargeRemaining: storage.lastKnownCharge,
+      isCharging: storage.lastKnownChargingState
+    )
   }
 
   private func vin(for configuration: SelectVehicleIntent, store: ModelStore) async throws -> String {
