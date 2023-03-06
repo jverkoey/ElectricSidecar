@@ -323,7 +323,6 @@
 		665ACAFF29976C120003F008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		665ACB0229976C120003F008 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		665ACB1229976C120003F008 /* WatchUICatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchUICatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		665ACB302998AAEC0003F008 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
 		665ACB312999DD190003F008 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
 		665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityObserver.swift; sourceTree = "<group>"; };
 		665EDD59297289C40012CD3A /* RefreshStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatusView.swift; sourceTree = "<group>"; };
@@ -652,7 +651,6 @@
 		665ACB1529976C120003F008 /* WatchUICatalogTests */ = {
 			isa = PBXGroup;
 			children = (
-				665ACB302998AAEC0003F008 /* __Snapshots__ */,
 				66B8F49D29AC952900B17E6A /* AppUITests.swift */,
 				66B8F4B829ADA0CE00B17E6A /* WidgetUITests.swift */,
 			);
