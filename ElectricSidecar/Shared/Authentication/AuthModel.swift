@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 import WatchConnectivity
 
+private let userDefaults = UserDefaults(suiteName: APP_GROUP_IDENTIFIER)
+
 protocol AuthModeling: AnyObject {
   var email: String { get set }
   var password: String { get set }
@@ -52,16 +54,19 @@ struct Preferences: Codable, RawRepresentable {
 }
 
 final class AuthModel: AuthModeling {
-  @AppStorage("email", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  @AppStorage("email", store: userDefaults)
   var email: String = ""
-  @AppStorage("password", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  @AppStorage("password", store: userDefaults)
   var password: String = ""
-  @AppStorage("preferences", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  @AppStorage("preferences", store: userDefaults)
   var preferences = Preferences()
 
-  // Debug-only storage
-  @AppStorage("simulatedGarage", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+#if DEBUG
+  @AppStorage("simulatedGarage", store: userDefaults)
   var simulatedGarage: String = ""
+#else
+  let simulatedGarage = ""
+#endif
 
   var store: ModelStore? {
     Logging.intents.info("Simulated garage: \(self.simulatedGarage)")
@@ -124,10 +129,14 @@ final class AuthModel: AuthModeling {
 final class FakeAuthModel: AuthModeling {
   var email: String = ""
   var password: String = ""
-  @AppStorage("simulatedGarage", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
-  var simulatedGarage: String = ""
-  @AppStorage("preferences", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  @AppStorage("preferences", store: userDefaults)
   var preferences = Preferences()
+#if DEBUG
+  @AppStorage("simulatedGarage", store: userDefaults)
+  var simulatedGarage: String = ""
+#else
+  let simulatedGarage = ""
+#endif
 
   var store: ModelStore? {
     if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {
@@ -151,12 +160,12 @@ let AUTH_MODEL: AuthModeling = {
     model = AuthModel()
   }
 
+#if DEBUG
   if let simulatedGarage = ProcessInfo.processInfo.environment["SIMULATED_GARAGE"] {
     model.email = "test@test.com"
     model.password = "test"
     model.simulatedGarage = simulatedGarage
-  } else {
-    model.simulatedGarage = ""
   }
+#endif
   return model
 }()

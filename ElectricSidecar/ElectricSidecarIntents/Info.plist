@@ -12,7 +12,6 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>SelectVehicle</string>
 				<string>SelectVehicleIntent</string>
 			</array>
 		</dict>
