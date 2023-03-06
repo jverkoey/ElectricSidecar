@@ -34,7 +34,6 @@ struct VehicleErrorView_Previews: PreviewProvider {
       emobilityError: .constant(URLError(.badServerResponse)),
       positionError: .constant(URLError(.badServerResponse))
     )
-    .previewDevice("Apple Watch Series 8 (45mm)")
     .previewDisplayName("All errors")
 
     VehicleErrorView(
@@ -42,7 +41,6 @@ struct VehicleErrorView_Previews: PreviewProvider {
       emobilityError: .constant(nil),
       positionError: .constant(nil)
     )
-    .previewDevice("Apple Watch Series 8 (45mm)")
     .previewDisplayName("No errors")
 
     VehicleErrorView(
@@ -50,7 +48,6 @@ struct VehicleErrorView_Previews: PreviewProvider {
       emobilityError: .constant(nil),
       positionError: .constant(nil)
     )
-    .previewDevice("Apple Watch Series 8 (45mm)")
     .previewDisplayName("Status error")
   }
 }

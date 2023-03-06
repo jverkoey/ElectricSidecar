@@ -2,6 +2,21 @@ import Foundation
 import PorscheConnect
 import SwiftUI
 
+struct ValueCell: View {
+  var label: String
+  var value: String
+
+  var body: some View {
+    HStack {
+      Text(label)
+        .foregroundColor(.secondary)
+      Spacer()
+      Text(value)
+        .foregroundColor(.primary)
+    }
+  }
+}
+
 struct VehicleDetailsView: View {
   @Binding var status: UIModel.Vehicle.Status?
   var modelDescription: String
@@ -9,13 +24,15 @@ struct VehicleDetailsView: View {
   var vin: String
 
   var body: some View {
-    VStack(alignment: .leading) {
+    List {
       if let status {
-        Text("Mileage: \(status.mileage)")
-          .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
+        ValueCell(label: "Mileage", value: "\(status.mileage)")
       }
-      Text("\(modelDescription) (\(modelYear))")
-      Text(vin)
+
+      ValueCell(label: "Model", value: "\(modelDescription) (\(modelYear))")
+      Section("VIN") {
+        Text(vin)
+      }
     }
   }
 }
@@ -40,9 +57,7 @@ struct VehicleDetailsView_Previews: PreviewProvider {
       status: .constant(status),
       modelDescription: "Taycan",
       modelYear: "2022",
-      vin: "ABC123"
+      vin: "WP0AB1C23DEF45678"
     )
-    .previewDevice("Apple Watch Series 8 (45mm)")
-    .previewDisplayName("Series 8 45mm")
   }
 }

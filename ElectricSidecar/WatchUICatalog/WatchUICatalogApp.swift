@@ -20,6 +20,22 @@ struct WatchUICatalog_Watch_AppApp: App {
         VehicleChargeWidgetUITestView().accessibilityIdentifier("root-view")
       case "vehicle-range-widget":
         VehicleRangeWidgetUITestView().accessibilityIdentifier("root-view")
+      case "vehicle-details-view":
+        VehicleDetailsView(status: .constant(UIModel.Vehicle.Status(
+          batteryLevel: 100,
+          electricalRange: "100 miles",
+          mileage: "100 miles",
+          doors: UIModel.Vehicle.Doors(
+            frontLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+            frontRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+            backLeft: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+            backRight: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true),
+            frontTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true),
+            backTrunk: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: false),
+            overallLockStatus: UIModel.Vehicle.Doors.Status(isLocked: true, isOpen: true)
+          )
+        )), modelDescription: "Taycan", modelYear: "2022", vin: "WP0AB1C23DEF45678")
+        .accessibilityIdentifier("root-view")
       default:
         Text("Unknown test case")
       }
