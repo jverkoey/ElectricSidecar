@@ -58,6 +58,8 @@ struct RangeView: View {
       return 20
     case .watch41mm:
       return 18
+    case .watch40mm:
+      return 18
     }
   }
 
@@ -68,6 +70,8 @@ struct RangeView: View {
     case .watch45mm, .ultra49mm:
       return 14
     case .watch41mm:
+      return 12
+    case .watch40mm:
       return 12
     }
   }
@@ -80,6 +84,8 @@ struct RangeView: View {
       return -2
     case .watch41mm:
       return -2
+    case .watch40mm:
+      return -2
     }
   }
 
@@ -90,6 +96,8 @@ struct RangeView: View {
     case .watch45mm, .ultra49mm:
       return -14
     case .watch41mm:
+      return -14
+    case .watch40mm:
       return -14
     }
   }

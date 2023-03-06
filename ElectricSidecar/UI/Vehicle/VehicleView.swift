@@ -102,7 +102,7 @@ struct VehicleView: View {
           if let electricalRange = status?.electricalRange {
             Text(electricalRange)
               .font(.system(size: 14))
-              .padding(.top, -8)
+              .padding(.top, -6)
           }
           VehicleClosedStatusView(doors: status?.doors)
             .padding(.top, 8)

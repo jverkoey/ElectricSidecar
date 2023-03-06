@@ -56,6 +56,8 @@
 		661DF6D729B56FA900F2C9A3 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 661DF6D629B56FA900F2C9A3 /* Base.lproj */; };
 		661DF6DB29B5704400F2C9A3 /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661DF6D829B5704100F2C9A3 /* UITestCase.swift */; };
 		661DF6DC29B5704500F2C9A3 /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661DF6D829B5704100F2C9A3 /* UITestCase.swift */; };
+		664884A929B5D15100F787B6 /* VehicleChargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D64296B56AF00791A7A /* VehicleChargeWidget.swift */; };
+		664884AA29B5D15B00F787B6 /* VehicleChargeTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66108D88296B57CB00791A7A /* VehicleChargeTimelineProvider.swift */; };
 		664ACF68298E290A00E76985 /* WatchConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C3F25298E0985002BAD30 /* WatchConnectivityObserver.swift */; };
 		66513E45298F58E90094581B /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66513E44298F58E90094581B /* AuthModel.swift */; };
 		66513E46298F58E90094581B /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66513E44298F58E90094581B /* AuthModel.swift */; };
@@ -1439,6 +1441,7 @@
 				668EB957297910E200304EA5 /* LogsView.swift in Sources */,
 				665C3F27298E0985002BAD30 /* WatchConnectivityObserver.swift in Sources */,
 				661D5B4929B3B36600E2F222 /* ComplicationDimensions.swift in Sources */,
+				664884AA29B5D15B00F787B6 /* VehicleChargeTimelineProvider.swift in Sources */,
 				668EB95C29792E8100304EA5 /* VehiclePhotosPage.swift in Sources */,
 				66108DA6296B58EE00791A7A /* Vehicle+SwiftUI.swift in Sources */,
 				66108DB0296B58F700791A7A /* VehicleView.swift in Sources */,
@@ -1468,6 +1471,7 @@
 				6651499929B5ABF8003D0401 /* Intents.intentdefinition in Sources */,
 				66108DB4296B58F700791A7A /* VehicleDetailsPage.swift in Sources */,
 				668EB95F2979326E00304EA5 /* NavigationLinkContentView.swift in Sources */,
+				664884A929B5D15100F787B6 /* VehicleChargeWidget.swift in Sources */,
 				66CA7DA1296FE95D00090ADD /* Vehicle.swift in Sources */,
 				66108DA5296B58EE00791A7A /* Status+Helpers.swift in Sources */,
 				668B860C297F9A3A00C60DE8 /* VehicleClosedStatusView.swift in Sources */,

@@ -8,6 +8,7 @@ public final class Logging {
   public static let intents = Logger(subsystem: LOGGER_SUBSYSTEM, category: "intents")
   public static let network = Logger(subsystem: LOGGER_SUBSYSTEM, category: "network")
   public static let watchConnectivity = Logger(subsystem: LOGGER_SUBSYSTEM, category: "watch-connectivity")
+  public static let widgets = Logger(subsystem: LOGGER_SUBSYSTEM, category: "widgets")
 
   /// Returns log entries for ElectricSidecar that have occurred within the given timeIntervalSinceNow.
   static func latestEntries(timeIntervalSinceNow: TimeInterval = -60 * 60) -> [OSLogEntry] {

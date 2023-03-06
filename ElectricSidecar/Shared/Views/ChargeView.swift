@@ -70,6 +70,8 @@ struct ChargeView: View {
       return 24
     case .watch41mm:
       return 20
+    case .watch40mm:
+      return 20
     }
   }
 
@@ -81,6 +83,8 @@ struct ChargeView: View {
       return 9
     case .watch41mm:
       return 9
+    case .watch40mm:
+      return 7
     }
   }
 
@@ -92,6 +96,8 @@ struct ChargeView: View {
       return -2
     case .watch41mm:
       return -2
+    case .watch40mm:
+      return -3
     }
   }
 
@@ -103,6 +109,8 @@ struct ChargeView: View {
       return 13
     case .watch41mm:
       return 12
+    case .watch40mm:
+      return 13
     }
   }
 
@@ -121,6 +129,8 @@ struct ChargeView: View {
     case .watch45mm, .ultra49mm:
       return 0.7
     case .watch41mm:
+      return 0.65
+    case .watch40mm:
       return 0.65
     }
   }
