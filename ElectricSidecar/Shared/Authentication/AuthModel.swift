@@ -6,6 +6,47 @@ protocol AuthModeling: AnyObject {
   var email: String { get set }
   var password: String { get set }
   var store: ModelStore? { get }
+
+  var preferences: Preferences { get set }
+}
+
+struct Preferences: Codable, RawRepresentable {
+  var primaryVIN: String = ""
+
+  enum CodingKeys: String, CodingKey {
+    case primaryVIN
+  }
+
+  init(from decoder: Decoder) throws {
+    let group = try decoder.container(keyedBy: CodingKeys.self)
+    primaryVIN = try group.decode(String.self, forKey: .primaryVIN)
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var group = encoder.container(keyedBy: CodingKeys.self)
+    try group.encode(primaryVIN, forKey: .primaryVIN)
+  }
+
+  init() {
+  }
+
+  init?(rawValue: String) {
+    guard let data = rawValue.data(using: .utf8),
+          let result = try? JSONDecoder().decode(Self.self, from: data)
+    else {
+      return nil
+    }
+    self = result
+  }
+
+  var rawValue: String {
+    guard let data = try? JSONEncoder().encode(self),
+          let result = String(data: data, encoding: .utf8)
+    else {
+      return "[]"
+    }
+    return result
+  }
 }
 
 final class AuthModel: AuthModeling {
@@ -13,6 +54,10 @@ final class AuthModel: AuthModeling {
   var email: String = ""
   @AppStorage("password", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
   var password: String = ""
+  @AppStorage("preferences", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  var preferences = Preferences()
+
+  // Debug-only storage
   @AppStorage("simulatedGarage", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
   var simulatedGarage: String = ""
 
@@ -78,6 +123,8 @@ final class FakeAuthModel: AuthModeling {
   var password: String = ""
   @AppStorage("simulatedGarage", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
   var simulatedGarage: String = ""
+  @AppStorage("preferences", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  var preferences = Preferences()
 
   var store: ModelStore? {
     if simulatedGarage.isEmpty && (email.isEmpty || password.isEmpty) {

@@ -72,6 +72,11 @@ final class ModelStore: ObservableObject {
     let vehicles: [Vehicle]
     do {
       vehicles = try await vehicleList()
+
+      // Verify that the preferred VIN exists, or default to the first one
+      if vehicles.first(where: { $0.vin == AUTH_MODEL.preferences.primaryVIN }) == nil {
+        AUTH_MODEL.preferences.primaryVIN = vehicles.first?.vin ?? ""
+      }
     } catch {
       Logging.network.error("Failed initial load with error: \(error, privacy: .public)")
       throw error

@@ -26,6 +26,7 @@ struct GarageView: View {
           ForEach(vehicles) { vehicle in
             VehicleView(
               vehicle: vehicle,
+              hasManyVehicles: vehicles.count > 1,
               statusPublisher: store.statusPublisher(for: vehicle.vin),
               emobilityPublisher: store.emobilityPublisher(for: vehicle.vin),
               positionPublisher: store.positionPublisher(for: vehicle.vin)
