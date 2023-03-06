@@ -15,7 +15,6 @@ struct VehicleLocationView: View {
     if let position {
       Map(
         coordinateRegion: .constant(position.coordinateRegion),
-        interactionModes: [],
         showsUserLocation: true,
         annotationItems: [
           VehicleLocation(coordinate: position.coordinateRegion.center)
