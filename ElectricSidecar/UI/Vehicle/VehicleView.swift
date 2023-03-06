@@ -16,6 +16,9 @@ struct VehicleView: View {
   let vehicle: UIModel.Vehicle
   let hasManyVehicles: Bool
 
+  @AppStorage("preferences", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  var preferences = Preferences()
+
   let statusPublisher: AnyPublisher<UIModel.Refreshable<UIModel.Vehicle.Status>, Never>
   let emobilityPublisher: AnyPublisher<UIModel.Refreshable<UIModel.Vehicle.Emobility>, Never>
   let positionPublisher: AnyPublisher<UIModel.Refreshable<UIModel.Vehicle.Position>, Never>
@@ -76,6 +79,7 @@ struct VehicleView: View {
                 ChargeView(
                   batteryLevel: status?.batteryLevel,
                   isCharging: emobility?.isCharging,
+                  layout: preferences.chargeWidget.circularLayout,
                   allowsAnimation: true
                 )
                 .frame(width: circularComplicationSize().width,
@@ -121,11 +125,7 @@ struct VehicleView: View {
             set: {
               if $0 {
                 AUTH_MODEL.preferences.primaryVIN = vehicle.vin
-                UserDefaults(suiteName: APP_GROUP_IDENTIFIER)!.synchronize()
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                  WidgetCenter.shared.reloadAllTimelines()
-                }
+                reloadAllTimelines()
               }
             }
           ))
@@ -295,7 +295,7 @@ struct VehicleView: View {
               isRefreshing = false
             }
             Logging.network.info("Refreshing all widget timelines")
-            WidgetCenter.shared.reloadAllTimelines()
+            reloadAllTimelines()
           }
         }
       }

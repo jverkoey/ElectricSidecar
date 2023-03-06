@@ -19,21 +19,35 @@ protocol AuthModeling: AnyObject {
 #endif
 }
 
+struct ChargeWidgetPreferences: Codable {
+  enum CircularLayout: Codable, CaseIterable {
+    case chargeStateInCenter
+    case percentInCenter
+  }
+  var circularLayout: CircularLayout
+}
+
 struct Preferences: Codable, RawRepresentable {
   var primaryVIN: String = ""
+  var chargeWidget: ChargeWidgetPreferences = ChargeWidgetPreferences(
+    circularLayout: .chargeStateInCenter
+  )
 
   enum CodingKeys: String, CodingKey {
     case primaryVIN
+    case chargeWidget
   }
 
   init(from decoder: Decoder) throws {
     let group = try decoder.container(keyedBy: CodingKeys.self)
     primaryVIN = try group.decode(String.self, forKey: .primaryVIN)
+    chargeWidget = try group.decode(ChargeWidgetPreferences.self, forKey: .chargeWidget)
   }
 
   func encode(to encoder: Encoder) throws {
     var group = encoder.container(keyedBy: CodingKeys.self)
     try group.encode(primaryVIN, forKey: .primaryVIN)
+    try group.encode(chargeWidget, forKey: .chargeWidget)
   }
 
   init() {

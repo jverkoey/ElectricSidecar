@@ -32,6 +32,9 @@ private struct WidgetView : View {
   @Environment(\.widgetFamily) var family
   @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
+  @AppStorage("preferences", store: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
+  var preferences = Preferences()
+
   let entry: VehicleChargeTimelineProvider.Entry
 
   var body: some View {
@@ -40,7 +43,8 @@ private struct WidgetView : View {
     case .accessoryCircular:
       ChargeView(
         batteryLevel: entry.chargeRemaining,
-        isCharging: entry.isCharging == true
+        isCharging: entry.isCharging == true,
+        layout: preferences.chargeWidget.circularLayout
       )
 
     case .accessoryInline:
