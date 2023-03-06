@@ -32,10 +32,12 @@ struct RangeView: View {
             .font(.system(size: rangeFontSize))
             .fontDesign(.rounded)
             .bold()
+            .unredacted()
           Text(Locale.current.measurementSystem == .metric ? "km" : "mi")
             .font(.system(size: labelFontSize))
             .padding(.top, labelTopPadding)
             .padding(.bottom, labelBottomPadding)
+            .unredacted()
         }
       } else {
         Text(Locale.current.measurementSystem == .metric ? "km" : "mi")
@@ -43,6 +45,7 @@ struct RangeView: View {
           .padding(.top, labelTopPadding + 20)
           .padding(.bottom, labelBottomPadding)
           .foregroundColor(.gray)
+          .unredacted()
       }
     }
   }
