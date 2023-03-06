@@ -15,7 +15,7 @@ run_watch_tests() {
   # Run the tests
   set -o pipefail && xcodebuild test \
     -project ElectricSidecar/ElectricSidecar.xcodeproj \
-    -scheme "WatchUICatalog" \
+    -scheme "ElectricSidecar" \
     -destination "platform=WatchOS Simulator,id=$WATCH_UUID" \
     -resultBundlePath "TestResults/$WATCH_HARDWARE" \
     SNAPSHOT_PATH="$SCREENSHOTS_PATH" | xcpretty
@@ -47,7 +47,7 @@ run_phone_tests() {
   # Run the tests
   set -o pipefail && xcodebuild test \
     -project ElectricSidecar/ElectricSidecar.xcodeproj \
-    -scheme "PhoneUICatalog" \
+    -scheme "Watch" \
     -destination "platform=iOS Simulator,id=$IPHONE_UUID" \
     -resultBundlePath "TestResults/$PHONE_HARDWARE" \
     SNAPSHOT_PATH="$SCREENSHOTS_PATH" | xcpretty
