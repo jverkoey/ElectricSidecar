@@ -37,6 +37,13 @@
             ReferencedContainer = "container:ElectricSidecar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SNAPSHOT_PATH"
+            value = "$(SNAPSHOT_PATH)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO">
