@@ -4,10 +4,11 @@ import WatchKit
 #endif
 
 public enum FormFactor {
-  case watch40mm
-  case watch41mm
-  case watch45mm
   case ultra49mm
+  case watch45mm
+  case watch44mm
+  case watch41mm
+  case watch40mm
   case phone
 }
 
@@ -19,6 +20,8 @@ public func formFactor() -> FormFactor {
     return .ultra49mm
   case CGSize(width: 198, height: 242):
     return .watch45mm
+  case CGSize(width: 184, height: 224):
+    return .watch44mm
   case CGSize(width: 176, height: 215):
     return .watch41mm
   case CGSize(width: 162, height: 197):
@@ -37,6 +40,8 @@ public func circularComplicationSize() -> CGSize {
     return CGSize(width: 50, height: 50)
   case .watch45mm:
     return CGSize(width: 50, height: 50)
+  case .watch44mm:
+    return CGSize(width: 47, height: 47)
   case .watch41mm:
     return CGSize(width: 44.5, height: 44.5)
   case .watch40mm:
@@ -51,6 +56,8 @@ public func circularComplicationLineWidth() -> Double {
   case .phone:
     return 6
   case .watch45mm, .ultra49mm:
+    return 5
+  case .watch44mm:
     return 5
   case .watch41mm:
     return 5

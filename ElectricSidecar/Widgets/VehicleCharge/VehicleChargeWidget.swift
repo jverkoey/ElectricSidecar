@@ -109,6 +109,8 @@ private struct WidgetView : View {
       return 26
     case .watch45mm, .ultra49mm:
       return 26
+    case .watch44mm:
+      return 26
     case .watch41mm:
       return 23
     case .watch40mm:

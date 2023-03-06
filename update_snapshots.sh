@@ -57,6 +57,7 @@ run_phone_tests() {
 
 run_watch_tests "Apple Watch Series 4 (40mm)"
 run_watch_tests "Apple Watch Series 8 (41mm)"
+run_watch_tests "Apple Watch Series 4 (44mm)"
 run_watch_tests "Apple Watch Series 8 (45mm)"
 run_watch_tests "Apple Watch Ultra (49mm)"
 

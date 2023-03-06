@@ -68,6 +68,8 @@ struct ChargeView: View {
       return 26
     case .watch45mm, .ultra49mm:
       return 24
+    case .watch44mm:
+      return 22
     case .watch41mm:
       return 20
     case .watch40mm:
@@ -80,6 +82,8 @@ struct ChargeView: View {
     case .phone:
       return 12
     case .watch45mm, .ultra49mm:
+      return 9
+    case .watch44mm:
       return 9
     case .watch41mm:
       return 9
@@ -94,6 +98,8 @@ struct ChargeView: View {
       return 0
     case .watch45mm, .ultra49mm:
       return -2
+    case .watch44mm:
+      return -2
     case .watch41mm:
       return -2
     case .watch40mm:
@@ -106,6 +112,8 @@ struct ChargeView: View {
     case .phone:
       return 14
     case .watch45mm, .ultra49mm:
+      return 13
+    case .watch44mm:
       return 13
     case .watch41mm:
       return 12
@@ -128,6 +136,12 @@ struct ChargeView: View {
       return 0.7
     case .watch45mm, .ultra49mm:
       return 0.7
+    case .watch44mm:
+      if batteryLevel == 100 {
+        // Give a bit of breathing room around the text
+        return 0.67
+      }
+      return 0.7
     case .watch41mm:
       return 0.65
     case .watch40mm:
@@ -149,7 +163,7 @@ struct ChargeView_Previews: PreviewProvider {
       Color.red  // For debugging layout.
       HStack {
         ChargeView(
-          batteryLevel: 100,
+          batteryLevel: 50,
           isCharging: true
         )
       }
