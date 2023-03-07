@@ -29,11 +29,12 @@ struct ControlPanelView: View {
                   climatization(enable: !isClimatizationEnabled)
                 } label: {
                   Image("climatization")
+                    .frame(width: 48, height: 48)
                 }
                 .font(.title3)
                 .overlay(
                   RoundedRectangle(cornerRadius: 24)
-                    .stroke(Color.green, lineWidth: isClimatizationEnabled ? 2 : 0)
+                    .stroke(isClimatizationEnabled ? Color.green : Color.accentColor, lineWidth: 2)
                 )
                 if isClimatizationEnabled {
                   VStack {
@@ -97,7 +98,12 @@ struct ControlPanelView: View {
               lock()
             } label: {
               Image(systemName: "lock")
+                .frame(width: 48, height: 48)
             }
+            .overlay(
+              RoundedRectangle(cornerRadius: 24)
+                .stroke(Color.accentColor, lineWidth: 2)
+            )
             .font(.title3)
             .offset(x: 8)
             .frame(width: 48, height: 48)
