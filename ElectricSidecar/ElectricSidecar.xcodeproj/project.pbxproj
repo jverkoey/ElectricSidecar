@@ -116,6 +116,8 @@
 		665EDD5C2972973F0012CD3A /* ElectricSidecarWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665EDD5B2972973F0012CD3A /* ElectricSidecarWidgets.swift */; };
 		666164CE29B68521004DAF95 /* ReloadingWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666164CD29B68521004DAF95 /* ReloadingWidgets.swift */; };
 		666164CF29B68521004DAF95 /* ReloadingWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666164CD29B68521004DAF95 /* ReloadingWidgets.swift */; };
+		666164D429B6C8EF004DAF95 /* ControlPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666164D329B6C8EF004DAF95 /* ControlPanelView.swift */; };
+		666164D529B6C8EF004DAF95 /* ControlPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666164D329B6C8EF004DAF95 /* ControlPanelView.swift */; };
 		66743FD1298E2DF2002A799F /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F5029726E9100A4CC90 /* Refreshable.swift */; };
 		66743FD2298E2DF2002A799F /* Vehicle+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C3F4929725D0900A4CC90 /* Vehicle+Status.swift */; };
 		66743FD3298E2DF2002A799F /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CA7DA0296FE95D00090ADD /* Vehicle.swift */; };
@@ -437,6 +439,7 @@
 		665EDD59297289C40012CD3A /* RefreshStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatusView.swift; sourceTree = "<group>"; };
 		665EDD5B2972973F0012CD3A /* ElectricSidecarWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricSidecarWidgets.swift; sourceTree = "<group>"; };
 		666164CD29B68521004DAF95 /* ReloadingWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadingWidgets.swift; sourceTree = "<group>"; };
+		666164D329B6C8EF004DAF95 /* ControlPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelView.swift; sourceTree = "<group>"; };
 		66743FFA298E32CD002A799F /* PhoneWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PhoneWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66743FFB298E32CD002A799F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		66743FFD298E32CD002A799F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -797,6 +800,7 @@
 			isa = PBXGroup;
 			children = (
 				668B860B297F9A3A00C60DE8 /* VehicleClosedStatusView.swift */,
+				666164D329B6C8EF004DAF95 /* ControlPanelView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1483,6 +1487,7 @@
 				66108DA6296B58EE00791A7A /* Vehicle+SwiftUI.swift in Sources */,
 				66108DB0296B58F700791A7A /* VehicleView.swift in Sources */,
 				661C3F4E2972641500A4CC90 /* UIModel.swift in Sources */,
+				666164D529B6C8EF004DAF95 /* ControlPanelView.swift in Sources */,
 				661C3F54297270FC00A4CC90 /* Vehicle+Emobility.swift in Sources */,
 				66108D2C296B569000791A7A /* ElectricSidecarApp.swift in Sources */,
 				660E7609297E593A00EEF434 /* ChargeView.swift in Sources */,
@@ -1751,6 +1756,7 @@
 				66743FEF298E2F4B002A799F /* LogsView.swift in Sources */,
 				669902D329B45D1B001004AC /* RangeView.swift in Sources */,
 				664884AD29B6683000F787B6 /* SettingsPage.swift in Sources */,
+				666164D429B6C8EF004DAF95 /* ControlPanelView.swift in Sources */,
 				665C3F2D298E0D73002BAD30 /* AppGroup.swift in Sources */,
 				66743FE6298E2F27002A799F /* VehicleLocationPage.swift in Sources */,
 				66743FDC298E2E07002A799F /* Vehicle+Helpers.swift in Sources */,

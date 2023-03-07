@@ -139,6 +139,32 @@ final class ModelStore: ObservableObject {
     }
   }
 
+  func refreshEmobility(for vin: String, ignoreCache: Bool = false) async {
+    do {
+      Logging.network.info("Refreshing emobility for \(vin, privacy: .private(mask: .hash))")
+      let emobility = try await emobility(for: vin, ignoreCache: ignoreCache)
+      let emobilityFreshnessDate = try emobilityFreshnessDate(for: vin)
+
+      let climatizationCompletionDate: Date?
+      if let remainingClimatisationTime = emobility.directClimatisation.remainingClimatisationTime,
+         let emobilityFreshnessDate {
+        climatizationCompletionDate = emobilityFreshnessDate.addingTimeInterval(TimeInterval(remainingClimatisationTime) * 60)
+      } else {
+        climatizationCompletionDate = nil
+      }
+
+      self.emobilitySubject(for: vin).send(.loaded(UIModel.Vehicle.Emobility(
+        isCharging: emobility.isCharging == true,
+        isClimatizationEnabled: emobility.directClimatisation.climatisationState == "ON",
+        climatizationCompletionDate: climatizationCompletionDate
+      )))
+      Logging.network.info("Finished refreshing emobility for \(vin, privacy: .private(mask: .hash))")
+    } catch {
+      Logging.network.error("Status failed \(error, privacy: .public)")
+      self.emobilitySubjects[vin]?.send(.error(error))
+    }
+  }
+
   private var refreshState: [String: Bool] = [:]
   func refresh(vin: String, ignoreCache: Bool = false) async throws {
     Logging.network.info("Refresh state attempt for \(vin, privacy: .private(mask: .hash))")
@@ -158,17 +184,7 @@ final class ModelStore: ObservableObject {
         await self.refreshStatus(for: vin, ignoreCache: ignoreCache)
       }
       taskGroup.addTask {
-        do {
-          Logging.network.info("Refreshing emobility for \(vin, privacy: .private(mask: .hash))")
-          let emobility = try await self.emobility(for: vin, ignoreCache: ignoreCache)
-          self.emobilitySubject(for: vin).send(.loaded(UIModel.Vehicle.Emobility(
-            isCharging: emobility.isCharging == true
-          )))
-          Logging.network.info("Finished refreshing emobility for \(vin, privacy: .private(mask: .hash))")
-        } catch {
-          Logging.network.error("Status failed \(error, privacy: .public)")
-          self.emobilitySubjects[vin]?.send(.error(error))
-        }
+        await self.refreshEmobility(for: vin, ignoreCache: ignoreCache)
       }
       taskGroup.addTask {
         do {
@@ -289,6 +305,10 @@ final class ModelStore: ObservableObject {
     }
   }
 
+  func emobilityFreshnessDate(for vin: String) throws -> Date? {
+    return try lastModificationTime(vin: vin, cacheKey: "emobility")
+  }
+
   func summary(for vin: String, ignoreCache: Bool = false) async throws -> Summary {
     return try await get(
       vin: vin,
@@ -366,6 +386,17 @@ final class ModelStore: ObservableObject {
     return response.remoteCommandAccepted
   }
 
+  func toggleClimatization(vin: String, enable: Bool) async throws -> RemoteCommandAccepted? {
+    assert(!simulating)
+    let response = try await porscheConnect.toggleDirectClimatisation(vin: vin, enable: enable)
+    guard response.response.statusCode < 300 else {
+      Logging.network.error("Failed to toggle direct climatization: \(response.response)")
+      // TODO: Throw an error here.
+      return nil
+    }
+    return response.remoteCommandAccepted
+  }
+
   func checkStatus(vin: String, remoteCommand: RemoteCommandAccepted) async throws -> RemoteCommandStatus? {
     let response = try await porscheConnect.checkStatus(vin: vin, remoteCommand: remoteCommand)
     guard response.response!.statusCode < 300 else {
@@ -374,6 +405,12 @@ final class ModelStore: ObservableObject {
       return nil
     }
     return response.status
+  }
+
+  private func lastModificationTime(vin: String, cacheKey: String) throws -> Date? {
+    let vehicleURL = vehiclesURL.appendingPathComponent(vin)
+    let url = vehicleURL.appendingPathComponent(cacheKey)
+    return cacheCoordinator.fileModificationDate(url: url)
   }
 
   private func get<T: Codable>(
