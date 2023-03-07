@@ -26,7 +26,7 @@ struct VehicleView: View {
   @State var lastRefresh: Date = .now
   let refreshCallback: (Bool) async throws -> Void
   let lockCallback: () async throws -> Void
-  let unlockCallback: () async throws -> Void
+  let climatizationCallback: (Bool) async throws -> Void
 
   @MainActor @State var status: UIModel.Vehicle.Status?
   @MainActor @State var emobility: UIModel.Vehicle.Emobility?
@@ -40,7 +40,6 @@ struct VehicleView: View {
   @MainActor @State var positionRefreshing: Bool = false
 
   @MainActor @State private var isRefreshing = false
-  @MainActor @State private var isChangingLockState = false
 
   var body: some View {
     List {
@@ -60,58 +59,18 @@ struct VehicleView: View {
           }
         }
       } header: {
-        VStack(alignment: .center) {
-          ZStack {
-            //          ZStack {
-            //            if !isChangingLockState {
-            //              Button { unlock() } label: { Image(systemName: "lock.open") }
-            //                .font(.title3)
-            //            } else {
-            //              ProgressView()
-            //            }
-            //          }
-            //          .padding(.trailing)
-
-            HStack {
-              Spacer()
-                .frame(maxWidth: .infinity)
-              VStack {
-                ChargeView(
-                  batteryLevel: status?.batteryLevel,
-                  isCharging: emobility?.isCharging,
-                  layout: preferences.chargeWidget.circularLayout,
-                  allowsAnimation: true
-                )
-                .frame(width: circularComplicationSize().width,
-                       height: circularComplicationSize().height)
-                .padding(.top, 8)
-              }
-              Spacer()
-                .frame(maxWidth: .infinity)
-            }
-
-            HStack(spacing: 0) {
-              Spacer()
-                .frame(maxWidth: .infinity)
-              if !isChangingLockState {
-                Button { lock() } label: { Image(systemName: "lock") }
-                  .font(.title3)
-                  .offset(x: 8)
-                  .frame(width: 48, height: 48)
-              } else {
-                ProgressView()
-              }
-            }
-          }
-          if let electricalRange = status?.electricalRange {
-            Text(electricalRange)
-              .font(.system(size: 14))
-              .padding(.top, -6)
-          }
-          VehicleClosedStatusView(doors: status?.doors)
-            .padding(.top, 8)
-            .padding(.bottom, 8)
-        }
+        ControlPanelView(
+          vin: vehicle.vin,
+          batteryLevel: status?.batteryLevel,
+          isCharging: emobility?.isCharging,
+          isClimatizationEnabled: emobility?.isClimatizationEnabled,
+          climatizationCompletionDate: emobility?.climatizationCompletionDate,
+          chargeLayout: preferences.chargeWidget.circularLayout,
+          electricalRange: status?.electricalRange,
+          doors: status?.doors,
+          lockCallback: lockCallback,
+          climatizationCallback: climatizationCallback
+        )
         // Reset the section header styling that causes header text to be uppercased
         .textCase(.none)
       }
@@ -243,38 +202,6 @@ struct VehicleView: View {
     formatter.numberStyle = .percent
     formatter.maximumFractionDigits = 0
     return formatter.string(from: chargeRemaining as NSNumber)!
-  }
-
-  @MainActor
-  private func unlock() {
-    Task {
-      Logging.network.info("Unlocking \(vehicle.vin, privacy: .private)")
-      isChangingLockState = true
-      defer {
-        Task {
-          await MainActor.run {
-            isChangingLockState = false
-          }
-        }
-      }
-      try await unlockCallback()
-    }
-  }
-
-  @MainActor
-  private func lock() {
-    Task {
-      Logging.network.info("Locking \(vehicle.vin, privacy: .private)")
-      isChangingLockState = true
-      defer {
-        Task {
-          await MainActor.run {
-            isChangingLockState = false
-          }
-        }
-      }
-      try await lockCallback()
-    }
   }
 
   @MainActor

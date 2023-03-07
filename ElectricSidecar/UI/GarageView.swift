@@ -43,9 +43,27 @@ struct GarageView: View {
                 )?.remoteStatus
               }
 
-              await store.refreshStatus(for: vehicle.vin)
-            } unlockCallback: {
-              print("Unlock the car...")
+              await store.refreshStatus(for: vehicle.vin, ignoreCache: true)
+            } climatizationCallback: { enable in
+              guard let commandToken = try await store.toggleClimatization(vin: vehicle.vin, enable: enable) else {
+                return
+              }
+
+              var lastStatus = try await store.checkStatus(
+                vin: vehicle.vin,
+                remoteCommand: commandToken
+              )?.remoteStatus
+              while lastStatus == .inProgress {
+                // Avoid excessive API calls.
+                try await Task.sleep(nanoseconds: UInt64(0.5 * Double(NSEC_PER_SEC)))
+
+                lastStatus = try await store.checkStatus(
+                  vin: vehicle.vin,
+                  remoteCommand: commandToken
+                )?.remoteStatus
+              }
+
+              await store.refreshEmobility(for: vehicle.vin, ignoreCache: true)
             }
             .navigationTitle(vehicle.licensePlate ?? "\(vehicle.modelDescription) (\(vehicle.modelYear))")
           }
